@@ -1,11 +1,14 @@
 import { projects } from "../data/content";
+import type { CSSProperties } from "react";
 import { Reveal } from "./Reveal";
+import { PhoneMock, Screen } from "./ScreenArt";
 
 interface FeaturedProps {
+  onOpen: (id: string) => void;
   onHover: () => void;
 }
 
-export function Featured({ onHover }: FeaturedProps) {
+export function Featured({ onOpen, onHover }: FeaturedProps) {
   const featured = projects.filter((p) => p.featured);
 
   return (
@@ -18,18 +21,25 @@ export function Featured({ onHover }: FeaturedProps) {
       <div className="featured__grid">
         {featured.map((project, i) => (
           <Reveal key={project.id} delay={i * 100}>
-            <a
+            <article
               className="card"
-              href={project.href ?? `#${project.id}`}
               onMouseEnter={onHover}
-              style={{
-                ["--c1" as string]: project.colors[0],
-                ["--c2" as string]: project.colors[1],
-              }}
+              style={{ "--c1": project.colors[0], "--c2": project.colors[1] } as CSSProperties}
             >
+              <button
+                type="button"
+                className="card__hit"
+                aria-label={`Open ${project.title}`}
+                onClick={() => onOpen(project.id)}
+              />
               <div className="card__cover">
                 <span className="card__index mono">{String(i + 1).padStart(2, "0")}</span>
                 <span className="card__name">{project.title}</span>
+                <div className="card__phone">
+                  <PhoneMock>
+                    <Screen item={project.gallery[0]} colors={project.colors} title={project.title} />
+                  </PhoneMock>
+                </div>
               </div>
               <div className="card__body">
                 <div className="card__row">
@@ -44,8 +54,11 @@ export function Featured({ onHover }: FeaturedProps) {
                     </li>
                   ))}
                 </ul>
+                <span className="card__cta mono">
+                  View project <i>→</i>
+                </span>
               </div>
-            </a>
+            </article>
           </Reveal>
         ))}
       </div>

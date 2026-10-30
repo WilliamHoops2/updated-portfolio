@@ -2,15 +2,37 @@
 //  EDIT ME — everything shown on the site lives in this file.
 // ─────────────────────────────────────────────────────────────
 
+/** Which illustrated placeholder screen to draw when no real screenshot is given. */
+export type ArtVariant = "splash" | "cards" | "timer" | "scan" | "chart" | "waves" | "list";
+
+export interface GalleryItem {
+  variant: ArtVariant;
+  caption: string;
+  /**
+   * Optional real screenshot, e.g. "/projects/artie/home.png"
+   * (put the file in the `public/projects/artie/` folder).
+   * If omitted, or if the file is missing, the illustrated placeholder is shown.
+   */
+  src?: string;
+}
+
 export interface Project {
   id: string;
   title: string;
   category: string;
   year: string;
+  /** One-liner shown on cards and in the project header. */
   blurb: string;
+  /** Longer description shown in the project pop-up. */
+  overview: string;
+  role: string;
+  platform: string;
+  highlights: string[];
+  gallery: GalleryItem[];
   tags: string[];
-  /** Two colours for the placeholder cover gradient. Swap for a real image later. */
+  /** Two colours for the cover gradient and placeholder screens. */
   colors: [string, string];
+  /** Optional external link (App Store, GitHub, live site…). Shows a "Visit" button. */
   href?: string;
   featured?: boolean;
 }
@@ -24,6 +46,7 @@ export const profile = {
   name: "William",
   handle: "itsjustw",
   greeting: "Scroll down and I'll show you around.",
+  hint: "Move your cursor around, or click anywhere.",
   titleLines: ["Design &", "Engineering"],
   tagline: "Small apps, built with care.",
   intro:
@@ -64,7 +87,8 @@ export const steps = [
   { n: "03", title: "Ship", text: "Polish, test on real devices, and put it in people's hands." },
 ];
 
-// Drafted from the apps in your "Apple Projects" folder. Rewrite the blurbs in your own words.
+// Drafted from the apps in your "Apple Projects" folder.
+// The overviews and highlights are placeholders: rewrite them in your own words.
 export const projects: Project[] = [
   {
     id: "artie",
@@ -72,6 +96,20 @@ export const projects: Project[] = [
     category: "iOS App",
     year: "2026",
     blurb: "A charm-collecting app with 3D keychains, physics-based collages and nearby trading.",
+    overview:
+      "Artie turns collecting into play. Charms hang from a 3D keychain you can swing around, snap into collages, and trade with people who are close by.",
+    role: "Design & development",
+    platform: "iOS",
+    highlights: [
+      "A 3D keychain with physics-driven swinging and haptic feedback.",
+      "A drag-and-drop collage board for arranging your charms.",
+      "Nearby trading between two devices, no accounts needed.",
+    ],
+    gallery: [
+      { variant: "splash", caption: "Home" },
+      { variant: "cards", caption: "Charm collection" },
+      { variant: "list", caption: "Trading" },
+    ],
     tags: ["SwiftUI", "RealityKit", "Lottie"],
     colors: ["#2261e9", "#7aa2ff"],
     featured: true,
@@ -82,6 +120,20 @@ export const projects: Project[] = [
     category: "iOS App · Computer Vision",
     year: "2026",
     blurb: "Point your camera at a real chessboard and play against an engine, with spoken moves.",
+    overview:
+      "Set up a real board, point the camera, and ChessUp reads the position, suggests moves and announces them out loud, so you can keep your eyes on the pieces.",
+    role: "Design & development",
+    platform: "iOS",
+    highlights: [
+      "On-device piece detection using Core ML and Vision.",
+      "Engine analysis with spoken move announcements.",
+      "Designed around a simple overhead camera angle.",
+    ],
+    gallery: [
+      { variant: "scan", caption: "Board detection" },
+      { variant: "chart", caption: "Engine evaluation" },
+      { variant: "list", caption: "Move history" },
+    ],
     tags: ["Core ML", "Vision", "AVFoundation"],
     colors: ["#111827", "#4b5563"],
     featured: true,
@@ -92,6 +144,20 @@ export const projects: Project[] = [
     category: "iOS App · Widgets",
     year: "2026",
     blurb: "A pixel-art focus timer where a pet grows while you stay off your phone.",
+    overview:
+      "Stay focused and your pixel-art pet grows. The timer lives on your lock screen and home screen, so progress is always one glance away.",
+    role: "Design & development",
+    platform: "iOS",
+    highlights: [
+      "A Live Activity timer on the lock screen and Dynamic Island.",
+      "Home-screen widgets that show your pet's progress.",
+      "Hand-made pixel-art animations.",
+    ],
+    gallery: [
+      { variant: "timer", caption: "Focus session" },
+      { variant: "splash", caption: "Your pet" },
+      { variant: "chart", caption: "Weekly progress" },
+    ],
     tags: ["SwiftUI", "WidgetKit", "Live Activities"],
     colors: ["#ff7a45", "#ffd166"],
     featured: true,
@@ -102,6 +168,20 @@ export const projects: Project[] = [
     category: "iOS App · Accessibility",
     year: "2026",
     blurb: "A calm-down companion that guides caregivers through steps when a child is overwhelmed.",
+    overview:
+      "When a child is overwhelmed, thinking clearly is hard. TantrumNoYa walks a caregiver through simple, ordered steps, designed to be used quickly and one-handed.",
+    role: "Design & development",
+    platform: "iOS",
+    highlights: [
+      "Step-by-step guidance built for stressful moments.",
+      "Quick access through Shortcuts and AirPods gestures.",
+      "Data stays on the device with SwiftData.",
+    ],
+    gallery: [
+      { variant: "list", caption: "Steps" },
+      { variant: "splash", caption: "Calm mode" },
+      { variant: "cards", caption: "Strategies" },
+    ],
     tags: ["SwiftData", "App Intents", "AirPods"],
     colors: ["#7c3aed", "#c4b5fd"],
   },
@@ -111,6 +191,20 @@ export const projects: Project[] = [
     category: "iOS App · Live Activities",
     year: "2026",
     blurb: "Lock-screen pets that react to the music playing around you.",
+    overview:
+      "Little pets live on your lock screen and dance to whatever's playing nearby. A small, playful way to make music feel more alive.",
+    role: "Design & development",
+    platform: "iOS",
+    highlights: [
+      "Music recognition powered by ShazamKit.",
+      "Live Activities that animate along with the song.",
+      "Widgets to show off your pet collection.",
+    ],
+    gallery: [
+      { variant: "waves", caption: "Listening" },
+      { variant: "splash", caption: "Now playing" },
+      { variant: "cards", caption: "Pet collection" },
+    ],
     tags: ["ActivityKit", "ShazamKit", "WidgetKit"],
     colors: ["#ec4899", "#fbcfe8"],
   },
@@ -120,6 +214,19 @@ export const projects: Project[] = [
     category: "iOS App",
     year: "2025",
     blurb: "A focus timer with its own music library and a customisable rhythm.",
+    overview:
+      "A clean Pomodoro timer with a built-in music library, so you can start a session and stay in the zone without juggling apps.",
+    role: "Design & development",
+    platform: "iOS",
+    highlights: [
+      "Adjustable focus and break lengths.",
+      "Background audio with a custom playback engine.",
+      "A distraction-free timer screen.",
+    ],
+    gallery: [
+      { variant: "timer", caption: "Timer" },
+      { variant: "list", caption: "Music library" },
+    ],
     tags: ["SwiftUI", "AVAudioEngine"],
     colors: ["#ef4444", "#fca5a5"],
   },
@@ -129,6 +236,19 @@ export const projects: Project[] = [
     category: "iOS App",
     year: "2025",
     blurb: "Keep track of the people you care about and when you last caught up.",
+    overview:
+      "A gentle nudge to stay in touch. Keep notes on the people who matter and see at a glance who you haven't spoken to in a while.",
+    role: "Design & development",
+    platform: "iOS",
+    highlights: [
+      "Simple reminders for staying in touch.",
+      "Quick notes for each friend.",
+      "Private by default, stored on your device.",
+    ],
+    gallery: [
+      { variant: "list", caption: "Friends" },
+      { variant: "cards", caption: "Profile" },
+    ],
     tags: ["SwiftUI", "Core Data"],
     colors: ["#0f766e", "#5eead4"],
   },
@@ -138,6 +258,18 @@ export const projects: Project[] = [
     category: "iOS App",
     year: "2025",
     blurb: "A pocket guide to island life.",
+    overview:
+      "A pocket guide to everyday life on the island, built around the places and routines that make Bali feel like home.",
+    role: "Design & development",
+    platform: "iOS",
+    highlights: [
+      "Places and tips for daily life on the island.",
+      "A fast, native SwiftUI interface.",
+    ],
+    gallery: [
+      { variant: "cards", caption: "Places" },
+      { variant: "splash", caption: "Home" },
+    ],
     tags: ["SwiftUI"],
     colors: ["#16a34a", "#bbf7d0"],
   },
