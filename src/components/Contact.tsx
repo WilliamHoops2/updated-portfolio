@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import { profile } from "../data/content";
+import { profile, tour } from "../data/content";
 import { Reveal } from "./Reveal";
+import { Roll } from "./Roll";
 
 export function Contact() {
   const [copied, setCopied] = useState(false);
@@ -21,7 +22,11 @@ export function Contact() {
   };
 
   return (
-    <section className="contact" id="contact">
+    <section className="contact" id="contact" data-tour={tour.contact}>
+      <Reveal>
+        <p className="eyebrow mono">Got a project?</p>
+      </Reveal>
+
       <Reveal as="h2" className="contact__title">
         Let's make
         <br />
@@ -31,10 +36,20 @@ export function Contact() {
       </Reveal>
 
       <Reveal delay={150} className="contact__actions">
-        <button type="button" className="contact__email" onClick={copyEmail}>
-          {copied ? "Copied! Talk soon." : profile.email}
+        <p className="contact__lead">I'm taking on new work.</p>
+        <button type="button" className="btn btn--solid contact__email" onClick={copyEmail}>
+          <Roll>{copied ? "Copied! Talk soon." : profile.email}</Roll>
         </button>
-        <p className="mono">Click to copy · {profile.location}</p>
+        <p className="mono contact__hint">Write me anytime. Click and it's copied.</p>
+        <p className="contact__topics">Always happy to talk iOS, chess, basketball or a good manga recommendation.</p>
+      </Reveal>
+
+      <Reveal delay={250} className="contact__socials">
+        {profile.socials.map((s) => (
+          <a key={s.label} href={s.href} target="_blank" rel="noreferrer" className="mono">
+            <Roll>{s.label}</Roll> ↗
+          </a>
+        ))}
       </Reveal>
     </section>
   );

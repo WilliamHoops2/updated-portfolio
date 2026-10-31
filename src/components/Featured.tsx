@@ -1,5 +1,5 @@
-import { projects } from "../data/content";
 import type { CSSProperties } from "react";
+import { projects } from "../data/content";
 import { Reveal } from "./Reveal";
 import { PhoneMock, Screen } from "./ScreenArt";
 
@@ -8,11 +8,12 @@ interface FeaturedProps {
   onHover: () => void;
 }
 
+/** Three featured projects as cards. Clicking one opens it in the "All work" list below. */
 export function Featured({ onOpen, onHover }: FeaturedProps) {
   const featured = projects.filter((p) => p.featured);
 
   return (
-    <section className="featured">
+    <section className="featured" aria-label="Selected work">
       <Reveal className="section-head">
         <span className="mono">Selected work</span>
         <span className="mono">{String(featured.length).padStart(2, "0")}</span>
@@ -55,7 +56,7 @@ export function Featured({ onOpen, onHover }: FeaturedProps) {
                   ))}
                 </ul>
                 <span className="card__cta mono">
-                  View project <i>→</i>
+                  View project <i>↓</i>
                 </span>
               </div>
             </article>

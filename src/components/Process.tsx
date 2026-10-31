@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
-import { steps } from "../data/content";
+import { steps, tour } from "../data/content";
 import { Reveal } from "./Reveal";
+import { Roll } from "./Roll";
 
 const icons: ReactNode[] = [
   // Pencil
@@ -26,26 +27,39 @@ const icons: ReactNode[] = [
 
 export function Process() {
   return (
-    <section className="process">
+    <section className="process" id="process" data-tour={tour.process}>
       <Reveal className="section-head">
-        <span className="mono">How I work</span>
+        <span className="mono">Process</span>
         <span className="mono">03</span>
+      </Reveal>
+
+      <Reveal as="h2" className="process__title">
+        Sketch. <em>Build.</em> Ship.
       </Reveal>
 
       <div className="process__grid">
         {steps.map((step, i) => (
           <Reveal key={step.n} delay={i * 120} className="step">
             <div className="step__top">
-              <span className="step__n mono">{step.n}</span>
+              <span className="step__n mono">
+                {step.n} · {step.aside}
+              </span>
               <span className="step__icon" aria-hidden="true">
                 {icons[i]}
               </span>
             </div>
-            <h3 className="step__title">{step.title}.</h3>
+            <h3 className="step__title">{step.title}</h3>
             <p>{step.text}</p>
           </Reveal>
         ))}
       </div>
+
+      <Reveal className="process__cta">
+        <a className="btn btn--light" href="#contact">
+          <Roll>Start a project</Roll>
+          <span aria-hidden="true">→</span>
+        </a>
+      </Reveal>
     </section>
   );
 }

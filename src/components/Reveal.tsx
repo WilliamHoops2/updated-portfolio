@@ -7,9 +7,11 @@ interface RevealProps {
   className?: string;
   /** Delay in milliseconds, for staggering siblings. */
   delay?: number;
+  /** Line the mascot says when this element is on screen. */
+  tour?: string;
 }
 
-export function Reveal({ children, as: Tag = "div", className = "", delay = 0 }: RevealProps) {
+export function Reveal({ children, as: Tag = "div", className = "", delay = 0, tour }: RevealProps) {
   const { ref, visible } = useReveal<HTMLElement>();
   const style = { "--delay": `${delay}ms` } as CSSProperties;
 
@@ -17,6 +19,7 @@ export function Reveal({ children, as: Tag = "div", className = "", delay = 0 }:
     <Tag
       ref={ref}
       style={style}
+      data-tour={tour}
       className={`reveal ${visible ? "is-visible" : ""} ${className}`.trim()}
     >
       {children}

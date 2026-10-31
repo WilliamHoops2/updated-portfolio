@@ -1,5 +1,7 @@
 import type { Theme } from "../hooks/useTheme";
 import { profile } from "../data/content";
+import { Roll } from "./Roll";
+import { StatusBar } from "./StatusBar";
 
 interface HeaderProps {
   theme: Theme;
@@ -19,10 +21,16 @@ export function Header({ theme, onToggleTheme, soundOn, onToggleSound, onHover }
 
       <nav className="header__nav mono" aria-label="Primary">
         <a href="#work" onMouseEnter={onHover}>
-          Work
+          <Roll>Work</Roll>
+        </a>
+        <a href="#interests" onMouseEnter={onHover}>
+          <Roll>Interests</Roll>
+        </a>
+        <a href="#process" onMouseEnter={onHover}>
+          <Roll>Process</Roll>
         </a>
         <a href="#contact" onMouseEnter={onHover}>
-          Contact
+          <Roll>Contact</Roll>
         </a>
       </nav>
 
@@ -38,7 +46,12 @@ export function Header({ theme, onToggleTheme, soundOn, onToggleSound, onHover }
         >
           SOUND[{soundOn ? "|" : " "}]
         </button>
+        <a href="#contact" className="header__cta" onMouseEnter={onHover}>
+          <Roll>Say hello</Roll>
+        </a>
       </div>
+
+      <StatusBar />
     </header>
   );
 }

@@ -2,7 +2,7 @@ import { profile } from "../data/content";
 import { useClock } from "../hooks/useClock";
 import { useCursor } from "../hooks/useCursor";
 
-/** Fixed bottom strip with a live local clock and pointer coordinates. */
+/** Live local clock and pointer coordinates, shown under the nav. */
 export function StatusBar() {
   const time = useClock(profile.timezone);
   const { x, y } = useCursor();
