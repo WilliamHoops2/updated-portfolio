@@ -10,11 +10,11 @@
   aspect-ratio: 1 / 2.05;
   padding: 3.4%;
   border-radius: 15% / 7.4%;
-  background: #0d0f12;
+  background: var(--p-ink);
   box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.12) inset,
-    0 30px 50px -20px rgba(0, 0, 0, 0.45),
-    0 8px 18px -8px rgba(0, 0, 0, 0.35);
+    0 0 0 1px rgba(var(--p-cream-rgb), 0.12) inset,
+    0 30px 50px -20px rgba(var(--p-ink-rgb), 0.45),
+    0 8px 18px -8px rgba(var(--p-ink-rgb), 0.35);
 }
 
 .phone__screen {
@@ -22,7 +22,7 @@
   height: 100%;
   border-radius: 11.5% / 5.6%;
   overflow: hidden;
-  background: #000;
+  background: var(--p-ink);
 }
 
 .phone__screen .art,
@@ -41,7 +41,7 @@
   height: 2.8%;
   transform: translateX(-50%);
   border-radius: 999px;
-  background: #0d0f12;
+  background: var(--p-ink);
 }
 
 /* ── Hero: layering and interactive bits ─────────────────── */
@@ -152,8 +152,8 @@
 
 .hphone:hover .phone {
   box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.2) inset,
-    0 40px 70px -20px rgba(0, 0, 0, 0.55);
+    0 0 0 1px rgba(var(--p-cream-rgb), 0.2) inset,
+    0 40px 70px -20px rgba(var(--p-ink-rgb), 0.55);
 }
 
 .hphone__tag {
@@ -210,7 +210,7 @@
   aspect-ratio: 1;
   right: 26%;
   bottom: 4%;
-  background: #ff7a45;
+  background: var(--p-orchid);
   animation-delay: -6s;
 }
 
@@ -240,7 +240,7 @@
 
 .card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 30px 60px -30px rgba(var(--p-ink-rgb), 0.35);
 }
 
 /* An invisible button stretched over the whole card, so the card is one click target. */
@@ -263,7 +263,7 @@
   display: flex;
   align-items: flex-start;
   padding: 20px;
-  color: #fff;
+  color: var(--p-cream);
   background: linear-gradient(135deg, var(--c1), var(--c2));
   overflow: hidden;
 }
@@ -276,7 +276,7 @@
   right: -15%;
   top: -20%;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.16);
+  background: rgba(var(--p-cream-rgb), 0.16);
   transition: transform 0.7s var(--ease);
 }
 
@@ -369,13 +369,11 @@
 /* ── Process: dark band (ink "Play. Win. Earn.") ─────────── */
 .process {
   padding-block: clamp(72px, 10vw, 140px);
-  background: var(--band);
-  color: #f2f1ec;
 }
 
 .process .section-head {
-  border-color: rgba(242, 241, 236, 0.16);
-  color: #8b9298;
+  border-color: var(--line);
+  color: var(--fg);
 }
 
 .process__title {
@@ -389,7 +387,7 @@
 .process__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  border-top: 1px solid rgba(242, 241, 236, 0.16);
+  border-top: 1px solid var(--line);
 }
 
 .step {
@@ -402,7 +400,7 @@
 
 .step + .step {
   padding-left: 28px;
-  border-left: 1px solid rgba(242, 241, 236, 0.16);
+  border-left: 1px solid var(--line);
 }
 
 .step__top {
@@ -440,7 +438,7 @@
 
 .step p {
   max-width: 32ch;
-  color: #8b9298;
+  color: var(--fg);
 }
 
 .process__cta {
@@ -473,7 +471,7 @@
 }
 
 .mascot__shadow {
-  fill: #000;
+  fill: var(--p-ink);
   opacity: 0.18;
 }
 
@@ -489,16 +487,16 @@
 }
 
 .mascot__shine {
-  fill: #fff;
+  fill: var(--p-cream);
   opacity: 0.28;
 }
 
 .mascot__eye {
-  fill: #fff;
+  fill: var(--p-cream);
 }
 
 .mascot__pupil {
-  fill: #0a0e11;
+  fill: var(--p-ink);
   transform: translate(calc(var(--ex, 0) * 1px), calc(var(--ey, 0) * 1px));
 }
 
@@ -510,13 +508,13 @@
 
 .mascot__mouth {
   fill: none;
-  stroke: #0a0e11;
+  stroke: var(--p-ink);
   stroke-width: 3;
   stroke-linecap: round;
 }
 
 .mascot__mouth-open {
-  fill: #0a0e11;
+  fill: var(--p-ink);
 }
 
 .mascot__body {
@@ -641,7 +639,7 @@
   }
 
   .step + .step {
-    border-top: 1px solid rgba(242, 241, 236, 0.16);
+    border-top: 1px solid rgba(var(--p-cream-rgb), 0.16);
   }
 
   .mascot {

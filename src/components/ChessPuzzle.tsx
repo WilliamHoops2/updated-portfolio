@@ -111,7 +111,7 @@ export function ChessPuzzle() {
               same(selected, { r, c }) ? "is-selected" : "",
               hint && (same(QUEEN, { r, c }) || same(TARGET, { r, c })) ? "is-hint" : "",
               status === "solved" && same(BLACK_KING, { r, c }) ? "is-check" : "",
-              status === "solved" && same(TARGET, { r, c }) ? "is-moved" : "",
+              status === "solved" && (same(TARGET, { r, c }) || same(QUEEN, { r, c })) ? "is-moved" : "",
             ]
               .filter(Boolean)
               .join(" ");
@@ -122,6 +122,8 @@ export function ChessPuzzle() {
 
             return (
               <button key={`${r}-${c}`} type="button" className={classes} aria-label={label} onClick={() => click(r, c)}>
+                {c === 0 && <i className="sq__coord sq__coord--rank">{8 - r}</i>}
+                {r === 7 && <i className="sq__coord sq__coord--file">{"abcdefgh"[c]}</i>}
                 {piece && (
                   <span className={`piece ${isWhite(piece) ? "piece--w" : "piece--b"}`}>
                     {GLYPH[piece.toLowerCase()]}
@@ -134,17 +136,18 @@ export function ChessPuzzle() {
         )}
       </div>
 
-      <p className={`chess__msg mono is-${status}`} aria-live="polite">
-        {MESSAGES[status]}
-      </p>
-
-      <div className="chess__actions">
-        <button type="button" className="textbtn mono" onClick={() => setHint((h) => !h)} disabled={status === "solved"}>
-          {hint ? "Hide hint" : "Hint"}
-        </button>
-        <button type="button" className="textbtn mono" onClick={reset}>
-          Reset ↺
-        </button>
+      <div className="chess__bar">
+        <p className={`chess__msg is-${status}`} aria-live="polite">
+          {MESSAGES[status]}
+        </p>
+        <div className="chess__actions">
+          <button type="button" className="pill" onClick={() => setHint((h) => !h)} disabled={status === "solved"}>
+            {hint ? "Hide hint" : "Hint"}
+          </button>
+          <button type="button" className="pill" onClick={reset}>
+            Reset
+          </button>
+        </div>
       </div>
     </div>
   );

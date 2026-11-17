@@ -1,10 +1,10 @@
 import { useId, useState } from "react";
 import type { ReactNode } from "react";
 import type { ArtVariant, GalleryItem } from "../data/content";
+import { CREAM, INK } from "../lib/palette";
 
-const DARK = "#0b1117";
-const LIGHT = "#f6f6f4";
-const INK = "#0a0e11";
+const DARK = INK;
+const LIGHT = CREAM;
 const FONT = "Inter, system-ui, sans-serif";
 
 interface ArtProps {
@@ -20,7 +20,7 @@ export function ScreenArt({ variant, c1, c2, title }: ArtProps) {
   const gid = `g${raw.replace(/[^a-zA-Z0-9]/g, "")}`;
   const fill = `url(#${gid})`;
   const dark = variant === "splash" || variant === "timer" || variant === "scan" || variant === "waves";
-  const chrome = dark ? "#ffffff" : INK;
+  const chrome = dark ? CREAM : INK;
 
   let body: ReactNode;
 
@@ -30,15 +30,15 @@ export function ScreenArt({ variant, c1, c2, title }: ArtProps) {
       body = (
         <>
           <rect width="200" height="410" fill={fill} />
-          <rect width="200" height="410" fill="#000" opacity="0.14" />
-          <circle cx="150" cy="100" r="72" fill="#fff" opacity="0.14" />
-          <circle cx="30" cy="300" r="96" fill="#fff" opacity="0.1" />
-          <text x="20" y="262" fill="#fff" fontFamily={FONT} fontSize={size} fontWeight="800" letterSpacing="-1">
+          <rect width="200" height="410" fill={INK} opacity="0.14" />
+          <circle cx="150" cy="100" r="72" fill={CREAM} opacity="0.14" />
+          <circle cx="30" cy="300" r="96" fill={CREAM} opacity="0.1" />
+          <text x="20" y="262" fill={CREAM} fontFamily={FONT} fontSize={size} fontWeight="800" letterSpacing="-1">
             {title}
           </text>
-          <rect x="20" y="280" width="96" height="6" rx="3" fill="#fff" opacity="0.65" />
-          <rect x="20" y="294" width="64" height="6" rx="3" fill="#fff" opacity="0.35" />
-          <rect x="20" y="344" width="160" height="34" rx="17" fill="#fff" />
+          <rect x="20" y="280" width="96" height="6" rx="3" fill={CREAM} opacity="0.65" />
+          <rect x="20" y="294" width="64" height="6" rx="3" fill={CREAM} opacity="0.35" />
+          <rect x="20" y="344" width="160" height="34" rx="17" fill={CREAM} />
           <rect x="72" y="358" width="56" height="6" rx="3" fill={c1} />
         </>
       );
@@ -52,13 +52,13 @@ export function ScreenArt({ variant, c1, c2, title }: ArtProps) {
           <rect x="16" y="66" width="62" height="6" rx="3" fill={INK} opacity="0.3" />
           {[0, 1, 2].map((i) => (
             <g key={i} transform={`translate(16 ${96 + i * 86})`}>
-              <rect width="168" height="74" rx="16" fill="#fff" stroke={INK} strokeOpacity="0.08" />
+              <rect width="168" height="74" rx="16" fill={CREAM} stroke={INK} strokeOpacity="0.08" />
               <circle cx="38" cy="37" r="22" fill={fill} opacity={1 - i * 0.18} />
               <rect x="70" y="24" width="72" height="8" rx="4" fill={INK} opacity="0.8" />
               <rect x="70" y="42" width="48" height="6" rx="3" fill={INK} opacity="0.25" />
             </g>
           ))}
-          <rect x="0" y="366" width="200" height="44" fill="#fff" />
+          <rect x="0" y="366" width="200" height="44" fill={CREAM} />
           {[50, 100, 150].map((x, i) => (
             <circle key={x} cx={x} cy="384" r="5" fill={i === 0 ? c1 : INK} opacity={i === 0 ? 1 : 0.2} />
           ))}
@@ -70,7 +70,7 @@ export function ScreenArt({ variant, c1, c2, title }: ArtProps) {
       body = (
         <>
           <rect width="200" height="410" fill={DARK} />
-          <circle cx="100" cy="180" r="70" fill="none" stroke="#fff" strokeOpacity="0.1" strokeWidth="12" />
+          <circle cx="100" cy="180" r="70" fill="none" stroke={CREAM} strokeOpacity="0.1" strokeWidth="12" />
           <circle
             cx="100"
             cy="180"
@@ -82,12 +82,12 @@ export function ScreenArt({ variant, c1, c2, title }: ArtProps) {
             strokeDasharray="300 440"
             transform="rotate(-90 100 180)"
           />
-          <text x="100" y="191" textAnchor="middle" fill="#fff" fontFamily={FONT} fontSize="32" fontWeight="700">
+          <text x="100" y="191" textAnchor="middle" fill={CREAM} fontFamily={FONT} fontSize="32" fontWeight="700">
             25:00
           </text>
           <rect x="40" y="300" width="120" height="40" rx="20" fill={fill} />
-          <rect x="84" y="317" width="32" height="6" rx="3" fill="#fff" />
-          <rect x="60" y="356" width="80" height="6" rx="3" fill="#fff" opacity="0.18" />
+          <rect x="84" y="317" width="32" height="6" rx="3" fill={CREAM} />
+          <rect x="60" y="356" width="80" height="6" rx="3" fill={CREAM} opacity="0.18" />
         </>
       );
       break;
@@ -107,7 +107,7 @@ export function ScreenArt({ variant, c1, c2, title }: ArtProps) {
                 y={92 + r * 26}
                 width="26"
                 height="26"
-                fill={odd ? c1 : "#fff"}
+                fill={odd ? c1 : CREAM}
                 opacity={odd ? 0.6 : 0.09}
               />
             );
@@ -117,7 +117,7 @@ export function ScreenArt({ variant, c1, c2, title }: ArtProps) {
             [4, 3],
             [1, 4],
           ].map(([c, r]) => (
-            <circle key={`${c}${r}`} cx={22 + c * 26 + 13} cy={92 + r * 26 + 13} r="8" fill="#fff" opacity="0.9" />
+            <circle key={`${c}${r}`} cx={22 + c * 26 + 13} cy={92 + r * 26 + 13} r="8" fill={CREAM} opacity="0.9" />
           ))}
           <path
             d="M14 108V92H30 M170 92H186V108 M186 240V256H170 M30 256H14V240"
@@ -127,8 +127,8 @@ export function ScreenArt({ variant, c1, c2, title }: ArtProps) {
             strokeWidth="3"
             strokeLinecap="round"
           />
-          <rect x="40" y="290" width="120" height="36" rx="18" fill="#fff" opacity="0.1" />
-          <text x="100" y="313" textAnchor="middle" fill="#fff" fontFamily={FONT} fontSize="14" fontWeight="600">
+          <rect x="40" y="290" width="120" height="36" rx="18" fill={CREAM} opacity="0.1" />
+          <text x="100" y="313" textAnchor="middle" fill={CREAM} fontFamily={FONT} fontSize="14" fontWeight="600">
             e2 → e4
           </text>
           <rect x="20" y="346" width="160" height="34" rx="17" fill={fill} />
@@ -164,12 +164,12 @@ export function ScreenArt({ variant, c1, c2, title }: ArtProps) {
               key={i}
               d={`M0 ${250 + i * 26} Q 25 ${220 + i * 26} 50 ${250 + i * 26} T 100 ${250 + i * 26} T 150 ${250 + i * 26} T 200 ${250 + i * 26}`}
               fill="none"
-              stroke={i === 0 ? c2 : "#fff"}
+              stroke={i === 0 ? c2 : CREAM}
               strokeOpacity={i === 0 ? 1 : 0.25 - i * 0.07}
               strokeWidth="3"
             />
           ))}
-          <rect x="40" y="350" width="120" height="8" rx="4" fill="#fff" opacity="0.15" />
+          <rect x="40" y="350" width="120" height="8" rx="4" fill={CREAM} opacity="0.15" />
         </>
       );
       break;

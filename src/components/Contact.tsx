@@ -24,15 +24,15 @@ export function Contact() {
   return (
     <section className="contact" id="contact" data-tour={tour.contact}>
       <Reveal>
-        <p className="eyebrow mono">Got a project?</p>
+        <p className="eyebrow mono">(Contact)</p>
       </Reveal>
 
       <Reveal as="h2" className="contact__title">
-        Let's make
+        Got a
         <br />
-        something
+        project?
         <br />
-        <em>worth keeping.</em>
+        <em>Say hi.</em>
       </Reveal>
 
       <Reveal delay={150} className="contact__actions">

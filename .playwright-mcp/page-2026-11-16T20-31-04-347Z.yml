@@ -1,0 +1,320 @@
+- generic [ref=f8e2]:
+  - banner:
+    - link [ref=f8e3] [cursor=pointer]:
+      - /url: "#top"
+      - text: itsjustw
+      - superscript [ref=f8e4]: ©2026
+    - navigation "Primary" [ref=f8e5]:
+      - link "Work" [ref=f8e6] [cursor=pointer]:
+        - /url: "#work"
+        - generic [ref=f8e7]:
+          - generic [ref=f8e8]: Work
+          - generic [aria-hidden] [ref=f8e9]: Work
+      - link "Interests" [ref=f8e10] [cursor=pointer]:
+        - /url: "#interests"
+        - generic [ref=f8e11]:
+          - generic [ref=f8e12]: Interests
+          - generic [aria-hidden] [ref=f8e13]: Interests
+      - link "Contact" [ref=f8e14] [cursor=pointer]:
+        - /url: "#contact"
+        - generic [ref=f8e15]:
+          - generic [ref=f8e16]: Contact
+          - generic [aria-hidden] [ref=f8e17]: Contact
+    - generic [ref=f8e18]:
+      - button "Toggle hover sounds" [ref=f8e19] [cursor=pointer]: SOUND[ ]
+      - button "Switch to light mode" [ref=f8e20] [cursor=pointer]: LIGHT
+      - link "Say hello" [ref=f8e21] [cursor=pointer]:
+        - /url: "#contact"
+        - generic [ref=f8e22]:
+          - generic [ref=f8e23]: Say hello
+          - generic [aria-hidden] [ref=f8e24]: Say hello
+    - generic [aria-hidden]:
+      - generic: 04:31:04 GMT+8 ID
+      - generic: 0000 X 0000 Y
+  - main [ref=f8e25]:
+    - generic [ref=f8e26]:
+      - generic [ref=f8e27]:
+        - generic [ref=f8e28]: Developer & designer
+        - generic [ref=f8e29]: Bali, ID
+      - heading "ItsJustW" [level=1]:
+        - generic [aria-hidden]:
+          - generic: I
+          - generic: t
+          - generic: s
+          - generic: J
+          - generic: u
+          - generic: s
+          - generic: t
+          - generic: W
+      - paragraph [ref=f8e30]:
+        - text: I make
+        - generic [ref=f8e32]:
+          - generic [ref=f8e33]: apps
+          - generic [ref=f8e34]: games
+          - generic [ref=f8e35]: widgets
+          - generic [ref=f8e36]: alphas
+          - generic [ref=f8e37]: apps
+      - generic [ref=f8e38]:
+        - link "See the work" [ref=f8e39] [cursor=pointer]:
+          - /url: "#work"
+          - generic [ref=f8e40]:
+            - generic [ref=f8e41]: See the work
+            - generic [aria-hidden] [ref=f8e42]: See the work
+        - link "Get in touch" [ref=f8e43] [cursor=pointer]:
+          - /url: "#contact"
+          - generic [ref=f8e44]:
+            - generic [ref=f8e45]: Get in touch
+            - generic [aria-hidden] [ref=f8e46]: Get in touch
+      - generic [ref=f8e48]:
+        - generic [ref=f8e49]: SwiftUI
+        - generic [ref=f8e51]: Chess
+        - generic [ref=f8e53]: TypeScript
+        - generic [ref=f8e55]: Basketball
+        - generic [ref=f8e57]: iOS
+        - generic [ref=f8e59]: Slam Dunk
+        - generic [ref=f8e61]: React
+        - generic [ref=f8e63]: Vagabond
+        - generic [ref=f8e65]: Stocks
+        - generic [ref=f8e67]: Crypto
+        - generic [ref=f8e69]: Core ML
+        - generic [ref=f8e71]: WidgetKit
+        - generic [ref=f8e73]: SwiftUI
+        - generic [ref=f8e75]: Chess
+        - generic [ref=f8e77]: TypeScript
+        - generic [ref=f8e79]: Basketball
+        - generic [ref=f8e81]: iOS
+        - generic [ref=f8e83]: Slam Dunk
+        - generic [ref=f8e85]: React
+        - generic [ref=f8e87]: Vagabond
+        - generic [ref=f8e89]: Stocks
+        - generic [ref=f8e91]: Crypto
+        - generic [ref=f8e93]: Core ML
+        - generic [ref=f8e95]: WidgetKit
+    - generic [ref=f8e97]:
+      - heading "Things I've built" [level=2] [ref=f8e98]
+      - list [ref=f8e99]:
+        - listitem [ref=f8e100]:
+          - button "iOS App · 2026 Artie A charm-collecting app with 3D keychains, physics-based collages and nearby trading. Home (placeholder)" [ref=f8e101] [cursor=pointer]:
+            - generic [ref=f8e102]: iOS App · 2026
+            - generic [ref=f8e103]: Artie
+            - generic [ref=f8e104]: A charm-collecting app with 3D keychains, physics-based collages and nearby trading.
+            - img "Home (placeholder)" [ref=f8e105]:
+              - generic [ref=f8e106]: Home
+        - listitem [ref=f8e107]:
+          - button "iOS App · Computer Vision · 2026 ChessUp Point your camera at a real chessboard and play against an engine, with spoken moves. Board detection (placeholder)" [ref=f8e108] [cursor=pointer]:
+            - generic [ref=f8e109]: iOS App · Computer Vision · 2026
+            - generic [ref=f8e110]: ChessUp
+            - generic [ref=f8e111]: Point your camera at a real chessboard and play against an engine, with spoken moves.
+            - img "Board detection (placeholder)" [ref=f8e112]:
+              - generic [ref=f8e113]: Board detection
+        - listitem [ref=f8e114]:
+          - button "iOS App · Widgets · 2026 fisch A pixel-art focus timer where a pet grows while you stay off your phone. Focus session (placeholder)" [ref=f8e115] [cursor=pointer]:
+            - generic [ref=f8e116]: iOS App · Widgets · 2026
+            - generic [ref=f8e117]: fisch
+            - generic [ref=f8e118]: A pixel-art focus timer where a pet grows while you stay off your phone.
+            - img "Focus session (placeholder)" [ref=f8e119]:
+              - generic [ref=f8e120]: Focus session
+      - generic [ref=f8e121]:
+        - generic [ref=f8e122]:
+          - heading "More apps" [level=3] [ref=f8e123]
+          - list [ref=f8e124]:
+            - listitem [ref=f8e125]:
+              - button "Steps (placeholder) TantrumNoYa iOS 2026" [ref=f8e126] [cursor=pointer]:
+                - img "Steps (placeholder)" [ref=f8e127]
+                - generic [ref=f8e129]:
+                  - generic [ref=f8e130]: TantrumNoYa
+                  - generic [aria-hidden] [ref=f8e131]: TantrumNoYa
+                - generic [ref=f8e132]: iOS
+                - generic [ref=f8e133]: "2026"
+                - generic [aria-hidden] [ref=f8e134]: ↗
+            - listitem [ref=f8e135]:
+              - button "Listening (placeholder) LiveMusicPets iOS 2026" [ref=f8e136] [cursor=pointer]:
+                - img "Listening (placeholder)" [ref=f8e137]
+                - generic [ref=f8e139]:
+                  - generic [ref=f8e140]: LiveMusicPets
+                  - generic [aria-hidden] [ref=f8e141]: LiveMusicPets
+                - generic [ref=f8e142]: iOS
+                - generic [ref=f8e143]: "2026"
+                - generic [aria-hidden] [ref=f8e144]: ↗
+            - listitem [ref=f8e145]:
+              - button "Timer (placeholder) PomodoroClock iOS 2025" [ref=f8e146] [cursor=pointer]:
+                - img "Timer (placeholder)" [ref=f8e147]
+                - generic [ref=f8e149]:
+                  - generic [ref=f8e150]: PomodoroClock
+                  - generic [aria-hidden] [ref=f8e151]: PomodoroClock
+                - generic [ref=f8e152]: iOS
+                - generic [ref=f8e153]: "2025"
+                - generic [aria-hidden] [ref=f8e154]: ↗
+            - listitem [ref=f8e155]:
+              - button "Friends (placeholder) FriendTracker iOS 2025" [ref=f8e156] [cursor=pointer]:
+                - img "Friends (placeholder)" [ref=f8e157]
+                - generic [ref=f8e159]:
+                  - generic [ref=f8e160]: FriendTracker
+                  - generic [aria-hidden] [ref=f8e161]: FriendTracker
+                - generic [ref=f8e162]: iOS
+                - generic [ref=f8e163]: "2025"
+                - generic [aria-hidden] [ref=f8e164]: ↗
+            - listitem [ref=f8e165]:
+              - button "Places (placeholder) MyBaliApp iOS 2025" [ref=f8e166] [cursor=pointer]:
+                - img "Places (placeholder)" [ref=f8e167]
+                - generic [ref=f8e169]:
+                  - generic [ref=f8e170]: MyBaliApp
+                  - generic [aria-hidden] [ref=f8e171]: MyBaliApp
+                - generic [ref=f8e172]: iOS
+                - generic [ref=f8e173]: "2025"
+                - generic [aria-hidden] [ref=f8e174]: ↗
+        - generic [ref=f8e175]:
+          - heading "Games" [level=3] [ref=f8e176]
+          - list [ref=f8e177]:
+            - listitem [ref=f8e178]:
+              - button "Run (placeholder) Gnome Runner Godot 4 2026" [ref=f8e179] [cursor=pointer]:
+                - img "Run (placeholder)" [ref=f8e180]
+                - generic [ref=f8e182]:
+                  - generic [ref=f8e183]: Gnome Runner
+                  - generic [aria-hidden] [ref=f8e184]: Gnome Runner
+                - generic [ref=f8e185]: Godot 4
+                - generic [ref=f8e186]: "2026"
+                - generic [aria-hidden] [ref=f8e187]: ↗
+            - listitem [ref=f8e188]:
+              - button "Grid (placeholder) Parkirin Godot 4 2026" [ref=f8e189] [cursor=pointer]:
+                - img "Grid (placeholder)" [ref=f8e190]
+                - generic [ref=f8e192]:
+                  - generic [ref=f8e193]: Parkirin
+                  - generic [aria-hidden] [ref=f8e194]: Parkirin
+                - generic [ref=f8e195]: Godot 4
+                - generic [ref=f8e196]: "2026"
+                - generic [aria-hidden] [ref=f8e197]: ↗
+        - generic [ref=f8e198]:
+          - heading "Research" [level=3] [ref=f8e199]
+          - list [ref=f8e200]:
+            - listitem [ref=f8e201]:
+              - button "Performance (placeholder) Alpha research WorldQuant Brain 2026" [ref=f8e202] [cursor=pointer]:
+                - img "Performance (placeholder)" [ref=f8e203]
+                - generic [ref=f8e205]:
+                  - generic [ref=f8e206]: Alpha research
+                  - generic [aria-hidden] [ref=f8e207]: Alpha research
+                - generic [ref=f8e208]: WorldQuant Brain
+                - generic [ref=f8e209]: "2026"
+                - generic [aria-hidden] [ref=f8e210]: ↗
+      - generic [aria-hidden]:
+        - img:
+          - generic: Home
+    - generic [ref=f8e211]:
+      - paragraph [ref=f8e212]:
+        - text: Small apps.
+        - emphasis [ref=f8e213]: Big on details.
+        - text: Sketched, built, shipped.
+      - generic [ref=f8e214]:
+        - paragraph [ref=f8e215]: I started on the web with TypeScript and React, and lately I've been diving deep into SwiftUI as part of the Apple Developer Academy in Bali. I'm hooked on iOS and the whole Apple ecosystem.
+        - paragraph [ref=f8e216]: Away from the keyboard you'll find me on a basketball court, over a chessboard, reading manga, or watching the markets move. Those habits shape how I design and build.
+    - generic [ref=f8e217]:
+      - heading "Off the clock" [level=2] [ref=f8e218]
+      - generic [ref=f8e219]:
+        - paragraph: Click something on the table
+      - list [ref=f8e221]:
+        - listitem [ref=f8e222]:
+          - button "Chess" [ref=f8e223] [cursor=pointer]
+        - listitem [ref=f8e224]:
+          - button "Basketball" [ref=f8e225] [cursor=pointer]
+        - listitem [ref=f8e226]:
+          - button "Crypto" [ref=f8e227] [cursor=pointer]
+        - listitem [ref=f8e228]:
+          - button "Manga" [ref=f8e229] [cursor=pointer]
+    - generic [ref=f8e230]:
+      - paragraph [ref=f8e232]: (Contact)
+      - heading [level=2] [ref=f8e233]:
+        - text: Got aproject?
+        - emphasis [ref=f8e234]: Say hi.
+      - generic [ref=f8e235]:
+        - paragraph [ref=f8e236]: I'm taking on new work.
+        - button "hello@example.com" [ref=f8e237] [cursor=pointer]:
+          - generic [ref=f8e238]:
+            - generic [ref=f8e239]: hello@example.com
+            - generic [aria-hidden] [ref=f8e240]: hello@example.com
+        - paragraph [ref=f8e241]: Write me anytime. Click and it's copied.
+        - paragraph [ref=f8e242]: Always happy to talk iOS, chess, basketball or a good manga recommendation.
+      - generic [ref=f8e243]:
+        - link "GitHub ↗" [ref=f8e244] [cursor=pointer]:
+          - /url: https://github.com/
+          - generic [ref=f8e245]:
+            - generic [ref=f8e246]: GitHub
+            - generic [aria-hidden] [ref=f8e247]: GitHub
+          - text: ↗
+        - link "LinkedIn ↗" [ref=f8e248] [cursor=pointer]:
+          - /url: https://linkedin.com/
+          - generic [ref=f8e249]:
+            - generic [ref=f8e250]: LinkedIn
+            - generic [aria-hidden] [ref=f8e251]: LinkedIn
+          - text: ↗
+        - link "X ↗" [ref=f8e252] [cursor=pointer]:
+          - /url: https://x.com/
+          - generic [ref=f8e253]:
+            - generic [ref=f8e254]: X
+            - generic [aria-hidden] [ref=f8e255]: X
+          - text: ↗
+  - contentinfo [ref=f8e256]:
+    - generic [ref=f8e257]:
+      - generic [ref=f8e258]:
+        - heading "Navigate" [level=3] [ref=f8e259]
+        - list [ref=f8e260]:
+          - listitem [ref=f8e261]:
+            - link "Work" [ref=f8e262] [cursor=pointer]:
+              - /url: "#work"
+              - generic [ref=f8e263]:
+                - generic [ref=f8e264]: Work
+                - generic [aria-hidden] [ref=f8e265]: Work
+          - listitem [ref=f8e266]:
+            - link "Interests" [ref=f8e267] [cursor=pointer]:
+              - /url: "#interests"
+              - generic [ref=f8e268]:
+                - generic [ref=f8e269]: Interests
+                - generic [aria-hidden] [ref=f8e270]: Interests
+          - listitem [ref=f8e271]:
+            - link "Contact" [ref=f8e272] [cursor=pointer]:
+              - /url: "#contact"
+              - generic [ref=f8e273]:
+                - generic [ref=f8e274]: Contact
+                - generic [aria-hidden] [ref=f8e275]: Contact
+      - generic [ref=f8e276]:
+        - heading "Follow" [level=3] [ref=f8e277]
+        - list [ref=f8e278]:
+          - listitem [ref=f8e279]:
+            - link "GitHub" [ref=f8e280] [cursor=pointer]:
+              - /url: https://github.com/
+              - generic [ref=f8e281]:
+                - generic [ref=f8e282]: GitHub
+                - generic [aria-hidden] [ref=f8e283]: GitHub
+          - listitem [ref=f8e284]:
+            - link "LinkedIn" [ref=f8e285] [cursor=pointer]:
+              - /url: https://linkedin.com/
+              - generic [ref=f8e286]:
+                - generic [ref=f8e287]: LinkedIn
+                - generic [aria-hidden] [ref=f8e288]: LinkedIn
+          - listitem [ref=f8e289]:
+            - link "X" [ref=f8e290] [cursor=pointer]:
+              - /url: https://x.com/
+              - generic [ref=f8e291]:
+                - generic [ref=f8e292]: X
+                - generic [aria-hidden] [ref=f8e293]: X
+      - generic [ref=f8e294]:
+        - heading "Contact" [level=3] [ref=f8e295]
+        - list [ref=f8e296]:
+          - listitem [ref=f8e297]:
+            - link "hello@example.com" [ref=f8e298] [cursor=pointer]:
+              - /url: mailto:hello@example.com
+              - generic [ref=f8e299]:
+                - generic [ref=f8e300]: hello@example.com
+                - generic [aria-hidden] [ref=f8e301]: hello@example.com
+      - generic [ref=f8e302]:
+        - heading "Find me" [level=3] [ref=f8e303]
+        - list [ref=f8e304]:
+          - listitem [ref=f8e305]: Bali
+          - listitem [ref=f8e306]: Indonesia
+    - generic [ref=f8e307]:
+      - generic [ref=f8e308]: © 2026 William
+      - link "Back to top ↑" [ref=f8e309] [cursor=pointer]:
+        - /url: "#top"
+        - generic [ref=f8e310]:
+          - generic [ref=f8e311]: Back to top
+          - generic [aria-hidden] [ref=f8e312]: Back to top
+        - text: ↑

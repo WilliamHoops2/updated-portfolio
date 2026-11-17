@@ -24,7 +24,7 @@ function Panel({ title, kicker, blurb, flipped, onToggle, className, children }:
         {children}
       </span>
       <span className="panel-art__label">
-        <span className="mono">{kicker}</span>
+        <small>{kicker}</small>
         <strong>{title}</strong>
       </span>
       <span className="panel-art__note">{blurb}</span>
@@ -37,7 +37,7 @@ export function MangaPanels() {
   const [flipped, setFlipped] = useState<"slam" | "vagabond" | null>(null);
 
   return (
-    <div className="manga">
+    <div className="manga" role="group" aria-label="Two manga panels">
       <Panel
         title="Slam Dunk"
         kicker="Shohoku · #10"
@@ -47,6 +47,7 @@ export function MangaPanels() {
         onToggle={() => setFlipped((f) => (f === "slam" ? null : "slam"))}
       >
         <span className="speed" />
+        <span className="sfx">SWISH!</span>
         <svg viewBox="0 0 100 120" className="jersey">
           <path
             d="M30 8h12q8 14 16 0h12l18 22-12 10-4-6v78H28V34l-4 6L12 30z"
@@ -89,6 +90,7 @@ export function MangaPanels() {
           <path d="M22 84L82 16" stroke="#c1121f" strokeWidth="2.5" strokeLinecap="round" />
         </svg>
         <span className="kanji">武蔵</span>
+        <span className="hanko">剣</span>
       </Panel>
     </div>
   );

@@ -1,3 +1,4 @@
+import { INK, INK_LIFT, ORCHID } from "../lib/palette";
 // ─────────────────────────────────────────────────────────────
 //  EDIT ME — everything shown on the site lives in this file.
 // ─────────────────────────────────────────────────────────────
@@ -14,7 +15,14 @@ export interface GalleryItem {
    * If omitted, or if the file is missing, the illustrated placeholder is shown.
    */
   src?: string;
+  /**
+   * Optional short screen recording, e.g. "/projects/artie/demo.mp4". Plays muted on a loop
+   * in the hover preview and the project view; `src` doubles as its poster image.
+   */
+  video?: string;
 }
+
+export type ProjectKind = "app" | "game" | "research";
 
 export interface Project {
   id: string;
@@ -36,6 +44,8 @@ export interface Project {
   href?: string;
   /** Featured projects get a card in the "Selected work" row near the top. */
   featured?: boolean;
+  /** Decides the group in the index and the shape of the media frames. Defaults to "app". */
+  kind?: ProjectKind;
 }
 
 export interface Social {
@@ -53,6 +63,7 @@ export interface Update {
 export const profile = {
   name: "William",
   handle: "itsjustw",
+  display: "ItsJustW",
   role: "Developer & designer",
   greeting: "Scroll down and I'll show you around.",
   greetingReturn: "Oh hi, you're back. Want the tour again?",
@@ -90,10 +101,13 @@ export const ticker = [
   "WidgetKit",
 ];
 
+/** The word that rolls after "I make" in the hero. */
+export const heroWords = ["apps", "games", "widgets", "alphas"];
+
 export const statement = {
-  before: "I bring",
-  highlight: "craft & curiosity",
-  after: "to everything I build, from first sketch to shipped product.",
+  before: "Small apps.",
+  highlight: "Big on details.",
+  after: "Sketched, built, shipped.",
 };
 
 /** Short paragraphs under the statement. Rewrite these in your own voice. */
@@ -129,7 +143,7 @@ export const tour = {
   ecosystem: "Tap a framework to see where I've used it.",
   chess: "White to move. Can you spot the mate in one?",
   hoop: "Hold to charge, release in the green zone.",
-  market: "Totally simulated. Not financial advice!",
+  market: "Real data: the IDX Composite and Bitcoin. Not financial advice!",
   manga: "Slam Dunk and Vagabond. Great taste, if I say so myself.",
   process: "Here's how I usually work.",
   work: "Everything else is in this list. Click a row to open it.",
@@ -166,7 +180,7 @@ export const projects: Project[] = [
       { variant: "list", caption: "Trading" },
     ],
     tags: ["SwiftUI", "RealityKit", "Lottie"],
-    colors: ["#2261e9", "#7aa2ff"],
+    colors: [INK, ORCHID],
     featured: true,
   },
   {
@@ -190,7 +204,7 @@ export const projects: Project[] = [
       { variant: "list", caption: "Move history" },
     ],
     tags: ["Core ML", "Vision", "AVFoundation"],
-    colors: ["#111827", "#4b5563"],
+    colors: [INK_LIFT, ORCHID],
     featured: true,
   },
   {
@@ -214,7 +228,7 @@ export const projects: Project[] = [
       { variant: "chart", caption: "Weekly progress" },
     ],
     tags: ["SwiftUI", "WidgetKit", "Live Activities"],
-    colors: ["#ff7a45", "#ffd166"],
+    colors: [INK, ORCHID],
     featured: true,
   },
   {
@@ -238,7 +252,7 @@ export const projects: Project[] = [
       { variant: "cards", caption: "Strategies" },
     ],
     tags: ["SwiftData", "App Intents", "AirPods"],
-    colors: ["#7c3aed", "#c4b5fd"],
+    colors: [INK_LIFT, ORCHID],
   },
   {
     id: "live-music-pets",
@@ -261,7 +275,7 @@ export const projects: Project[] = [
       { variant: "cards", caption: "Pet collection" },
     ],
     tags: ["ActivityKit", "ShazamKit", "WidgetKit"],
-    colors: ["#ec4899", "#fbcfe8"],
+    colors: [INK, ORCHID],
   },
   {
     id: "pomodoro-clock",
@@ -283,7 +297,7 @@ export const projects: Project[] = [
       { variant: "list", caption: "Music library" },
     ],
     tags: ["SwiftUI", "AVAudioEngine"],
-    colors: ["#ef4444", "#fca5a5"],
+    colors: [INK_LIFT, ORCHID],
   },
   {
     id: "friend-tracker",
@@ -305,7 +319,7 @@ export const projects: Project[] = [
       { variant: "cards", caption: "Profile" },
     ],
     tags: ["SwiftUI", "Core Data"],
-    colors: ["#0f766e", "#5eead4"],
+    colors: [INK, ORCHID],
   },
   {
     id: "my-bali-app",
@@ -326,6 +340,74 @@ export const projects: Project[] = [
       { variant: "splash", caption: "Home" },
     ],
     tags: ["SwiftUI"],
-    colors: ["#16a34a", "#bbf7d0"],
+    colors: [INK_LIFT, ORCHID],
+  },
+  {
+    id: "gnome-runner",
+    kind: "game",
+    title: "Gnome Runner",
+    category: "Game · Godot 4",
+    year: "2026",
+    blurb: "An endless runner where a gnome sprints through a parallax forest.",
+    overview:
+      "An endless runner built in Godot 4. A gnome runs through a parallax forest while the speed ramps up and obstacles appear along the way.",
+    role: "Design & development",
+    platform: "Godot 4",
+    highlights: [
+      "Speed ramps up over a run, from a starting speed to a cap.",
+      "Four obstacle types, each its own scene: stump, rock, barrel and bird.",
+      "Parallax forest, scrolling ground and a live score and high score HUD.",
+    ],
+    gallery: [
+      { variant: "splash", caption: "Run" },
+      { variant: "list", caption: "Score" },
+    ],
+    tags: ["Godot 4", "GDScript"],
+    colors: [INK, ORCHID],
+  },
+  {
+    id: "parkirin",
+    kind: "game",
+    title: "Parkirin",
+    category: "Game · Godot 4",
+    year: "2026",
+    blurb: "A Block Blast-style puzzle where you drag vehicles onto a parking grid.",
+    overview:
+      "A Godot 4 puzzle game in the Block Blast style, with parking as the theme. You place vehicles on an 8×8 grid while more arrive along queue lanes.",
+    role: "Design & development",
+    platform: "Godot 4",
+    highlights: [
+      "Drag to place on an 8×8 grid, with ghost previews and vehicle rotation.",
+      "Vehicles with non-rectangular footprints.",
+      "A weighted spawn system with convoy events.",
+    ],
+    gallery: [
+      { variant: "cards", caption: "Grid" },
+      { variant: "list", caption: "Queue" },
+    ],
+    tags: ["Godot 4"],
+    colors: [INK_LIFT, ORCHID],
+  },
+  {
+    id: "worldquant-brain",
+    kind: "research",
+    title: "Alpha research",
+    category: "Research · Quant",
+    year: "2026",
+    blurb: "Equity alphas on WorldQuant Brain.",
+    overview:
+      "Researching and refining equity alphas on WorldQuant Brain, from implied volatility skew to fundamentals and sentiment.",
+    role: "Research",
+    platform: "WorldQuant Brain",
+    highlights: [
+      "Signals built around implied volatility skew, debt, earnings yield and price reversion.",
+      "Tuned against Sharpe, fitness, drawdown, turnover and self-correlation.",
+    ],
+    gallery: [
+      { variant: "chart", caption: "Performance" },
+      { variant: "list", caption: "Alphas" },
+    ],
+    tags: ["WorldQuant Brain", "Quant"],
+    colors: [INK, ORCHID],
   },
 ];

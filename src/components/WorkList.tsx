@@ -1,54 +1,51 @@
 import { useEffect, useRef, useState } from "react";
-import type { CSSProperties, MouseEvent } from "react";
-import { projects, tour } from "../data/content";
+import type { FocusEvent, MouseEvent } from "react";
 import type { Project } from "../data/content";
+import { Media } from "./Media";
+import { ASPECT, KINDS, KIND_LABEL, kindOf, ordered } from "./mediaShape";
+import { projectVars } from "./projectStyle";
 import { Reveal } from "./Reveal";
-import { PhoneMock, Screen } from "./ScreenArt";
+import { Roll } from "./Roll";
 
 interface WorkListProps {
-  openId: string | null;
-  /** Bumps every time something asks to open a project, so we can scroll to it again. */
-  scrollTick: number;
-  onToggle: (id: string) => void;
-  onClose: () => void;
+  onOpen: (id: string) => void;
   onHover: () => void;
 }
 
-export function WorkList({ openId, scrollTick, onToggle, onClose, onHover }: WorkListProps) {
+export function WorkList({ onOpen, onHover }: WorkListProps) {
   const [hovering, setHovering] = useState(false);
-  const [shown, setShown] = useState<Project>(projects[0]);
-  const previewRef = useRef<HTMLDivElement | null>(null);
-  const previousOpen = useRef<string | null>(null);
+  const [shown, setShown] = useState<Project>(ordered[0]);
+  const peekRef = useRef<HTMLDivElement | null>(null);
 
-  // Bring the opened project into view. If another one was open, wait for it to fold up first.
+  // The preview chases the pointer with a little lag.
+  const target = useRef({ x: 0, y: 0 });
+  const current = useRef({ x: 0, y: 0 });
+
   useEffect(() => {
-    if (!openId) {
-      previousOpen.current = null;
-      return;
-    }
-    const delay = previousOpen.current && previousOpen.current !== openId ? 650 : 120;
-    previousOpen.current = openId;
+    if (!hovering) return;
+    const el = peekRef.current;
+    if (!el) return;
 
-    const id = window.setTimeout(() => {
-      document.getElementById(`work-${openId}`)?.scrollIntoView({ behavior: "smooth", block: "start" });
-    }, delay);
-    return () => window.clearTimeout(id);
-  }, [openId, scrollTick]);
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const ease = reduce ? 1 : 0.16;
+    let frame = 0;
 
-  // Esc folds the open project back up.
-  useEffect(() => {
-    if (!openId) return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
+    const tick = () => {
+      const c = current.current;
+      const t = target.current;
+      c.x += (t.x - c.x) * ease;
+      c.y += (t.y - c.y) * ease;
+      el.style.transform = `translate3d(${c.x}px, ${c.y}px, 0)`;
+      frame = requestAnimationFrame(tick);
     };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [openId, onClose]);
+
+    frame = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frame);
+  }, [hovering]);
 
   const handleMove = (e: MouseEvent) => {
-    const el = previewRef.current;
-    if (!el) return;
-    el.style.transform = `translate3d(${e.clientX + 24}px, ${e.clientY - 90}px, 0)`;
+    target.current = { x: e.clientX + 28, y: e.clientY - 150 };
+    if (!hovering) current.current = { ...target.current };
   };
 
   const activate = (project: Project) => {
@@ -56,138 +53,97 @@ export function WorkList({ openId, scrollTick, onToggle, onClose, onHover }: Wor
     setHovering(true);
   };
 
+  const onRowFocus = (project: Project, e: FocusEvent<HTMLButtonElement>) => {
+    const r = e.currentTarget.getBoundingClientRect();
+    target.current = { x: r.right - 340, y: r.top - 40 };
+    current.current = { ...target.current };
+    activate(project);
+  };
+
+  const shownKind = kindOf(shown);
+  // Featured projects get big cards up top; the list below holds the rest.
+  const picks = ordered.filter((p) => p.featured);
+  const rest = ordered.filter((p) => !p.featured);
+
   return (
-    <section
-      className="work"
-      id="work"
-      data-tour={tour.work}
-      onMouseMove={handleMove}
-      onMouseLeave={() => setHovering(false)}
-    >
-      <Reveal className="section-head">
-        <span className="mono">All work</span>
-        <span className="mono">{projects.length} projects</span>
+    <section className="work" id="work" onMouseMove={handleMove} onMouseLeave={() => setHovering(false)}>
+      <Reveal as="h2" className="work__heading">
+        Things I've built
       </Reveal>
 
-      <ul className="work__list">
-        {projects.map((project) => {
-          const open = openId === project.id;
-          return (
-            <li
-              key={project.id}
-              id={`work-${project.id}`}
-              className={`work__item ${open ? "is-open" : ""}`.trim()}
-              style={{ "--c1": project.colors[0], "--c2": project.colors[1] } as CSSProperties}
-            >
-              <button
-                type="button"
-                className="work__row"
-                aria-expanded={open}
-                aria-controls={`panel-${project.id}`}
-                onClick={() => onToggle(project.id)}
-                onMouseEnter={() => {
-                  activate(project);
-                  onHover();
-                }}
-                onMouseLeave={() => setHovering(false)}
-                onFocus={() => activate(project)}
-                onBlur={() => setHovering(false)}
-              >
-                <span className="work__cat mono">{project.category}</span>
-                <span className="work__title">{project.title}</span>
-                <span className="work__year mono">{project.year}</span>
-                <span className="work__icon" aria-hidden="true" />
-              </button>
-
-              <div
-                className="panel"
-                id={`panel-${project.id}`}
-                role="region"
-                aria-label={`${project.title} details`}
-                inert={!open}
-              >
-                <div className="panel__inner">
-                  <div className="panel__content">
-                    <div className="panel__grid">
-                      <div>
-                        <p className="panel__blurb">{project.blurb}</p>
-                        <p className="panel__overview">{project.overview}</p>
-
-                        <dl className="panel__meta">
-                          <div>
-                            <dt className="mono">Role</dt>
-                            <dd>{project.role}</dd>
-                          </div>
-                          <div>
-                            <dt className="mono">Platform</dt>
-                            <dd>{project.platform}</dd>
-                          </div>
-                          <div>
-                            <dt className="mono">Year</dt>
-                            <dd>{project.year}</dd>
-                          </div>
-                          <div>
-                            <dt className="mono">Built with</dt>
-                            <dd>{project.tags.join(", ")}</dd>
-                          </div>
-                        </dl>
-
-                        {project.href && (
-                          <a className="btn btn--solid panel__link" href={project.href} target="_blank" rel="noreferrer">
-                            Visit project ↗
-                          </a>
-                        )}
-                      </div>
-
-                      <div>
-                        <h3 className="mono panel__label">Highlights</h3>
-                        <ol className="panel__highlights">
-                          {project.highlights.map((text, i) => (
-                            <li key={text}>
-                              <span className="mono">{String(i + 1).padStart(2, "0")}</span>
-                              <span>{text}</span>
-                            </li>
-                          ))}
-                        </ol>
-                      </div>
-                    </div>
-
-                    <div className="panel__gallery">
-                      <div className="panel__shots">
-                        {project.gallery.map((item, i) => (
-                          <figure className="shot" key={`${project.id}-${i}`}>
-                            <PhoneMock>
-                              <Screen item={item} colors={project.colors} title={project.title} />
-                            </PhoneMock>
-                            <figcaption className="mono">{item.caption}</figcaption>
-                          </figure>
-                        ))}
-                      </div>
-                    </div>
-
-                    <button type="button" className="panel__close mono" onClick={onClose}>
-                      Close ↑
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </li>
-          );
-        })}
+      <ul className="picks">
+        {picks.map((project) => (
+          <li key={project.id} style={projectVars(project)}>
+            <button type="button" className="pick" onClick={() => onOpen(project.id)} onMouseEnter={onHover}>
+              <span className="pick__meta">
+                {project.category} · {project.year}
+              </span>
+              <span className="pick__title">{project.title}</span>
+              <span className="pick__blurb">{project.blurb}</span>
+              <Media
+                item={project.gallery[0]}
+                projectId={project.id}
+                aspect={ASPECT[kindOf(project)]}
+                className="pick__media"
+              />
+            </button>
+          </li>
+        ))}
       </ul>
 
+      <div className="work__groups">
+        {KINDS.map((kind) => {
+          const items = rest.filter((p) => kindOf(p) === kind);
+          if (items.length === 0) return null;
+          return (
+            <div className="work__group" key={kind}>
+              <h3 className="work__group-head">{kind === "app" && picks.length > 0 ? "More apps" : KIND_LABEL[kind]}</h3>
+
+              <ul className="work__list">
+                {items.map((project) => (
+                  <li key={project.id} className="work__item" style={projectVars(project)}>
+                    <button
+                      type="button"
+                      className="work__row"
+                      onClick={() => onOpen(project.id)}
+                      onMouseEnter={() => {
+                        activate(project);
+                        onHover();
+                      }}
+                      onMouseLeave={() => setHovering(false)}
+                      onFocus={(e) => onRowFocus(project, e)}
+                      onBlur={() => setHovering(false)}
+                    >
+                      <Media
+                        item={{ ...project.gallery[0], video: undefined }}
+                        projectId={project.id}
+                        aspect="4 / 3"
+                        className="work__thumb"
+                      />
+                      <span className="work__title">
+                        <Roll>{project.title}</Roll>
+                      </span>
+                      <span className="work__cat mono">{project.platform}</span>
+                      <span className="work__year mono">{project.year}</span>
+                      <span className="work__arrow" aria-hidden="true">
+                        ↗
+                      </span>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          );
+        })}
+      </div>
+
       <div
-        ref={previewRef}
-        className={`preview ${hovering ? "is-active" : ""}`.trim()}
+        ref={peekRef}
+        className={`peek peek--${shownKind} ${hovering ? "is-active" : ""}`.trim()}
         aria-hidden="true"
-        style={{ "--c1": shown.colors[0], "--c2": shown.colors[1] } as CSSProperties}
+        style={projectVars(shown)}
       >
-        <span className="preview__title">{shown.title}</span>
-        <div className="preview__phone">
-          <PhoneMock>
-            <Screen item={shown.gallery[0]} colors={shown.colors} title={shown.title} />
-          </PhoneMock>
-        </div>
+        <Media item={shown.gallery[0]} projectId={shown.id} aspect={ASPECT[shownKind]} className="peek__media" />
       </div>
     </section>
   );

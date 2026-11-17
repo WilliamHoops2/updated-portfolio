@@ -1,125 +1,90 @@
+import { useEffect, useState } from "react";
 import type { ReactNode } from "react";
 import { tour } from "../data/content";
+import type { DeskId } from "../lib/buildDesk";
 import { ChessPuzzle } from "./ChessPuzzle";
-import { CodeCard } from "./CodeCard";
-import { EcosystemCard } from "./EcosystemCard";
+import { DeskScene } from "./DeskScene";
 import { HoopGame } from "./HoopGame";
 import { MangaPanels } from "./MangaPanels";
 import { MarketChart } from "./MarketChart";
 import { Reveal } from "./Reveal";
 
-interface CardProps {
-  n: string;
-  label: string;
+interface Interest {
+  id: DeskId;
   title: string;
-  text: string;
-  className: string;
-  tourLine: string;
-  delay?: number;
-  children: ReactNode;
+  line: string;
+  toy: ReactNode;
 }
 
-function Card({ n, label, title, text, className, tourLine, delay = 0, children }: CardProps) {
-  return (
-    <Reveal as="article" className={`bento__card ${className}`} delay={delay} tour={tourLine}>
-      <header className="bento__head">
-        <span className="eyebrow mono">
-          {n} · {label}
-        </span>
-        <h3 className="bento__title">{title}</h3>
-        <p className="bento__text">{text}</p>
-      </header>
-      <div className="bento__body">{children}</div>
-    </Reveal>
-  );
-}
+const INTERESTS: Interest[] = [
+  {
+    id: "chess",
+    title: "Chess",
+    line: "It helps my brain think. Every move I try to see the board from the other side, and that habit follows me out of the game.",
+    toy: <ChessPuzzle />,
+  },
+  {
+    id: "hoops",
+    title: "Basketball",
+    line: "Because it's super fun. It also taught me how to learn a skill from zero and how to work with other people.",
+    toy: <HoopGame />,
+  },
+  {
+    id: "markets",
+    title: "Crypto",
+    line: "In since 2021. I love the tech underneath, the constant innovation and the impact it has.",
+    toy: <MarketChart />,
+  },
+  {
+    id: "manga",
+    title: "Manga",
+    line: "It takes me to another world, and sometimes it makes me more creative.",
+    toy: <MangaPanels />,
+  },
+];
 
 export function Interests() {
+  const [selected, setSelected] = useState<DeskId | null>(null);
+  const active = INTERESTS.find((i) => i.id === selected);
+
+  useEffect(() => {
+    if (!selected) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setSelected(null);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [selected]);
+
   return (
-    <section className="interests" id="interests" data-tour={tour.interests}>
-      <Reveal className="section-head">
-        <span className="mono">Interests</span>
-        <span className="mono">06</span>
+    <section className="desk" id="interests" data-tour={tour.interests}>
+      <Reveal as="h2" className="desk__heading">
+        Off the clock
       </Reveal>
 
-      <Reveal as="h2" className="interests__title">
-        Beyond <em>the code</em>
+      <Reveal className="desk3d">
+        <DeskScene selected={selected} onPick={setSelected} />
+        {active ? (
+          <aside className="desk3d__panel" role="dialog" aria-label={active.title}>
+            <button type="button" className="pill desk3d__close" onClick={() => setSelected(null)}>
+              Back to the table
+            </button>
+            <h3 className="desk3d__title">{active.title}</h3>
+            <p className="desk3d__line">{active.line}</p>
+            <div className="desk3d__toy">{active.toy}</div>
+          </aside>
+        ) : (
+          <p className="desk3d__hint mono">Click something on the table</p>
+        )}
       </Reveal>
-      <Reveal as="p" className="interests__lead" delay={100}>
-        Code is the main thing, but it isn't the only thing. These are the other loops I like to get lost in. Most of
-        them are playable.
-      </Reveal>
 
-      <div className="bento">
-        <Card
-          n="01"
-          label="Coding"
-          title="TypeScript → React → SwiftUI"
-          text="I started on the web with TypeScript and React. Lately I've been going deep into SwiftUI, thanks to the Apple Developer Academy in Bali."
-          className="bento__card--code"
-          tourLine={tour.code}
-        >
-          <CodeCard />
-        </Card>
-
-        <Card
-          n="02"
-          label="iOS ecosystem"
-          title="The whole Apple toolbox"
-          text="I love how everything fits together: apps, widgets, Live Activities and on-device ML. Tap a framework to see where I've used it."
-          className="bento__card--eco"
-          tourLine={tour.ecosystem}
-          delay={100}
-        >
-          <EcosystemCard />
-        </Card>
-
-        <Card
-          n="03"
-          label="Chess"
-          title="Find the move"
-          text="Spotting the best move is my favourite kind of puzzle. Click a piece, then a square."
-          className="bento__card--chess"
-          tourLine={tour.chess}
-        >
-          <ChessPuzzle />
-        </Card>
-
-        <Card
-          n="04"
-          label="Basketball"
-          title="Hold. Release. Swish."
-          text="Charge your shot and let go inside the green zone."
-          className="bento__card--hoop"
-          tourLine={tour.hoop}
-          delay={100}
-        >
-          <HoopGame />
-        </Card>
-
-        <Card
-          n="05"
-          label="Finance"
-          title="Stocks & crypto"
-          text="I like following markets, for fun and for learning. This chart is made up, just for vibes."
-          className="bento__card--market"
-          tourLine={tour.market}
-          delay={200}
-        >
-          <MarketChart />
-        </Card>
-
-        <Card
-          n="06"
-          label="Manga & anime"
-          title="Slam Dunk & Vagabond"
-          text="Two favourites, both by Takehiko Inoue. Tap a panel to flip it."
-          className="bento__card--manga"
-          tourLine={tour.manga}
-        >
-          <MangaPanels />
-        </Card>
-      </div>
+      <ul className="desk__legend">
+        {INTERESTS.map((i) => (
+          <li key={i.id}>
+            <button type="button" className="pill" aria-pressed={selected === i.id} onClick={() => setSelected(i.id)}>
+              {i.title}
+            </button>
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }

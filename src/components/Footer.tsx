@@ -2,8 +2,6 @@ import { profile } from "../data/content";
 import { Roll } from "./Roll";
 
 export function Footer() {
-  const doTrick = () => window.dispatchEvent(new CustomEvent("mascot:trick"));
-
   return (
     <footer className="footer">
       <div className="footer__cols">
@@ -18,16 +16,6 @@ export function Footer() {
             <li>
               <a href="#interests">
                 <Roll>Interests</Roll>
-              </a>
-            </li>
-            <li>
-              <a href="#process">
-                <Roll>Process</Roll>
-              </a>
-            </li>
-            <li>
-              <a href="#updates">
-                <Roll>Updates</Roll>
               </a>
             </li>
             <li>
@@ -76,9 +64,6 @@ export function Footer() {
         <span>
           © {profile.year} {profile.name}
         </span>
-        <button type="button" onClick={doTrick}>
-          <Roll>Do a trick</Roll>
-        </button>
         <a href="#top">
           <Roll>Back to top</Roll> ↑
         </a>

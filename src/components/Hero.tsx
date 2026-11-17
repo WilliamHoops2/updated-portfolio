@@ -1,98 +1,113 @@
-import { useEffect, useRef, useState } from "react";
-import { about, profile, statement, ticker, tour } from "../data/content";
+import { useEffect, useMemo, useRef, useState } from "react";
+import type { CSSProperties } from "react";
+import { about, heroWords, profile, statement, ticker, tour } from "../data/content";
+import { useHeroParallax } from "../hooks/useHeroParallax";
 import { useHeroPointer } from "../hooks/useHeroPointer";
-import { HeroField } from "./HeroField";
-import { HeroPhones } from "./HeroPhones";
+import { HeroBackdrop } from "./HeroBackdrop";
 import { Reveal } from "./Reveal";
 import { Roll } from "./Roll";
 
-const VISITED_KEY = "portfolio-visited";
+const ROW_EM = 1.15;
+const SWAP_MS = 2200;
 
-/** First visit gets the intro; coming back gets the "oh hi, you're back" line. */
-function useGreeting(): string {
-  const [text] = useState(() => {
-    let returning = false;
-    try {
-      returning = localStorage.getItem(VISITED_KEY) === "1";
-    } catch {
-      /* storage unavailable */
-    }
-    return returning ? profile.greetingReturn : `Hi, I'm ${profile.name}. ${profile.greeting}`;
-  });
+const prefersReducedMotion = () =>
+  typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/** A line of words that roll upward one at a time, looping without a visible jump. */
+function Swap({ words }: { words: string[] }) {
+  const [index, setIndex] = useState(0);
+  const [snap, setSnap] = useState(false);
+
+  // The first word is repeated at the end so the last roll lands on it, then we snap back to the start.
+  const loop = useMemo(() => [...words, words[0]], [words]);
+  const widest = useMemo(() => words.reduce((a, b) => (b.length > a.length ? b : a), ""), [words]);
 
   useEffect(() => {
-    try {
-      localStorage.setItem(VISITED_KEY, "1");
-    } catch {
-      /* storage unavailable */
-    }
-  }, []);
+    if (prefersReducedMotion()) return;
+    const id = window.setInterval(() => setIndex((i) => (i >= words.length ? i : i + 1)), SWAP_MS);
+    return () => window.clearInterval(id);
+  }, [words.length]);
 
-  return text;
+  useEffect(() => {
+    if (index === words.length) {
+      const id = window.setTimeout(() => {
+        setSnap(true);
+        setIndex(0);
+      }, 750);
+      return () => window.clearTimeout(id);
+    }
+
+    if (snap) {
+      let inner = 0;
+      const outer = requestAnimationFrame(() => {
+        inner = requestAnimationFrame(() => setSnap(false));
+      });
+      return () => {
+        cancelAnimationFrame(outer);
+        cancelAnimationFrame(inner);
+      };
+    }
+    return;
+  }, [index, snap, words.length]);
+
+  return (
+    <span className="swap" aria-hidden="true">
+      <span className="swap__sizer">{widest}</span>
+      <span
+        className={`swap__track ${snap ? "is-snap" : ""}`.trim()}
+        style={{ transform: `translateY(${index * -ROW_EM}em)` }}
+      >
+        {loop.map((word, i) => (
+          <span className="swap__word" key={`${word}-${i}`}>
+            {word}
+          </span>
+        ))}
+      </span>
+    </span>
+  );
 }
 
 interface HeroProps {
-  onOpen: (id: string) => void;
+  /** False while the loader is covering the page, so the entrance waits for it. */
+  ready: boolean;
   onHover: () => void;
 }
 
-export function Hero({ onOpen, onHover }: HeroProps) {
+export function Hero({ ready, onHover }: HeroProps) {
   const sectionRef = useRef<HTMLElement | null>(null);
   const titleRef = useRef<HTMLHeadingElement | null>(null);
-  const [ready, setReady] = useState(false);
-  const greeting = useGreeting();
-
-  // Once the intro animation has played, let letters lift above their line.
-  useEffect(() => {
-    const id = window.setTimeout(() => setReady(true), 1500);
-    return () => window.clearTimeout(id);
-  }, []);
-
   useHeroPointer(sectionRef, titleRef);
+  useHeroParallax(sectionRef);
 
   return (
-    <section
-      ref={sectionRef}
-      className={`hero ${ready ? "hero--ready" : ""}`.trim()}
-      id="top"
-      data-tour={greeting}
-    >
-      <HeroField containerRef={sectionRef} />
-      <HeroPhones onOpen={onOpen} onHover={onHover} />
-
-      <p className="hero__greeting mono">{greeting}</p>
-      <p className="hero__hint mono">↳ {profile.hint}</p>
-
-      <h1 ref={titleRef} className="hero__title" aria-label={profile.titleLines.join(" ")}>
-        {profile.titleLines.map((line, i) => (
-          <span className="hero__line" key={line} aria-hidden="true">
-            <span className="hero__line-inner" style={{ animationDelay: `${i * 120}ms` }}>
-              {Array.from(line).map((ch, j) => (
-                <span className="hero__char" key={j}>
-                  {ch === " " ? "\u00A0" : ch}
-                </span>
-              ))}
-            </span>
-          </span>
-        ))}
-      </h1>
-
-      <div className="hero__meta">
-        <div>
-          <p className="hero__tagline">{profile.tagline}</p>
-          <p className="hero__role mono">
-            {profile.name} · {profile.role}
-          </p>
-        </div>
-        <p className="hero__intro">{profile.intro}</p>
+    <section ref={sectionRef} className={`hero ${ready ? "is-go" : ""}`.trim()} id="top">
+      <HeroBackdrop containerRef={sectionRef} />
+      <div className="hero__top mono">
+        <span>{profile.role}</span>
+        <span>{profile.location}</span>
       </div>
 
-      <div className="hero__cta">
-        <a className="btn btn--solid" href="#contact" onMouseEnter={onHover}>
-          <Roll>Get in touch</Roll>
+      <h1 ref={titleRef} className="hero__title" aria-label={profile.display}>
+        <span className="hero__mask" aria-hidden="true">
+          {Array.from(profile.display).map((ch, i) => (
+            <span className="hero__char" key={i} style={{ "--i": i } as CSSProperties}>
+              {ch}
+            </span>
+          ))}
+        </span>
+      </h1>
+
+      <p className="hero__line2" aria-label={`I make ${heroWords.join(", ")}`}>
+        <span aria-hidden="true">I make </span>
+        <Swap words={heroWords} />
+      </p>
+
+      <div className="hero__go">
+        <a className="btn btn--solid" href="#work" onMouseEnter={onHover}>
+          <Roll>See the work</Roll>
         </a>
-        <a className="btn" href="#work" onMouseEnter={onHover}>
-          <Roll>See all work</Roll>
+        <a className="btn" href="#contact" onMouseEnter={onHover}>
+          <Roll>Get in touch</Roll>
         </a>
       </div>
 
@@ -113,8 +128,6 @@ export function Hero({ onOpen, onHover }: HeroProps) {
 export function Statement() {
   return (
     <section className="statement" data-tour={tour.statement}>
-      <span className="blob blob--a" aria-hidden="true" />
-      <span className="blob blob--b" aria-hidden="true" />
       <Reveal as="p" className="statement__text">
         {statement.before} <em>{statement.highlight}</em> {statement.after}
       </Reveal>

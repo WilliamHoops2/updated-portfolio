@@ -164,17 +164,32 @@ export function HoopGame() {
   return (
     <div className="hoop">
       <svg className="hoop__court" viewBox="0 0 300 220" role="img" aria-label="Basketball hoop">
-        <line className="hoop__floor" x1="0" y1="204" x2="300" y2="204" />
+        <defs>
+          <radialGradient id="hoopBall" cx="35%" cy="30%" r="80%">
+            <stop offset="0" stopColor="#ffa66b" />
+            <stop offset="1" stopColor="#e8551c" />
+          </radialGradient>
+        </defs>
+
+        {/* hardwood floor and three-point line */}
+        <rect className="hoop__wood" x="0" y="204" width="300" height="16" />
+        <path className="hoop__planks" d="M50 204v16M110 204v16M170 204v16M230 204v16M290 204v16" />
         <path className="hoop__arc" d="M20 204 A 90 90 0 0 1 200 204" />
 
-        {/* backboard + support */}
-        <rect className="hoop__board" x="246" y="34" width="7" height="66" rx="2" />
-        <rect className="hoop__board" x="252" y="62" width="22" height="6" rx="2" />
+        {/* stanchion, backboard, rim bracket */}
+        <rect className="hoop__pole" x="262" y="100" width="6" height="104" />
+        <rect className="hoop__board" x="246" y="30" width="8" height="72" rx="2" />
+        <rect className="hoop__shine" x="248" y="34" width="2" height="64" rx="1" />
+        <rect className="hoop__bracket" x="240" y="86" width="8" height="4" />
 
-        {/* net sits behind the ball */}
+        {/* the shadow stays on the floor and shrinks as the ball climbs */}
+        <ellipse className="hoop__shadow" cx={ball.x} cy="206" rx={13 - (204 - Math.min(ball.y, 204)) / 24} ry="2.6" />
+
+        {/* back half of the rim and the net sit behind the ball */}
+        <path className="hoop__rim" d="M208 88 A18 4.5 0 0 1 244 88" />
         <g className={`hoop__net ${netShake ? "is-shake" : ""}`.trim()}>
-          <path d="M208 90 L215 122 M217 91 L220 124 M226 92 L226 126 M235 91 L232 124 M244 90 L237 122" />
-          <path d="M211 102 H241 M213 112 H239 M215 121 H237" />
+          <path d="M210 90 L216 124 M218 91 L221 126 M226 92 L226 128 M234 91 L231 126 M242 90 L236 124" />
+          <path d="M212 102 H240 M214 112 H238 M216 121 H236" />
         </g>
 
         <g transform={`translate(${ball.x} ${ball.y}) rotate(${ball.rot})`}>
@@ -182,10 +197,12 @@ export function HoopGame() {
           <path className="hoop__seam" d="M-11 0 H11 M0 -11 V11 M-7.8 -7.8 Q0 0 -7.8 7.8 M7.8 -7.8 Q0 0 7.8 7.8" />
         </g>
 
-        <ellipse className="hoop__rim" cx="226" cy="88" rx="18" ry="4.5" />
+        {/* the front half of the rim is drawn over the ball, so a make looks like it goes through */}
+        <path className="hoop__rim" d="M208 88 A18 4.5 0 0 0 244 88" />
       </svg>
 
       <div className="hoop__meter" aria-hidden="true">
+        <span className="hoop__label mono">Power</span>
         <span className="hoop__zone" style={{ left: `${SWEET_MIN * 100}%`, width: `${(SWEET_MAX - SWEET_MIN) * 100}%` }} />
         <span className="hoop__needle" style={{ left: `${power * 100}%` }} />
       </div>
@@ -201,20 +218,20 @@ export function HoopGame() {
         >
           {phase === "charging" ? "Release!" : "Hold to shoot"}
         </button>
-        <div className="hoop__stats mono" aria-label="Score">
+        <div className="hoop__stats" aria-label="Score">
           <span>
-            Made <b>{made}</b>
+            <b>{made}</b> made
           </span>
           <span>
-            Streak <b>{streak}</b>
+            <b>{streak}</b> streak
           </span>
           <span>
-            Best <b>{best}</b>
+            <b>{best}</b> best
           </span>
         </div>
       </div>
 
-      <p className="hoop__msg mono" aria-live="polite">
+      <p className="hoop__msg" aria-live="polite">
         {msg}
       </p>
     </div>
