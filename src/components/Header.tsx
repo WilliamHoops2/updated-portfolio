@@ -40,6 +40,8 @@ export function Header({ soundOn, onToggleSound, onHover }: HeaderProps) {
         </a>
       </nav>
 
+      <StatusBar />
+
       <div className="header__controls mono">
         <button
           type="button"
@@ -57,7 +59,6 @@ export function Header({ soundOn, onToggleSound, onHover }: HeaderProps) {
         </a>
       </div>
 
-      <StatusBar />
     </header>
   );
 }

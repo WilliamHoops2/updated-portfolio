@@ -1,4 +1,6 @@
 import * as THREE from "three";
+import { RoomEnvironment } from "three/examples/jsm/environments/RoomEnvironment.js";
+import { RoundedBoxGeometry } from "three/examples/jsm/geometries/RoundedBoxGeometry.js";
 
 export type DeskId = "chess" | "hoops" | "markets" | "manga";
 
@@ -33,6 +35,9 @@ function canvasTexture(w: number, h: number, draw: (c: CanvasRenderingContext2D)
 }
 
 const std = (color: string, roughness = 0.6) => new THREE.MeshStandardMaterial({ color, roughness });
+const glossy = (color: string) => new THREE.MeshPhysicalMaterial({ color, roughness: 0.35, clearcoat: 0.7, clearcoatRoughness: 0.25 });
+/** A box with softened edges: the highlight along a bevel is most of what makes an object read as real. */
+const rbox = (w: number, h: number, d: number, r = 0.04) => new RoundedBoxGeometry(w, h, d, 3, Math.min(r, w / 2, h / 2, d / 2));
 
 function mesh(geo: THREE.BufferGeometry, mat: THREE.Material | THREE.Material[]) {
   const m = new THREE.Mesh(geo, mat);
@@ -44,16 +49,21 @@ function mesh(geo: THREE.BufferGeometry, mat: THREE.Material | THREE.Material[])
 function table() {
   const rand = seeded(7);
   const tex = canvasTexture(1024, 1024, (c) => {
-    c.fillStyle = "#8a6a43";
+    c.fillStyle = "#6c4f30";
     c.fillRect(0, 0, 1024, 1024);
     for (let i = 0; i < 260; i++) {
       c.fillStyle = rand() > 0.5 ? "rgba(60,38,16,0.12)" : "rgba(255,220,170,0.08)";
-      c.fillRect(0, rand() * 1024, 1024, 1 + rand() * 5);
+      const x = rand() * 1024 - 300;
+      const y = rand() * 1024;
+      const w = 250 + rand() * 750;
+      const h = 1 + rand() * 5;
+      // drawn again one tile over each way, so strokes running off an edge come back on the other side
+      [-1024, 0, 1024].forEach((dx) => c.fillRect(x + dx, y, w, h));
     }
   });
   tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
-  tex.repeat.set(3, 2);
-  const top = mesh(new THREE.BoxGeometry(20, 0.4, 13), new THREE.MeshStandardMaterial({ map: tex, roughness: 0.75 }));
+  tex.repeat.set(5, 3.5);
+  const top = mesh(rbox(34, 0.4, 24, 0.1), new THREE.MeshStandardMaterial({ map: tex, roughness: 0.75 }));
   top.position.y = -0.2;
   top.castShadow = false;
   return top;
@@ -62,7 +72,7 @@ function table() {
 function chessSet() {
   const g = new THREE.Group();
   const size = SQ * 8;
-  const frame = mesh(new THREE.BoxGeometry(size + 0.2, 0.1, size + 0.2), std("#2b2a28", 0.5));
+  const frame = mesh(rbox(size + 0.2, 0.1, size + 0.2, 0.03), std("#2b2a28", 0.5));
   frame.position.y = 0.05;
   g.add(frame);
 
@@ -85,7 +95,7 @@ function chessSet() {
   const crossBar = new THREE.BoxGeometry(0.15, 0.05, 0.05);
 
   const place = (file: number, rank: number, kind: "p" | "r" | "k", white: boolean) => {
-    const mat = std(white ? WHITE : BLACK, 0.35);
+    const mat = glossy(white ? WHITE : BLACK);
     const piece = mesh(kind === "p" ? pawn : kind === "r" ? rook : king, mat);
     if (kind === "k") {
       const v = mesh(cross, mat);
@@ -132,7 +142,19 @@ function basketball() {
       c.stroke();
     });
   });
-  g.add(mesh(new THREE.SphereGeometry(0.55, 48, 32), new THREE.MeshStandardMaterial({ map: tex, roughness: 0.85 })));
+  const rand = seeded(5);
+  const pebbles = canvasTexture(512, 256, (c) => {
+    c.fillStyle = "#808080";
+    c.fillRect(0, 0, 512, 256);
+    for (let i = 0; i < 5000; i++) {
+      c.fillStyle = rand() > 0.5 ? "#a0a0a0" : "#606060";
+      c.fillRect(rand() * 512, rand() * 256, 2, 2);
+    }
+  });
+  pebbles.colorSpace = THREE.NoColorSpace;
+  pebbles.wrapS = pebbles.wrapT = THREE.RepeatWrapping;
+  pebbles.repeat.set(2, 2);
+  g.add(mesh(new THREE.SphereGeometry(0.55, 48, 32), new THREE.MeshStandardMaterial({ map: tex, bumpMap: pebbles, bumpScale: 1.2, roughness: 0.8 })));
   g.children[0].position.y = 0.55;
   return g;
 }
@@ -147,7 +169,7 @@ function mangaStack() {
     const h = 0.17 + (i % 2) * 0.04;
     const cover = std(color, 0.55);
     // face order: +x pages, -x spine, +y cover, -y cover, +z pages, -z pages
-    const book = mesh(new THREE.BoxGeometry(w, h, 2.05), [pages, cover, cover, cover, pages, pages]);
+    const book = mesh(rbox(w, h, 2.05, 0.035), [pages, cover, cover, cover, pages, pages]);
     book.position.set(((i * 37) % 5) * 0.04 - 0.08, y + h / 2, ((i * 53) % 5) * 0.04 - 0.08);
     book.rotation.y = ((i * 71) % 9) * 0.02 - 0.08;
     g.add(book);
@@ -177,13 +199,16 @@ function computer() {
   const body = std("#1b1b1d", 0.4);
   const base = mesh(new THREE.CylinderGeometry(0.6, 0.65, 0.06, 32), body);
   base.position.y = 0.03;
-  const neck = mesh(new THREE.BoxGeometry(0.18, 0.75, 0.12), body);
+  const neck = mesh(rbox(0.18, 0.75, 0.12, 0.04), body);
   neck.position.set(0, 0.42, -0.05);
-  const frame = mesh(new THREE.BoxGeometry(2.7, 1.6, 0.12), body);
+  const frame = mesh(rbox(2.7, 1.6, 0.12, 0.05), body);
   frame.position.y = 1.5;
 
   const rand = seeded(21);
-  const chart = canvasTexture(1024, 576, (c) => {
+  let v = 420;
+  const next = () => (v = Math.max(120, Math.min(500, v + (rand() - 0.58) * 60)));
+  const pts = Array.from({ length: 40 }, next);
+  const paint = (c: CanvasRenderingContext2D) => {
     c.fillStyle = "#0b0f14";
     c.fillRect(0, 0, 1024, 576);
     c.strokeStyle = "rgba(255,255,255,0.08)";
@@ -199,13 +224,6 @@ function computer() {
     c.fillText("BTC / USD", 40, 66);
     c.fillStyle = "#2fd27a";
     c.fillText("+ 12.4%", 800, 66);
-    const pts: number[] = [];
-    let v = 420;
-    for (let i = 0; i < 40; i++) {
-      v += (rand() - 0.58) * 60;
-      v = Math.max(120, Math.min(500, v));
-      pts.push(v);
-    }
     const x = (i: number) => 40 + (i * (1024 - 80)) / (pts.length - 1);
     c.beginPath();
     pts.forEach((p, i) => (i ? c.lineTo(x(i), p) : c.moveTo(x(i), p)));
@@ -218,13 +236,60 @@ function computer() {
     c.closePath();
     c.fillStyle = "rgba(47,210,122,0.15)";
     c.fill();
-  });
+  };
+  const chart = canvasTexture(1024, 576, paint);
+  // The chart keeps ticking: a new point every so often, so the screen looks live.
+  let since = 0;
+  g.userData.tick = (dt: number) => {
+    since += dt;
+    if (since < 0.7) return;
+    since = 0;
+    pts.shift();
+    pts.push(next());
+    paint((chart.image as HTMLCanvasElement).getContext("2d")!);
+    chart.needsUpdate = true;
+  };
   const screen = new THREE.Mesh(new THREE.PlaneGeometry(2.5, 1.4), new THREE.MeshBasicMaterial({ map: chart }));
   screen.position.set(0, 1.5, 0.065);
 
-  const keys = mesh(new THREE.BoxGeometry(1.7, 0.06, 0.55), std("#2a2a2d", 0.5));
+  const keys = mesh(rbox(1.7, 0.06, 0.55, 0.02), std("#2a2a2d", 0.5));
   keys.position.set(0, 0.03, 0.95);
   g.add(base, neck, frame, screen, keys);
+  return g;
+}
+
+/** Loose things on the table, so it reads as a place someone works and not a showroom. */
+function props() {
+  const g = new THREE.Group();
+
+  const mug = new THREE.Group();
+  const cup = mesh(
+    new THREE.LatheGeometry([[0, 0], [0.28, 0], [0.3, 0.04], [0.3, 0.5], [0.27, 0.5], [0.27, 0.08], [0, 0.08]].map(([x, y]) => new THREE.Vector2(x, y)), 28),
+    new THREE.MeshPhysicalMaterial({ color: "#f2f1ec", roughness: 0.3, clearcoat: 0.8 }),
+  );
+  const coffee = new THREE.Mesh(new THREE.CircleGeometry(0.27, 28), std("#3a2316", 0.2));
+  coffee.rotation.x = -Math.PI / 2;
+  coffee.position.y = 0.42;
+  const handle = mesh(new THREE.TorusGeometry(0.14, 0.035, 10, 20, Math.PI), cup.material);
+  handle.rotation.z = -Math.PI / 2;
+  handle.position.set(0.3, 0.27, 0);
+  mug.add(cup, coffee, handle);
+  mug.position.set(-1.1, 0, -2.2);
+  mug.rotation.y = 0.6;
+
+  const pencil = new THREE.Group();
+  const body = mesh(new THREE.CylinderGeometry(0.035, 0.035, 0.9, 6), std("#f7b32b", 0.5));
+  const tip = mesh(new THREE.ConeGeometry(0.035, 0.12, 6), std("#d9b38c", 0.8));
+  tip.position.y = -0.51;
+  pencil.add(body, tip);
+  pencil.rotation.set(0, 0.4, Math.PI / 2);
+  pencil.position.set(2.0, 0.04, -0.7);
+
+  const note = mesh(rbox(0.7, 0.012, 0.7, 0.005), std("#ffd84d", 0.9));
+  note.position.set(-3.3, 0.01, 2.2);
+  note.rotation.y = -0.35;
+
+  g.add(mug, pencil, note);
   return g;
 }
 
@@ -235,10 +300,22 @@ export function createDesk(host: HTMLElement, onPick: (id: DeskId | null) => voi
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
   renderer.setClearColor(0x2a2118);
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 0.8;
   host.appendChild(renderer.domElement);
 
   const scene = new THREE.Scene();
-  scene.add(new THREE.HemisphereLight(0xfff4e0, 0x6b5033, 1.4));
+  // A tiny built-in room gives every glossy surface something to reflect, with no image files.
+  const pmrem = new THREE.PMREMGenerator(renderer);
+  const room = new RoomEnvironment();
+  scene.environment = pmrem.fromScene(room, 0.04).texture;
+  scene.environmentIntensity = 0.55;
+  room.dispose();
+  pmrem.dispose();
+  scene.add(new THREE.HemisphereLight(0xfff4e0, 0x6b5033, 0.8));
+  const rim = new THREE.DirectionalLight(0xffc999, 1.1);
+  rim.position.set(6, 4, -6);
+  scene.add(rim);
   const sun = new THREE.DirectionalLight(0xffffff, 2.4);
   sun.position.set(-4, 9, 5);
   sun.castShadow = true;
@@ -246,7 +323,7 @@ export function createDesk(host: HTMLElement, onPick: (id: DeskId | null) => voi
   Object.assign(sun.shadow.camera, { left: -8, right: 8, top: 8, bottom: -8, near: 1, far: 25 });
   sun.shadow.bias = -0.0005;
   scene.add(sun);
-  scene.add(table());
+  scene.add(table(), props());
 
   const items: Record<DeskId, THREE.Group> = {
     chess: chessSet(),
@@ -254,10 +331,13 @@ export function createDesk(host: HTMLElement, onPick: (id: DeskId | null) => voi
     markets: computer(),
     manga: mangaStack(),
   };
-  items.chess.position.set(-3.1, 0, 0.2);
-  items.hoops.position.set(-0.8, 0, 1.7);
-  items.markets.position.set(0.7, 0, -1.9);
-  items.manga.position.set(3.3, 0, 0.9);
+  items.chess.position.set(-3.0, 0, 0.3);
+  items.chess.rotation.y = 0.32;
+  items.hoops.position.set(-0.6, 0, 1.8);
+  items.markets.position.set(0.9, 0, -1.9);
+  items.markets.rotation.y = -0.12;
+  items.manga.position.set(3.2, 0, 1.0);
+  items.manga.rotation.y = -0.3;
   (Object.keys(items) as DeskId[]).forEach((id) => {
     items[id].userData.id = id;
     scene.add(items[id]);
@@ -274,9 +354,10 @@ export function createDesk(host: HTMLElement, onPick: (id: DeskId | null) => voi
     const aspect = camera.aspect;
     if (!focused) {
       // Pull back on tall screens so all four objects still fit.
-      const back = Math.min(2.2, Math.max(1, 1.3 / aspect));
+      // Portrait gets extra margin: the objects spread sideways and a narrow view crops them.
+      const back = Math.min(3.4, Math.max(1, 1.3 / aspect) * (aspect < 1 ? 1.2 : 1));
       goalLook.set(0, 0, 0);
-      goalPos.set(0, 8.5 * back, 7.5 * back);
+      goalPos.set(-1.6 * back, 6.6 * back, 8.8 * back);
       return;
     }
     // Slide the look-at point so the object sits left of the panel (wide) or above it (narrow).
@@ -302,6 +383,8 @@ export function createDesk(host: HTMLElement, onPick: (id: DeskId | null) => voi
   const ray = new THREE.Raycaster();
   const ndc = new THREE.Vector2();
   let hovered: DeskId | null = null;
+  const pointer = { x: 0, y: 0 };
+  const drift = { x: 0, y: 0 };
   const pick = (e: PointerEvent): DeskId | null => {
     const r = renderer.domElement.getBoundingClientRect();
     ndc.set(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
@@ -312,6 +395,9 @@ export function createDesk(host: HTMLElement, onPick: (id: DeskId | null) => voi
     return (o?.userData.id as DeskId) ?? null;
   };
   const onMove = (e: PointerEvent) => {
+    const r = renderer.domElement.getBoundingClientRect();
+    pointer.x = ((e.clientX - r.left) / r.width) * 2 - 1;
+    pointer.y = ((e.clientY - r.top) / r.height) * 2 - 1;
     hovered = pick(e);
     renderer.domElement.style.cursor = hovered ? "pointer" : "";
   };
@@ -324,6 +410,7 @@ export function createDesk(host: HTMLElement, onPick: (id: DeskId | null) => voi
   io.observe(host);
 
   const lift: Record<DeskId, number> = { chess: 0, hoops: 0, markets: 0, manga: 0 };
+  const vel: Record<DeskId, number> = { chess: 0, hoops: 0, markets: 0, manga: 0 };
   let last = performance.now();
   let raf = 0;
   const tick = (now: number) => {
@@ -335,14 +422,29 @@ export function createDesk(host: HTMLElement, onPick: (id: DeskId | null) => voi
     const k = reduced ? 1 : 1 - Math.exp(-dt * 4);
     camPos.lerp(goalPos, k);
     lookAt.lerp(goalLook, k);
-    camera.position.copy(camPos);
+    // The view drifts a little with the pointer while you look at the whole table.
+    drift.x += ((focused || reduced ? 0 : pointer.x) - drift.x) * k;
+    drift.y += ((focused || reduced ? 0 : pointer.y) - drift.y) * k;
+    camera.position.set(camPos.x + drift.x * 0.9, camPos.y + drift.y * 0.5, camPos.z);
     camera.lookAt(lookAt);
+    (items.markets.userData.tick as (dt: number) => void)(dt);
 
     (Object.keys(items) as DeskId[]).forEach((id) => {
-      lift[id] += ((hovered === id ? 1 : 0) - lift[id]) * (reduced ? 1 : 1 - Math.exp(-dt * 10));
-      items[id].position.y = lift[id] * 0.14;
+      // A spring, not an ease: it overshoots and settles, which is what makes the lift feel alive.
+      const target = hovered === id ? 1 : 0;
+      if (reduced) lift[id] = target;
+      else {
+        vel[id] += ((target - lift[id]) * 220 - vel[id] * 14) * dt;
+        lift[id] += vel[id] * dt;
+      }
+      items[id].position.y = lift[id] * 0.18;
     });
-    if (!reduced) items.hoops.rotation.y += dt * (0.25 + lift.hoops * 2.5);
+    if (!reduced) {
+      items.hoops.rotation.y += dt * (0.25 + lift.hoops * 2.5);
+      // The ball bounces on the spot until something is opened.
+      const bounce = focused ? 0 : Math.abs(Math.sin(now / 1000 * 2.6)) * 0.28;
+      items.hoops.position.y += bounce;
+    }
 
     renderer.render(scene, camera);
   };

@@ -6,6 +6,8 @@ import "./experience.css";
 import "./interests.css";
 import "./stage.css";
 import "./work.css";
+import "./workindex.css";
+import "./motion.css";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

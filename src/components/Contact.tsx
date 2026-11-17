@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { profile, tour } from "../data/content";
 import { Reveal } from "./Reveal";
 import { Roll } from "./Roll";
+import { SplitText } from "./SplitText";
 
 export function Contact() {
   const [copied, setCopied] = useState(false);
@@ -22,17 +23,19 @@ export function Contact() {
   };
 
   return (
-    <section className="contact" id="contact" data-tour={tour.contact}>
+    <section className="contact" id="contact" data-tone="paper" data-tour={tour.contact}>
       <Reveal>
         <p className="eyebrow mono">(Contact)</p>
       </Reveal>
 
-      <Reveal as="h2" className="contact__title">
-        Got a
+      <Reveal as="h2" className="contact__title reveal--split">
+        <SplitText text="Got a" />
         <br />
-        project?
+        <SplitText text="project?" start={2} />
         <br />
-        <em>Say hi.</em>
+        <em>
+          <SplitText text="Say hi." start={3} />
+        </em>
       </Reveal>
 
       <Reveal delay={150} className="contact__actions">

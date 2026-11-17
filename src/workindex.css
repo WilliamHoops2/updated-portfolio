@@ -1,0 +1,288 @@
+/* ── Work index: a list beside one sticky stage ──────────── */
+.wx__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-block: clamp(20px, 3vw, 40px);
+}
+
+.wx__filters button {
+  padding: 8px 16px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  transition: background 0.25s var(--ease), color 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+
+.wx__filters button:hover {
+  border-color: var(--fg);
+}
+
+.wx__filters button.is-on {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-fg);
+}
+
+.wx__filters sup {
+  margin-left: 2px;
+  opacity: 0.6;
+}
+
+.wx__body {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 72px);
+  align-items: start;
+}
+
+/* ── Rows ── */
+.wx__list {
+  border-top: 1px solid var(--line);
+}
+
+.wx__row {
+  display: grid;
+  grid-template-columns: 44px 1fr auto 28px;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: clamp(14px, 1.6vw, 22px) 0;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  transition: opacity 0.3s var(--ease), padding 0.4s var(--ease);
+}
+
+/* While you're pointing at the list, everything but the active row recedes. */
+.wx__list:hover .wx__row:not(.is-active) {
+  opacity: 0.4;
+}
+
+.wx__row.is-active {
+  padding-left: 14px;
+}
+
+.wx__num {
+  color: var(--muted);
+  transition: color 0.25s;
+}
+
+.wx__row.is-active .wx__num {
+  color: var(--accent);
+}
+
+.wx__thumb {
+  display: none;
+}
+
+.wx__title {
+  font-family: var(--font-serif);
+  font-size: clamp(30px, 3.6vw, 56px);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+}
+
+.wx__meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--muted);
+  text-align: right;
+}
+
+.wx__meta em {
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--accent-fg);
+  font-style: normal;
+}
+
+.wx__arrow {
+  opacity: 0;
+  transform: translate(-6px, 6px);
+  transition: opacity 0.25s, transform 0.35s var(--ease);
+  color: var(--accent);
+  font-size: 22px;
+}
+
+.wx__row.is-active .wx__arrow {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── Stage ── */
+.wx__stage {
+  position: sticky;
+  top: 100px;
+  height: min(76vh, 720px);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.wx__wash {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: 20px;
+  height: 100%;
+  padding: clamp(20px, 2.4vw, 36px);
+  background: linear-gradient(160deg, var(--c1), var(--c2));
+  color: var(--ink2);
+  animation: wx-in 0.55s var(--ease) both;
+}
+
+@keyframes wx-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.985);
+  }
+}
+
+/* Oversized light title with the year in brackets, after zujistudio's case pages. */
+.wx__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  color: var(--ink); /* readable on the first gradient colour, which sits behind the title */
+}
+
+.wx__name {
+  min-width: 0;
+  overflow: hidden;
+  font-family: var(--font-display);
+  font-size: clamp(34px, 4.4vw, 72px);
+  font-weight: 300;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+  text-transform: uppercase;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.wx__year {
+  flex: none;
+}
+
+.wx__frame {
+  display: grid;
+  place-items: center;
+  min-height: 0;
+}
+
+.wx__frame .media {
+  box-shadow: 0 30px 60px -24px rgba(var(--p-ink-rgb), 0.5);
+}
+
+.wx__frame--app .media {
+  height: 100%;
+  max-width: 100%;
+  border-radius: 28px;
+}
+
+.wx__frame--game .media,
+.wx__frame--research .media {
+  width: 100%;
+  max-height: 100%;
+}
+
+.wx__info {
+  display: grid;
+  gap: 10px;
+  justify-items: start;
+}
+
+.wx__facts {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  justify-content: start;
+  gap: 4px 28px;
+  text-transform: uppercase;
+}
+
+.wx__facts dt {
+  opacity: 0.6;
+}
+
+.wx__blurb {
+  max-width: 34ch;
+  font-size: clamp(16px, 1.3vw, 20px);
+  line-height: 1.35;
+}
+
+/* ── Small screens: no stage, thumbnails in the rows ── */
+@media (max-width: 900px) {
+  .wx__body {
+    grid-template-columns: 1fr;
+  }
+
+  .wx__stage {
+    display: none;
+  }
+
+  .wx__row {
+    grid-template-columns: 72px 1fr 24px;
+    grid-template-areas:
+      "thumb title arrow"
+      "thumb meta arrow";
+    gap: 4px 14px;
+  }
+
+  .wx__num {
+    display: none;
+  }
+
+  .wx__thumb {
+    display: block;
+    grid-area: thumb;
+    width: 72px;
+  }
+
+  .wx__title {
+    grid-area: title;
+    font-size: clamp(24px, 6.4vw, 34px);
+  }
+
+  .wx__meta {
+    grid-area: meta;
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  .wx__arrow {
+    grid-area: arrow;
+    opacity: 1;
+    transform: none;
+  }
+
+  .wx__row.is-active {
+    padding-left: 0;
+  }
+
+  .wx__list:hover .wx__row:not(.is-active) {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wx__wash {
+    animation: none;
+  }
+}
+
+/* The placeholder caption doesn't fit a thumbnail. */
+.wx__thumb .media__caption {
+  display: none;
+}
+
+@media (max-width: 420px) {
+  .wx__filters {
+    gap: 6px;
+  }
+
+  .wx__filters button {
+    padding: 7px 11px;
+    font-size: 11px;
+  }
+}

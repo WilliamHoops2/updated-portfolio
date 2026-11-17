@@ -67,17 +67,38 @@ h2,
 /* ── Hero ────────────────────────────────────────────────── */
 .hero {
   gap: clamp(14px, 2vw, 26px);
-  padding-top: 110px;
+  padding-top: 40px;
 }
 
+/* Labelled facts pinned to the top edge, in the spirit of zujistudio's side rail. */
 .hero__top {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+  margin-bottom: auto;
+  text-transform: uppercase;
+}
+
+.hero__top dt {
   color: var(--muted);
 }
 
+.hero__top div:last-child {
+  text-align: right;
+}
+
+@media (max-width: 700px) {
+  .hero__top {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hero__top div:nth-child(n + 3) {
+    display: none;
+  }
+}
+
 .hero__title {
-  font-size: clamp(64px, 20vw, 380px);
+  font-size: clamp(64px, 25.5vw, 520px);
   font-weight: 800;
   line-height: 0.82;
   letter-spacing: -0.055em;
@@ -286,19 +307,19 @@ h2,
   z-index: 1;
 }
 
-/* --sy is set by useHeroParallax. Each layer moves at its own rate; the field is slowest, the ticker stays put. */
+/* --sy is set by useHeroParallax. The field drifts the most; the text layers are capped so they never collide on tall screens. */
 .hero__field {
   transform: translate3d(0, calc(var(--sy, 0) * 0.6px), 0);
 }
 
 .hero__title {
-  transform: translate3d(0, calc(var(--sy, 0) * 0.38px), 0);
+  transform: translate3d(0, calc(min(var(--sy, 0), 220) * 0.2px), 0);
 }
 
 .hero__line2 {
-  transform: translate3d(0, calc(var(--sy, 0) * 0.22px), 0);
+  transform: translate3d(0, calc(min(var(--sy, 0), 220) * 0.14px), 0);
 }
 
 .hero__go {
-  transform: translate3d(0, calc(var(--sy, 0) * 0.1px), 0);
+  transform: translate3d(0, calc(min(var(--sy, 0), 220) * 0.08px), 0);
 }

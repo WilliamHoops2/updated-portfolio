@@ -1,0 +1,1040 @@
+- generic [ref=f10e1]:
+  - generic [ref=f10e2]:
+    - generic [ref=f10e3]:
+      - banner:
+        - generic [ref=f10e5]:
+          - link "Home Page" [ref=f10e6] [cursor=pointer]:
+            - /url: /
+          - navigation [ref=f10e9]:
+            - list [ref=f10e10]:
+              - listitem [ref=f10e11]:
+                - link "Features" [ref=f10e13] [cursor=pointer]:
+                  - /url: /features
+              - listitem [ref=f10e16]:
+                - link "Integrations" [ref=f10e18] [cursor=pointer]:
+                  - /url: /integrations
+              - listitem [ref=f10e21]:
+                - button "Solutions" [ref=f10e23] [cursor=pointer]
+              - listitem [ref=f10e26]:
+                - button "Resources" [ref=f10e28] [cursor=pointer]
+              - listitem [ref=f10e31]:
+                - link "Pricing" [ref=f10e32] [cursor=pointer]:
+                  - /url: /pricing
+          - generic [ref=f10e33]:
+            - link [ref=f10e35] [cursor=pointer]:
+              - /url: https://app.north.cloud/login
+              - paragraph [ref=f10e36]: Sign In
+            - link [ref=f10e38] [cursor=pointer]:
+              - /url: /book-a-demo
+              - paragraph [ref=f10e39]: Book Demo
+            - link [ref=f10e41] [cursor=pointer]:
+              - /url: https://app.north.cloud
+              - paragraph [ref=f10e42]: Free Trial
+    - main [ref=f10e43]:
+      - generic [ref=f10e44]:
+        - generic [ref=f10e46]:
+          - generic [ref=f10e48]:
+            - heading [level=1] [ref=f10e50]:
+              - generic "The Financial Operating System" [ref=f10e51]:
+                - generic [aria-hidden] [ref=f10e54]:
+                  - generic [aria-hidden] [ref=f10e55]: T
+                  - generic [aria-hidden] [ref=f10e56]: h
+                  - generic [aria-hidden] [ref=f10e57]: e
+                - generic [aria-hidden] [ref=f10e60]:
+                  - generic [aria-hidden] [ref=f10e61]: F
+                  - generic [aria-hidden] [ref=f10e62]: i
+                  - generic [aria-hidden] [ref=f10e63]: "n"
+                  - generic [aria-hidden] [ref=f10e64]: a
+                  - generic [aria-hidden] [ref=f10e65]: "n"
+                  - generic [aria-hidden] [ref=f10e66]: c
+                  - generic [aria-hidden] [ref=f10e67]: i
+                  - generic [aria-hidden] [ref=f10e68]: a
+                  - generic [aria-hidden] [ref=f10e69]: l
+                - generic [aria-hidden] [ref=f10e72]:
+                  - generic [aria-hidden] [ref=f10e73]: O
+                  - generic [aria-hidden] [ref=f10e74]: p
+                  - generic [aria-hidden] [ref=f10e75]: e
+                  - generic [aria-hidden] [ref=f10e76]: r
+                  - generic [aria-hidden] [ref=f10e77]: a
+                  - generic [aria-hidden] [ref=f10e78]: t
+                  - generic [aria-hidden] [ref=f10e79]: i
+                  - generic [aria-hidden] [ref=f10e80]: "n"
+                  - generic [aria-hidden] [ref=f10e81]: g
+                - generic [aria-hidden] [ref=f10e84]:
+                  - generic [aria-hidden] [ref=f10e85]: S
+                  - generic [aria-hidden] [ref=f10e86]: "y"
+                  - generic [aria-hidden] [ref=f10e87]: s
+                  - generic [aria-hidden] [ref=f10e88]: t
+                  - generic [aria-hidden] [ref=f10e89]: e
+                  - generic [aria-hidden] [ref=f10e90]: m
+              - generic "For Cloud, AI, And Data." [ref=f10e91]:
+                - generic [aria-hidden] [ref=f10e93]:
+                  - generic [aria-hidden] [ref=f10e94]:
+                    - generic [aria-hidden] [ref=f10e95]: F
+                    - generic [aria-hidden] [ref=f10e96]: o
+                    - generic [aria-hidden] [ref=f10e97]: r
+                  - generic [aria-hidden] [ref=f10e98]:
+                    - generic [aria-hidden] [ref=f10e99]: C
+                    - generic [aria-hidden] [ref=f10e100]: l
+                    - generic [aria-hidden] [ref=f10e101]: o
+                    - generic [aria-hidden] [ref=f10e102]: u
+                    - generic [aria-hidden] [ref=f10e103]: d
+                    - generic [aria-hidden] [ref=f10e104]: ","
+                - generic [aria-hidden] [ref=f10e106]:
+                  - generic [aria-hidden] [ref=f10e107]:
+                    - generic [aria-hidden] [ref=f10e108]: A
+                    - generic [aria-hidden] [ref=f10e109]: I
+                    - generic [aria-hidden] [ref=f10e110]: ","
+                  - generic [aria-hidden] [ref=f10e111]:
+                    - generic [aria-hidden] [ref=f10e112]: A
+                    - generic [aria-hidden] [ref=f10e113]: "n"
+                    - generic [aria-hidden] [ref=f10e114]: d
+                  - generic [aria-hidden] [ref=f10e115]:
+                    - generic [aria-hidden] [ref=f10e116]: D
+                    - generic [aria-hidden] [ref=f10e117]: a
+                    - generic [aria-hidden] [ref=f10e118]: t
+                    - generic [aria-hidden] [ref=f10e119]: a
+                    - generic [aria-hidden] [ref=f10e120]: .
+            - generic [ref=f10e121]:
+              - generic [ref=f10e122]:
+                - link [ref=f10e124] [cursor=pointer]:
+                  - /url: https://app.north.cloud
+                  - paragraph [ref=f10e125]:
+                    - generic [aria-hidden] [ref=f10e126]:
+                      - generic [aria-hidden] [ref=f10e127]: F
+                      - generic [aria-hidden] [ref=f10e128]: r
+                      - generic [aria-hidden] [ref=f10e129]: e
+                      - generic [aria-hidden] [ref=f10e130]: e
+                    - generic [aria-hidden] [ref=f10e131]:
+                      - generic [aria-hidden] [ref=f10e132]: T
+                      - generic [aria-hidden] [ref=f10e133]: r
+                      - generic [aria-hidden] [ref=f10e134]: i
+                      - generic [aria-hidden] [ref=f10e135]: a
+                      - generic [aria-hidden] [ref=f10e136]: l
+                - link [ref=f10e138] [cursor=pointer]:
+                  - /url: /book-a-demo
+                  - paragraph [ref=f10e139]:
+                    - generic [aria-hidden] [ref=f10e140]:
+                      - generic [aria-hidden] [ref=f10e141]: B
+                      - generic [aria-hidden] [ref=f10e142]: o
+                      - generic [aria-hidden] [ref=f10e143]: o
+                      - generic [aria-hidden] [ref=f10e144]: k
+                    - generic [aria-hidden] [ref=f10e145]:
+                      - generic [aria-hidden] [ref=f10e146]: D
+                      - generic [aria-hidden] [ref=f10e147]: e
+                      - generic [aria-hidden] [ref=f10e148]: m
+                      - generic [aria-hidden] [ref=f10e149]: o
+              - paragraph [ref=f10e151]:
+                - generic [aria-hidden] [ref=f10e152]:
+                  - generic [aria-hidden] [ref=f10e153]:
+                    - generic [aria-hidden] [ref=f10e154]: "N"
+                    - generic [aria-hidden] [ref=f10e155]: o
+                    - generic [aria-hidden] [ref=f10e156]: r
+                    - generic [aria-hidden] [ref=f10e157]: t
+                    - generic [aria-hidden] [ref=f10e158]: h
+                  - generic [aria-hidden] [ref=f10e159]:
+                    - generic [aria-hidden] [ref=f10e160]: p
+                    - generic [aria-hidden] [ref=f10e161]: r
+                    - generic [aria-hidden] [ref=f10e162]: o
+                    - generic [aria-hidden] [ref=f10e163]: v
+                    - generic [aria-hidden] [ref=f10e164]: i
+                    - generic [aria-hidden] [ref=f10e165]: d
+                    - generic [aria-hidden] [ref=f10e166]: e
+                    - generic [aria-hidden] [ref=f10e167]: s
+                  - generic [aria-hidden] [ref=f10e168]:
+                    - generic [aria-hidden] [ref=f10e169]: t
+                    - generic [aria-hidden] [ref=f10e170]: h
+                    - generic [aria-hidden] [ref=f10e171]: e
+                  - generic [aria-hidden] [ref=f10e172]:
+                    - generic [aria-hidden] [ref=f10e173]: i
+                    - generic [aria-hidden] [ref=f10e174]: "n"
+                    - generic [aria-hidden] [ref=f10e175]: t
+                    - generic [aria-hidden] [ref=f10e176]: e
+                    - generic [aria-hidden] [ref=f10e177]: l
+                    - generic [aria-hidden] [ref=f10e178]: l
+                    - generic [aria-hidden] [ref=f10e179]: i
+                    - generic [aria-hidden] [ref=f10e180]: g
+                    - generic [aria-hidden] [ref=f10e181]: e
+                    - generic [aria-hidden] [ref=f10e182]: "n"
+                    - generic [aria-hidden] [ref=f10e183]: c
+                    - generic [aria-hidden] [ref=f10e184]: e
+                  - generic [aria-hidden] [ref=f10e185]:
+                    - generic [aria-hidden] [ref=f10e186]: l
+                    - generic [aria-hidden] [ref=f10e187]: a
+                    - generic [aria-hidden] [ref=f10e188]: "y"
+                    - generic [aria-hidden] [ref=f10e189]: e
+                    - generic [aria-hidden] [ref=f10e190]: r
+                  - generic [aria-hidden] [ref=f10e191]:
+                    - generic [aria-hidden] [ref=f10e192]: f
+                    - generic [aria-hidden] [ref=f10e193]: o
+                    - generic [aria-hidden] [ref=f10e194]: r
+                - generic [aria-hidden] [ref=f10e195]:
+                  - generic [aria-hidden] [ref=f10e196]:
+                    - generic [aria-hidden] [ref=f10e197]: e
+                    - generic [aria-hidden] [ref=f10e198]: v
+                    - generic [aria-hidden] [ref=f10e199]: e
+                    - generic [aria-hidden] [ref=f10e200]: r
+                    - generic [aria-hidden] [ref=f10e201]: "y"
+                  - generic [aria-hidden] [ref=f10e202]:
+                    - generic [aria-hidden] [ref=f10e203]: d
+                    - generic [aria-hidden] [ref=f10e204]: o
+                    - generic [aria-hidden] [ref=f10e205]: l
+                    - generic [aria-hidden] [ref=f10e206]: l
+                    - generic [aria-hidden] [ref=f10e207]: a
+                    - generic [aria-hidden] [ref=f10e208]: r
+                  - generic [aria-hidden] [ref=f10e209]:
+                    - generic [aria-hidden] [ref=f10e210]: "y"
+                    - generic [aria-hidden] [ref=f10e211]: o
+                    - generic [aria-hidden] [ref=f10e212]: u
+                    - generic [aria-hidden] [ref=f10e213]: r
+                  - generic [aria-hidden] [ref=f10e214]:
+                    - generic [aria-hidden] [ref=f10e215]: c
+                    - generic [aria-hidden] [ref=f10e216]: l
+                    - generic [aria-hidden] [ref=f10e217]: o
+                    - generic [aria-hidden] [ref=f10e218]: u
+                    - generic [aria-hidden] [ref=f10e219]: d
+                    - generic [aria-hidden] [ref=f10e220]: ","
+                  - generic [aria-hidden] [ref=f10e221]:
+                    - generic [aria-hidden] [ref=f10e222]: A
+                    - generic [aria-hidden] [ref=f10e223]: I
+                    - generic [aria-hidden] [ref=f10e224]: ","
+                  - generic [aria-hidden] [ref=f10e225]:
+                    - generic [aria-hidden] [ref=f10e226]: a
+                    - generic [aria-hidden] [ref=f10e227]: "n"
+                    - generic [aria-hidden] [ref=f10e228]: d
+                  - generic [aria-hidden] [ref=f10e229]:
+                    - generic [aria-hidden] [ref=f10e230]: d
+                    - generic [aria-hidden] [ref=f10e231]: a
+                    - generic [aria-hidden] [ref=f10e232]: t
+                    - generic [aria-hidden] [ref=f10e233]: a
+                - generic [aria-hidden] [ref=f10e234]:
+                  - generic [aria-hidden] [ref=f10e235]:
+                    - generic [aria-hidden] [ref=f10e236]: i
+                    - generic [aria-hidden] [ref=f10e237]: "n"
+                    - generic [aria-hidden] [ref=f10e238]: f
+                    - generic [aria-hidden] [ref=f10e239]: r
+                    - generic [aria-hidden] [ref=f10e240]: a
+                    - generic [aria-hidden] [ref=f10e241]: s
+                    - generic [aria-hidden] [ref=f10e242]: t
+                    - generic [aria-hidden] [ref=f10e243]: r
+                    - generic [aria-hidden] [ref=f10e244]: u
+                    - generic [aria-hidden] [ref=f10e245]: c
+                    - generic [aria-hidden] [ref=f10e246]: t
+                    - generic [aria-hidden] [ref=f10e247]: u
+                    - generic [aria-hidden] [ref=f10e248]: r
+                    - generic [aria-hidden] [ref=f10e249]: e
+                  - generic [aria-hidden] [ref=f10e250]:
+                    - generic [aria-hidden] [ref=f10e251]: s
+                    - generic [aria-hidden] [ref=f10e252]: p
+                    - generic [aria-hidden] [ref=f10e253]: e
+                    - generic [aria-hidden] [ref=f10e254]: "n"
+                    - generic [aria-hidden] [ref=f10e255]: d
+                    - generic [aria-hidden] [ref=f10e256]: s
+                    - generic [aria-hidden] [ref=f10e257]: ","
+                  - generic [aria-hidden] [ref=f10e258]:
+                    - generic [aria-hidden] [ref=f10e259]: w
+                    - generic [aria-hidden] [ref=f10e260]: i
+                    - generic [aria-hidden] [ref=f10e261]: t
+                    - generic [aria-hidden] [ref=f10e262]: h
+                  - generic [aria-hidden] [ref=f10e263]:
+                    - generic [aria-hidden] [ref=f10e264]: t
+                    - generic [aria-hidden] [ref=f10e265]: h
+                    - generic [aria-hidden] [ref=f10e266]: e
+                - generic [aria-hidden] [ref=f10e267]:
+                  - generic [aria-hidden] [ref=f10e268]:
+                    - generic [aria-hidden] [ref=f10e269]: a
+                    - generic [aria-hidden] [ref=f10e270]: u
+                    - generic [aria-hidden] [ref=f10e271]: t
+                    - generic [aria-hidden] [ref=f10e272]: o
+                    - generic [aria-hidden] [ref=f10e273]: m
+                    - generic [aria-hidden] [ref=f10e274]: a
+                    - generic [aria-hidden] [ref=f10e275]: t
+                    - generic [aria-hidden] [ref=f10e276]: i
+                    - generic [aria-hidden] [ref=f10e277]: o
+                    - generic [aria-hidden] [ref=f10e278]: "n"
+                  - generic [aria-hidden] [ref=f10e279]:
+                    - generic [aria-hidden] [ref=f10e280]: t
+                    - generic [aria-hidden] [ref=f10e281]: o
+                  - generic [aria-hidden] [ref=f10e282]:
+                    - generic [aria-hidden] [ref=f10e283]: a
+                    - generic [aria-hidden] [ref=f10e284]: c
+                    - generic [aria-hidden] [ref=f10e285]: t
+                  - generic [aria-hidden] [ref=f10e286]:
+                    - generic [aria-hidden] [ref=f10e287]: o
+                    - generic [aria-hidden] [ref=f10e288]: "n"
+                  - generic [aria-hidden] [ref=f10e289]:
+                    - generic [aria-hidden] [ref=f10e290]: i
+                    - generic [aria-hidden] [ref=f10e291]: t
+                  - generic [aria-hidden] [ref=f10e292]:
+                    - generic [aria-hidden] [ref=f10e293]: c
+                    - generic [aria-hidden] [ref=f10e294]: o
+                    - generic [aria-hidden] [ref=f10e295]: "n"
+                    - generic [aria-hidden] [ref=f10e296]: t
+                    - generic [aria-hidden] [ref=f10e297]: i
+                    - generic [aria-hidden] [ref=f10e298]: "n"
+                    - generic [aria-hidden] [ref=f10e299]: u
+                    - generic [aria-hidden] [ref=f10e300]: o
+                    - generic [aria-hidden] [ref=f10e301]: u
+                    - generic [aria-hidden] [ref=f10e302]: s
+                    - generic [aria-hidden] [ref=f10e303]: l
+                    - generic [aria-hidden] [ref=f10e304]: "y"
+                    - generic [aria-hidden] [ref=f10e305]: .
+          - generic [ref=f10e306]:
+            - generic:
+              - generic:
+                - generic:
+                  - paragraph:
+                    - generic [aria-hidden]: C
+                    - generic [aria-hidden]: l
+                    - generic [aria-hidden]: o
+                    - generic [aria-hidden]: u
+                    - generic [aria-hidden]: d
+                    - generic [aria-hidden]: f
+                    - generic [aria-hidden]: i
+                    - generic [aria-hidden]: "n"
+                    - generic [aria-hidden]: a
+                    - generic [aria-hidden]: "n"
+                    - generic [aria-hidden]: c
+                    - generic [aria-hidden]: e
+                  - paragraph:
+                    - generic [aria-hidden]: W
+                    - generic [aria-hidden]: e
+                    - generic [aria-hidden]: B
+                    - generic [aria-hidden]: u
+                    - generic [aria-hidden]: i
+                    - generic [aria-hidden]: l
+                    - generic [aria-hidden]: t
+                    - generic [aria-hidden]: I
+                    - generic [aria-hidden]: t
+                  - paragraph:
+                    - generic [aria-hidden]: "n"
+                    - generic [aria-hidden]: e
+                    - generic [aria-hidden]: e
+                    - generic [aria-hidden]: d
+                    - generic [aria-hidden]: e
+                    - generic [aria-hidden]: d
+                    - generic [aria-hidden]: a
+                    - generic [aria-hidden]: b
+                    - generic [aria-hidden]: r
+                    - generic [aria-hidden]: a
+                    - generic [aria-hidden]: i
+                    - generic [aria-hidden]: "n"
+                    - generic [aria-hidden]: .
+        - marquee [ref=f10e312]
+        - generic [ref=f10e420]:
+          - heading "Intelligence Layer" [level=2] [ref=f10e437]:
+            - generic [aria-hidden] [ref=f10e439]:
+              - generic [aria-hidden] [ref=f10e440]: I
+              - generic [aria-hidden] [ref=f10e441]: "n"
+              - generic [aria-hidden] [ref=f10e442]: t
+              - generic [aria-hidden] [ref=f10e443]: e
+              - generic [aria-hidden] [ref=f10e444]: l
+              - generic [aria-hidden] [ref=f10e445]: l
+              - generic [aria-hidden] [ref=f10e446]: i
+              - generic [aria-hidden] [ref=f10e447]: g
+              - generic [aria-hidden] [ref=f10e448]: e
+              - generic [aria-hidden] [ref=f10e449]: "n"
+              - generic [aria-hidden] [ref=f10e450]: c
+              - generic [aria-hidden] [ref=f10e451]: e
+            - generic [aria-hidden] [ref=f10e453]:
+              - generic [aria-hidden] [ref=f10e454]: L
+              - generic [aria-hidden] [ref=f10e455]: a
+              - generic [aria-hidden] [ref=f10e456]: "y"
+              - generic [aria-hidden] [ref=f10e457]: e
+              - generic [aria-hidden] [ref=f10e458]: r
+          - generic [ref=f10e463]:
+            - paragraph [ref=f10e467]: One view across every dollar, workload, and cloud you run.
+            - generic [ref=f10e489]:
+              - paragraph [ref=f10e493]: North is the intelligence layer for cloud finance. It Ingests every cost signal across your environment and turns it into recommendations, alerts, and actions from day one.
+              - paragraph [ref=f10e499]: Every action your team takes sharpens the brain further, so the platform you start with today is not the platform you'll have in a quarter.
+        - generic [ref=f10e506]:
+          - heading "Automation Layer" [level=2] [ref=f10e523]:
+            - generic [aria-hidden] [ref=f10e525]:
+              - generic [aria-hidden] [ref=f10e526]: A
+              - generic [aria-hidden] [ref=f10e527]: u
+              - generic [aria-hidden] [ref=f10e528]: t
+              - generic [aria-hidden] [ref=f10e529]: o
+              - generic [aria-hidden] [ref=f10e530]: m
+              - generic [aria-hidden] [ref=f10e531]: a
+              - generic [aria-hidden] [ref=f10e532]: t
+              - generic [aria-hidden] [ref=f10e533]: i
+              - generic [aria-hidden] [ref=f10e534]: o
+              - generic [aria-hidden] [ref=f10e535]: "n"
+            - generic [aria-hidden] [ref=f10e537]:
+              - generic [aria-hidden] [ref=f10e538]: L
+              - generic [aria-hidden] [ref=f10e539]: a
+              - generic [aria-hidden] [ref=f10e540]: "y"
+              - generic [aria-hidden] [ref=f10e541]: e
+              - generic [aria-hidden] [ref=f10e542]: r
+          - generic [ref=f10e547]:
+            - paragraph [ref=f10e551]: Your cloud finance team, running on autopilot.
+            - generic [ref=f10e573]:
+              - paragraph [ref=f10e577]: North continuously evaluates your environment, identifies the next best action, and keeps optimization moving without waiting for another review cycle.
+              - paragraph [ref=f10e583]: What used to require dashboards, spreadsheets, and manual reviews now runs quietly in the background, keeping costs under control.
+        - generic [ref=f10e590]:
+          - heading "Savings Layer" [level=2] [ref=f10e607]:
+            - generic [aria-hidden] [ref=f10e609]:
+              - generic [aria-hidden] [ref=f10e610]: S
+              - generic [aria-hidden] [ref=f10e611]: a
+              - generic [aria-hidden] [ref=f10e612]: v
+              - generic [aria-hidden] [ref=f10e613]: i
+              - generic [aria-hidden] [ref=f10e614]: "n"
+              - generic [aria-hidden] [ref=f10e615]: g
+              - generic [aria-hidden] [ref=f10e616]: s
+            - generic [aria-hidden] [ref=f10e618]:
+              - generic [aria-hidden] [ref=f10e619]: L
+              - generic [aria-hidden] [ref=f10e620]: a
+              - generic [aria-hidden] [ref=f10e621]: "y"
+              - generic [aria-hidden] [ref=f10e622]: e
+              - generic [aria-hidden] [ref=f10e623]: r
+          - generic [ref=f10e628]:
+            - paragraph [ref=f10e632]: Hundreds of cloud teams already trust North. Join them and unlock your savings.
+            - generic [ref=f10e639]:
+              - paragraph [ref=f10e640]: By the numbers
+              - list [ref=f10e641]:
+                - listitem [ref=f10e642]:
+                  - generic [ref=f10e643]: $2B+
+                  - generic [ref=f10e644]: in cloud spend under management
+                - listitem [ref=f10e645]:
+                  - generic [ref=f10e646]: UP TO 50%
+                  - generic [ref=f10e647]: savings on cloud spend
+                - listitem [ref=f10e648]:
+                  - generic [ref=f10e649]: 400M
+                  - generic [ref=f10e650]: saved for customers and counting
+        - generic [ref=f10e694]:
+          - heading "The Platform" [level=2] [ref=f10e698]:
+            - generic [aria-hidden] [ref=f10e700]:
+              - generic [aria-hidden] [ref=f10e701]: T
+              - generic [aria-hidden] [ref=f10e702]: h
+              - generic [aria-hidden] [ref=f10e703]: e
+            - generic [aria-hidden] [ref=f10e705]:
+              - generic [aria-hidden] [ref=f10e706]: P
+              - generic [aria-hidden] [ref=f10e707]: l
+              - generic [aria-hidden] [ref=f10e708]: a
+              - generic [aria-hidden] [ref=f10e709]: t
+              - generic [aria-hidden] [ref=f10e710]: f
+              - generic [aria-hidden] [ref=f10e711]: o
+              - generic [aria-hidden] [ref=f10e712]: r
+              - generic [aria-hidden] [ref=f10e713]: m
+          - generic [ref=f10e718]:
+            - paragraph [ref=f10e722]: One platform for every spend decision.
+            - paragraph [ref=f10e730]: North turns insight into action. Commitment coverage runs itself. Workload rightsizing happens continuously. Anomalies surface the moment they emerge. Reports deliver themselves.
+          - generic [ref=f10e754]:
+            - generic [ref=f10e758]:
+              - button "Allocate" [ref=f10e759]
+              - generic [ref=f10e764]:
+                - paragraph [ref=f10e765]: Map every cloud dollar to the source that drove it. Split costs across teams, projects, and customers without depending on perfect tags. Then tie that spend to the metrics your business runs on, like cost per customer or transaction.
+                - link "Explore Coststreams" [ref=f10e767] [cursor=pointer]:
+                  - /url: /features/coststreams
+            - generic [ref=f10e779]:
+              - button "Analyze" [ref=f10e780] [cursor=pointer]
+              - generic [ref=f10e784]:
+                - paragraph [ref=f10e785]: Explore, compare, and forecast cloud spend. Slice spend any way you need, see exactly what changed between any two periods, and project where it's heading, all without exporting a thing.
+                - link "Explore Analyze" [ref=f10e787] [cursor=pointer]:
+                  - /url: /features/analyze
+            - generic [ref=f10e799]:
+              - button "Monitor" [ref=f10e800] [cursor=pointer]
+              - generic [ref=f10e804]:
+                - paragraph [ref=f10e805]: Catch cost anomalies before they hit the bill. Routine spikes are filtered out, so every alert that reaches you comes with the root cause, cost impact, and a path to act.
+                - link "Explore Anomalies" [ref=f10e807] [cursor=pointer]:
+                  - /url: /features/anomalies
+            - generic [ref=f10e819]:
+              - button "Optimize" [ref=f10e820] [cursor=pointer]
+              - generic [ref=f10e824]:
+                - paragraph [ref=f10e825]: Cut waste across rate, resource, and workload. Continuously rightsize workloads, maximize commitment savings, track AI and LLM costs, and reduce environmental impact.
+                - link "Explore Optimize" [ref=f10e827] [cursor=pointer]:
+                  - /url: /features/optimize
+            - generic [ref=f10e839]:
+              - button "Ask" [ref=f10e840] [cursor=pointer]
+              - generic [ref=f10e844]:
+                - paragraph [ref=f10e845]: Ask anything about your cloud spend in plain language. Noros, North's FinOps Agent, answers questions, builds dashboards, flags anomalies, and surfaces savings, all from a single prompt.
+                - link "Explore Noros" [ref=f10e847] [cursor=pointer]:
+                  - /url: /features/ai-agent
+        - generic [ref=f10e854]:
+          - heading "Brave drastically cut cloud costs and reclaimed engineering time with North." [level=2] [ref=f10e858]:
+            - generic [aria-hidden] [ref=f10e860]:
+              - generic [aria-hidden] [ref=f10e861]: B
+              - generic [aria-hidden] [ref=f10e862]: r
+              - generic [aria-hidden] [ref=f10e863]: a
+              - generic [aria-hidden] [ref=f10e864]: v
+              - generic [aria-hidden] [ref=f10e865]: e
+            - generic [aria-hidden] [ref=f10e867]:
+              - generic [aria-hidden] [ref=f10e868]: d
+              - generic [aria-hidden] [ref=f10e869]: r
+              - generic [aria-hidden] [ref=f10e870]: a
+              - generic [aria-hidden] [ref=f10e871]: s
+              - generic [aria-hidden] [ref=f10e872]: t
+              - generic [aria-hidden] [ref=f10e873]: i
+              - generic [aria-hidden] [ref=f10e874]: c
+              - generic [aria-hidden] [ref=f10e875]: a
+              - generic [aria-hidden] [ref=f10e876]: l
+              - generic [aria-hidden] [ref=f10e877]: l
+              - generic [aria-hidden] [ref=f10e878]: "y"
+            - generic [aria-hidden] [ref=f10e879]:
+              - generic [aria-hidden] [ref=f10e880]:
+                - generic [aria-hidden] [ref=f10e881]: c
+                - generic [aria-hidden] [ref=f10e882]: u
+                - generic [aria-hidden] [ref=f10e883]: t
+              - generic [aria-hidden] [ref=f10e884]:
+                - generic [aria-hidden] [ref=f10e885]: c
+                - generic [aria-hidden] [ref=f10e886]: l
+                - generic [aria-hidden] [ref=f10e887]: o
+                - generic [aria-hidden] [ref=f10e888]: u
+                - generic [aria-hidden] [ref=f10e889]: d
+            - generic [aria-hidden] [ref=f10e890]:
+              - generic [aria-hidden] [ref=f10e891]:
+                - generic [aria-hidden] [ref=f10e892]: c
+                - generic [aria-hidden] [ref=f10e893]: o
+                - generic [aria-hidden] [ref=f10e894]: s
+                - generic [aria-hidden] [ref=f10e895]: t
+                - generic [aria-hidden] [ref=f10e896]: s
+              - generic [aria-hidden] [ref=f10e897]:
+                - generic [aria-hidden] [ref=f10e898]: a
+                - generic [aria-hidden] [ref=f10e899]: "n"
+                - generic [aria-hidden] [ref=f10e900]: d
+            - generic [aria-hidden] [ref=f10e902]:
+              - generic [aria-hidden] [ref=f10e903]: r
+              - generic [aria-hidden] [ref=f10e904]: e
+              - generic [aria-hidden] [ref=f10e905]: c
+              - generic [aria-hidden] [ref=f10e906]: l
+              - generic [aria-hidden] [ref=f10e907]: a
+              - generic [aria-hidden] [ref=f10e908]: i
+              - generic [aria-hidden] [ref=f10e909]: m
+              - generic [aria-hidden] [ref=f10e910]: e
+              - generic [aria-hidden] [ref=f10e911]: d
+            - generic [aria-hidden] [ref=f10e913]:
+              - generic [aria-hidden] [ref=f10e914]: e
+              - generic [aria-hidden] [ref=f10e915]: "n"
+              - generic [aria-hidden] [ref=f10e916]: g
+              - generic [aria-hidden] [ref=f10e917]: i
+              - generic [aria-hidden] [ref=f10e918]: "n"
+              - generic [aria-hidden] [ref=f10e919]: e
+              - generic [aria-hidden] [ref=f10e920]: e
+              - generic [aria-hidden] [ref=f10e921]: r
+              - generic [aria-hidden] [ref=f10e922]: i
+              - generic [aria-hidden] [ref=f10e923]: "n"
+              - generic [aria-hidden] [ref=f10e924]: g
+            - generic [aria-hidden] [ref=f10e925]:
+              - generic [aria-hidden] [ref=f10e926]:
+                - generic [aria-hidden] [ref=f10e927]: t
+                - generic [aria-hidden] [ref=f10e928]: i
+                - generic [aria-hidden] [ref=f10e929]: m
+                - generic [aria-hidden] [ref=f10e930]: e
+              - generic [aria-hidden] [ref=f10e931]:
+                - generic [aria-hidden] [ref=f10e932]: w
+                - generic [aria-hidden] [ref=f10e933]: i
+                - generic [aria-hidden] [ref=f10e934]: t
+                - generic [aria-hidden] [ref=f10e935]: h
+            - generic [aria-hidden] [ref=f10e937]:
+              - generic [aria-hidden] [ref=f10e938]: "N"
+              - generic [aria-hidden] [ref=f10e939]: o
+              - generic [aria-hidden] [ref=f10e940]: r
+              - generic [aria-hidden] [ref=f10e941]: t
+              - generic [aria-hidden] [ref=f10e942]: h
+              - generic [aria-hidden] [ref=f10e943]: .
+          - generic [ref=f10e948]:
+            - generic [ref=f10e951]:
+              - paragraph [ref=f10e952]: By the numbers
+              - generic [ref=f10e953]:
+                - generic [ref=f10e954]:
+                  - paragraph [ref=f10e955]: 52%
+                  - paragraph [ref=f10e956]: compute effective savings rate
+                - generic [ref=f10e957]:
+                  - paragraph [ref=f10e958]: 100%
+                  - paragraph [ref=f10e959]: savings utilization
+                - generic [ref=f10e960]:
+                  - paragraph [ref=f10e961]: "-10hrs"
+                  - paragraph [ref=f10e962]: spent on FinOps tasks per week
+            - generic [ref=f10e979]:
+              - generic [ref=f10e982]:
+                - paragraph [ref=f10e983]: Just try it, it's easy to adopt and the value is immediate. You will regret not using it sooner.
+                - generic [ref=f10e984]:
+                  - text: "-"
+                  - paragraph [ref=f10e985]: Mihai Plesa
+                  - paragraph [ref=f10e986]: VP of DevOps at Brave
+              - link "Start Your Free Trial" [ref=f10e996] [cursor=pointer]:
+                - /url: https://app.north.cloud
+                - generic [ref=f10e999]: Start Your
+                - paragraph [ref=f10e1000]: Free Trial
+        - generic [ref=f10e1008]:
+          - heading [level=2] [ref=f10e1012]:
+            - generic "Meaningful Cloud" [ref=f10e1013]:
+              - generic [aria-hidden] [ref=f10e1015]:
+                - generic [aria-hidden] [ref=f10e1016]: M
+                - generic [aria-hidden] [ref=f10e1017]: e
+                - generic [aria-hidden] [ref=f10e1018]: a
+                - generic [aria-hidden] [ref=f10e1019]: "n"
+                - generic [aria-hidden] [ref=f10e1020]: i
+                - generic [aria-hidden] [ref=f10e1021]: "n"
+                - generic [aria-hidden] [ref=f10e1022]: g
+                - generic [aria-hidden] [ref=f10e1023]: f
+                - generic [aria-hidden] [ref=f10e1024]: u
+                - generic [aria-hidden] [ref=f10e1025]: l
+              - generic [aria-hidden] [ref=f10e1027]:
+                - generic [aria-hidden] [ref=f10e1028]: C
+                - generic [aria-hidden] [ref=f10e1029]: l
+                - generic [aria-hidden] [ref=f10e1030]: o
+                - generic [aria-hidden] [ref=f10e1031]: u
+                - generic [aria-hidden] [ref=f10e1032]: d
+            - generic "Savings In Minutes." [ref=f10e1033]:
+              - generic [aria-hidden] [ref=f10e1035]:
+                - generic [aria-hidden] [ref=f10e1036]: S
+                - generic [aria-hidden] [ref=f10e1037]: a
+                - generic [aria-hidden] [ref=f10e1038]: v
+                - generic [aria-hidden] [ref=f10e1039]: i
+                - generic [aria-hidden] [ref=f10e1040]: "n"
+                - generic [aria-hidden] [ref=f10e1041]: g
+                - generic [aria-hidden] [ref=f10e1042]: s
+              - generic [aria-hidden] [ref=f10e1043]:
+                - generic [aria-hidden] [ref=f10e1044]:
+                  - generic [aria-hidden] [ref=f10e1045]: I
+                  - generic [aria-hidden] [ref=f10e1046]: "n"
+                - generic [aria-hidden] [ref=f10e1047]:
+                  - generic [aria-hidden] [ref=f10e1048]: M
+                  - generic [aria-hidden] [ref=f10e1049]: i
+                  - generic [aria-hidden] [ref=f10e1050]: "n"
+                  - generic [aria-hidden] [ref=f10e1051]: u
+                  - generic [aria-hidden] [ref=f10e1052]: t
+                  - generic [aria-hidden] [ref=f10e1053]: e
+                  - generic [aria-hidden] [ref=f10e1054]: s
+                  - generic [aria-hidden] [ref=f10e1055]: .
+          - generic [ref=f10e1066]:
+            - generic [ref=f10e1069]:
+              - paragraph [ref=f10e1070]: 5 min
+              - paragraph [ref=f10e1071]: from signup to first savings
+            - generic [ref=f10e1074]:
+              - generic [ref=f10e1077]:
+                - paragraph [ref=f10e1078]: UP TO 50%
+                - paragraph [ref=f10e1079]: savings on cloud spend
+              - generic [ref=f10e1082]:
+                - paragraph [ref=f10e1083]: "0"
+                - paragraph [ref=f10e1084]: long-term contracts required
+          - generic [ref=f10e1087]:
+            - generic [ref=f10e1090]:
+              - paragraph [ref=f10e1095]: Live in four steps.
+              - paragraph [ref=f10e1097]: Connect with read-only access and North goes to work immediately. Savings start landing minutes after signup.
+            - generic [ref=f10e1104]:
+              - paragraph [ref=f10e1109]: Two ways to save, without the lock-in.
+              - paragraph [ref=f10e1111]: Get the discounts of a three-year commitment without signing one. North can hold the contracts itself, or manage your own commitments automatically, scaling them up and down as your usage shifts.
+            - generic [ref=f10e1118]:
+              - paragraph [ref=f10e1123]: Every cloud in one workflow.
+              - paragraph [ref=f10e1125]: Manage and optimize AWS, GCP, and Azure together, without jumping between tools or piecing together exports.
+            - generic [ref=f10e1132]:
+              - paragraph [ref=f10e1137]: See what your AI is really costing you.
+              - paragraph [ref=f10e1139]: Token and model spend from Anthropic, OpenAI, and your data tools sits right next to your cloud bill, so the fastest-growing line is finally one you can break down.
+        - generic [ref=f10e1142]:
+          - generic [ref=f10e1145]:
+            - heading "Cloud spend used to run on guesswork." [level=2] [ref=f10e1146]:
+              - generic [aria-hidden] [ref=f10e1147]:
+                - generic [aria-hidden] [ref=f10e1148]:
+                  - generic [aria-hidden] [ref=f10e1149]: C
+                  - generic [aria-hidden] [ref=f10e1150]: l
+                  - generic [aria-hidden] [ref=f10e1151]: o
+                  - generic [aria-hidden] [ref=f10e1152]: u
+                  - generic [aria-hidden] [ref=f10e1153]: d
+                - generic [aria-hidden] [ref=f10e1154]:
+                  - generic [aria-hidden] [ref=f10e1155]: s
+                  - generic [aria-hidden] [ref=f10e1156]: p
+                  - generic [aria-hidden] [ref=f10e1157]: e
+                  - generic [aria-hidden] [ref=f10e1158]: "n"
+                  - generic [aria-hidden] [ref=f10e1159]: d
+              - generic [aria-hidden] [ref=f10e1160]:
+                - generic [aria-hidden] [ref=f10e1161]:
+                  - generic [aria-hidden] [ref=f10e1162]: u
+                  - generic [aria-hidden] [ref=f10e1163]: s
+                  - generic [aria-hidden] [ref=f10e1164]: e
+                  - generic [aria-hidden] [ref=f10e1165]: d
+                - generic [aria-hidden] [ref=f10e1166]:
+                  - generic [aria-hidden] [ref=f10e1167]: t
+                  - generic [aria-hidden] [ref=f10e1168]: o
+                - generic [aria-hidden] [ref=f10e1169]:
+                  - generic [aria-hidden] [ref=f10e1170]: r
+                  - generic [aria-hidden] [ref=f10e1171]: u
+                  - generic [aria-hidden] [ref=f10e1172]: "n"
+              - generic [aria-hidden] [ref=f10e1174]:
+                - generic [aria-hidden] [ref=f10e1175]: o
+                - generic [aria-hidden] [ref=f10e1176]: "n"
+              - generic [aria-hidden] [ref=f10e1178]:
+                - generic [aria-hidden] [ref=f10e1179]: g
+                - generic [aria-hidden] [ref=f10e1180]: u
+                - generic [aria-hidden] [ref=f10e1181]: e
+                - generic [aria-hidden] [ref=f10e1182]: s
+                - generic [aria-hidden] [ref=f10e1183]: s
+                - generic [aria-hidden] [ref=f10e1184]: w
+                - generic [aria-hidden] [ref=f10e1185]: o
+                - generic [aria-hidden] [ref=f10e1186]: r
+                - generic [aria-hidden] [ref=f10e1187]: k
+                - generic [aria-hidden] [ref=f10e1188]: .
+            - paragraph [ref=f10e1189]: Now it runs on North.
+          - generic [ref=f10e1200]:
+            - generic [ref=f10e1201]:
+              - generic [ref=f10e1202] [cursor=pointer]: With North
+              - generic [ref=f10e1203] [cursor=pointer]: Before North
+            - generic [ref=f10e1205]:
+              - generic [ref=f10e1206]:
+                - generic [ref=f10e1207]: "48"
+                - paragraph [ref=f10e1210]: Effective savings rate
+                - generic [ref=f10e1211]:
+                  - link [ref=f10e1213] [cursor=pointer]:
+                    - /url: https://app.north.cloud
+                    - paragraph [ref=f10e1214]: Free Trial
+                  - link [ref=f10e1216] [cursor=pointer]:
+                    - /url: /book-a-demo
+                    - paragraph [ref=f10e1217]: Book Demo
+              - generic [ref=f10e1218]:
+                - generic [ref=f10e1221]:
+                  - paragraph [ref=f10e1222]: < 1.5 hr
+                  - paragraph [ref=f10e1223]: Time spend by team per week on FinOps
+                - generic [ref=f10e1232]:
+                  - paragraph [ref=f10e1233]: 1 mo.
+                  - paragraph [ref=f10e1234]: Commitment change windows
+        - generic [ref=f10e1243]:
+          - generic [ref=f10e1246]:
+            - paragraph [ref=f10e1247]: Secure, integrated, and ready to plug into the tools your spend already runs through.
+            - heading "Built for the demands of modern teams." [level=2] [ref=f10e1248]:
+              - generic [aria-hidden] [ref=f10e1249]:
+                - generic [aria-hidden] [ref=f10e1250]:
+                  - generic [aria-hidden] [ref=f10e1251]: B
+                  - generic [aria-hidden] [ref=f10e1252]: u
+                  - generic [aria-hidden] [ref=f10e1253]: i
+                  - generic [aria-hidden] [ref=f10e1254]: l
+                  - generic [aria-hidden] [ref=f10e1255]: t
+                - generic [aria-hidden] [ref=f10e1256]:
+                  - generic [aria-hidden] [ref=f10e1257]: f
+                  - generic [aria-hidden] [ref=f10e1258]: o
+                  - generic [aria-hidden] [ref=f10e1259]: r
+                - generic [aria-hidden] [ref=f10e1260]:
+                  - generic [aria-hidden] [ref=f10e1261]: t
+                  - generic [aria-hidden] [ref=f10e1262]: h
+                  - generic [aria-hidden] [ref=f10e1263]: e
+              - generic [aria-hidden] [ref=f10e1264]:
+                - generic [aria-hidden] [ref=f10e1265]:
+                  - generic [aria-hidden] [ref=f10e1266]: d
+                  - generic [aria-hidden] [ref=f10e1267]: e
+                  - generic [aria-hidden] [ref=f10e1268]: m
+                  - generic [aria-hidden] [ref=f10e1269]: a
+                  - generic [aria-hidden] [ref=f10e1270]: "n"
+                  - generic [aria-hidden] [ref=f10e1271]: d
+                  - generic [aria-hidden] [ref=f10e1272]: s
+                - generic [aria-hidden] [ref=f10e1273]:
+                  - generic [aria-hidden] [ref=f10e1274]: o
+                  - generic [aria-hidden] [ref=f10e1275]: f
+              - generic [aria-hidden] [ref=f10e1277]:
+                - generic [aria-hidden] [ref=f10e1278]: m
+                - generic [aria-hidden] [ref=f10e1279]: o
+                - generic [aria-hidden] [ref=f10e1280]: d
+                - generic [aria-hidden] [ref=f10e1281]: e
+                - generic [aria-hidden] [ref=f10e1282]: r
+                - generic [aria-hidden] [ref=f10e1283]: "n"
+              - generic [aria-hidden] [ref=f10e1285]:
+                - generic [aria-hidden] [ref=f10e1286]: t
+                - generic [aria-hidden] [ref=f10e1287]: e
+                - generic [aria-hidden] [ref=f10e1288]: a
+                - generic [aria-hidden] [ref=f10e1289]: m
+                - generic [aria-hidden] [ref=f10e1290]: s
+                - generic [aria-hidden] [ref=f10e1291]: .
+          - generic [ref=f10e1301]:
+            - generic [ref=f10e1304]:
+              - paragraph [ref=f10e1305]: Integrations
+              - paragraph [ref=f10e1306]: Connected to your full cloud and AI stack
+              - paragraph [ref=f10e1307]: Connect North to the cloud, AI, and data platforms your spend already runs through, including AWS, GCP, Azure, OpenAI, Anthropic, Snowflake, and Databricks.
+              - link "Explore Integrations" [ref=f10e1309] [cursor=pointer]:
+                - /url: /integrations
+            - generic [ref=f10e1316]:
+              - paragraph [ref=f10e1317]: Security
+              - paragraph [ref=f10e1318]: Compliance-first security at every layer.
+              - paragraph [ref=f10e1319]: Secure your cloud with SOC 2 Type II compliance and least-privilege, read-only IAM. North reads from your accounts and never writes to them, so your data stays protected with no third-party risk.
+        - generic [ref=f10e1329]:
+          - heading [level=2] [ref=f10e1333]:
+            - generic "Their Savings," [ref=f10e1334]:
+              - generic [aria-hidden] [ref=f10e1336]:
+                - generic [aria-hidden] [ref=f10e1337]: T
+                - generic [aria-hidden] [ref=f10e1338]: h
+                - generic [aria-hidden] [ref=f10e1339]: e
+                - generic [aria-hidden] [ref=f10e1340]: i
+                - generic [aria-hidden] [ref=f10e1341]: r
+              - generic [aria-hidden] [ref=f10e1343]:
+                - generic [aria-hidden] [ref=f10e1344]: S
+                - generic [aria-hidden] [ref=f10e1345]: a
+                - generic [aria-hidden] [ref=f10e1346]: v
+                - generic [aria-hidden] [ref=f10e1347]: i
+                - generic [aria-hidden] [ref=f10e1348]: "n"
+                - generic [aria-hidden] [ref=f10e1349]: g
+                - generic [aria-hidden] [ref=f10e1350]: s
+                - generic [aria-hidden] [ref=f10e1351]: ","
+            - generic "Their Words." [ref=f10e1352]:
+              - generic [aria-hidden] [ref=f10e1354]:
+                - generic [aria-hidden] [ref=f10e1355]: T
+                - generic [aria-hidden] [ref=f10e1356]: h
+                - generic [aria-hidden] [ref=f10e1357]: e
+                - generic [aria-hidden] [ref=f10e1358]: i
+                - generic [aria-hidden] [ref=f10e1359]: r
+              - generic [aria-hidden] [ref=f10e1361]:
+                - generic [aria-hidden] [ref=f10e1362]: W
+                - generic [aria-hidden] [ref=f10e1363]: o
+                - generic [aria-hidden] [ref=f10e1364]: r
+                - generic [aria-hidden] [ref=f10e1365]: d
+                - generic [aria-hidden] [ref=f10e1366]: s
+                - generic [aria-hidden] [ref=f10e1367]: .
+          - generic [ref=f10e1375]:
+            - generic [ref=f10e1378]:
+              - paragraph [ref=f10e1379]: “ North took 5 minutes to setup and showed me we could save 40%. To this day, it's the fastest & clearest demo of ROI I have ever seen in business.”
+              - generic [ref=f10e1380]:
+                - text: "-"
+                - paragraph [ref=f10e1381]: Andrew Gostine
+                - paragraph [ref=f10e1382]: Co-founder & CEO Artisight
+            - generic [ref=f10e1389]:
+              - paragraph [ref=f10e1390]: “ North is helping us get the right reservations and savings plans in place as we stabilize our infrastructure. And down the line, we’ll look at extending this strategy even further.”
+              - generic [ref=f10e1391]:
+                - text: "-"
+                - paragraph [ref=f10e1392]: Primoz Fonda
+                - paragraph [ref=f10e1393]: VP of Engineering SumUp
+            - generic [ref=f10e1400]:
+              - paragraph [ref=f10e1401]: “ The flexibility and ease of integration really stood out. If someone told me from the start it would be this easy to try, use, and save, I wouldn’t have believed them. But it is. And the savings are real.”
+              - generic [ref=f10e1402]:
+                - text: "-"
+                - paragraph [ref=f10e1403]: Yossi Mastalon
+                - paragraph [ref=f10e1404]: Director of Cloud Infrastructure and Security Stayntouch
+        - generic [ref=f10e1410]:
+          - heading "Cloud Finance, On Autopilot." [level=2] [ref=f10e1427]:
+            - generic [aria-hidden] [ref=f10e1428]:
+              - generic [aria-hidden] [ref=f10e1429]:
+                - generic [aria-hidden] [ref=f10e1430]: C
+                - generic [aria-hidden] [ref=f10e1431]: l
+                - generic [aria-hidden] [ref=f10e1432]: o
+                - generic [aria-hidden] [ref=f10e1433]: u
+                - generic [aria-hidden] [ref=f10e1434]: d
+              - generic [aria-hidden] [ref=f10e1435]:
+                - generic [aria-hidden] [ref=f10e1436]: F
+                - generic [aria-hidden] [ref=f10e1437]: i
+                - generic [aria-hidden] [ref=f10e1438]: "n"
+                - generic [aria-hidden] [ref=f10e1439]: a
+                - generic [aria-hidden] [ref=f10e1440]: "n"
+                - generic [aria-hidden] [ref=f10e1441]: c
+                - generic [aria-hidden] [ref=f10e1442]: e
+                - generic [aria-hidden] [ref=f10e1443]: ","
+            - generic [aria-hidden] [ref=f10e1444]:
+              - generic [aria-hidden] [ref=f10e1445]:
+                - generic [aria-hidden] [ref=f10e1446]: O
+                - generic [aria-hidden] [ref=f10e1447]: "n"
+              - generic [aria-hidden] [ref=f10e1448]:
+                - generic [aria-hidden] [ref=f10e1449]: A
+                - generic [aria-hidden] [ref=f10e1450]: u
+                - generic [aria-hidden] [ref=f10e1451]: t
+                - generic [aria-hidden] [ref=f10e1452]: o
+                - generic [aria-hidden] [ref=f10e1453]: p
+                - generic [aria-hidden] [ref=f10e1454]: i
+                - generic [aria-hidden] [ref=f10e1455]: l
+                - generic [aria-hidden] [ref=f10e1456]: o
+                - generic [aria-hidden] [ref=f10e1457]: t
+                - generic [aria-hidden] [ref=f10e1458]: .
+          - generic [ref=f10e1463]:
+            - paragraph [ref=f10e1467]: Fast to deploy. Easy to scale. Built for the way real teams operate.
+            - generic [ref=f10e1472]:
+              - link "Start your Free Trial" [ref=f10e1476] [cursor=pointer]:
+                - /url: https://app.north.cloud
+                - generic [ref=f10e1479]: Start your
+                - paragraph [ref=f10e1480]: Free Trial
+              - link "Schedule a Book Demo" [ref=f10e1488] [cursor=pointer]:
+                - /url: /book-a-demo
+                - generic [ref=f10e1491]: Schedule a
+                - paragraph [ref=f10e1492]: Book Demo
+        - generic [ref=f10e1494]:
+          - generic [ref=f10e1497]:
+            - heading "FAQs" [level=2] [ref=f10e1498]:
+              - generic [aria-hidden] [ref=f10e1500]:
+                - generic [aria-hidden] [ref=f10e1501]: F
+                - generic [aria-hidden] [ref=f10e1502]: A
+                - generic [aria-hidden] [ref=f10e1503]: Q
+                - generic [aria-hidden] [ref=f10e1504]: s
+            - paragraph [ref=f10e1505]: Find answers to commonly asked questions about our product and services.
+          - generic [ref=f10e1514]:
+            - generic [ref=f10e1517] [cursor=pointer]:
+              - paragraph [ref=f10e1519]: What is North.cloud?
+              - paragraph [ref=f10e1523]: North is the financial operating system for your cloud, AI, and data infrastructure. It's the intelligence layer that gives you one unified view across every dollar you spend—then automates the actions that reduce costs and eliminate complexity. Think of it as cloud finance that thinks, learns, and acts continuously without requiring dashboards, spreadsheets, or manual reviews.
+            - generic [ref=f10e1530] [cursor=pointer]:
+              - paragraph [ref=f10e1532]: Is North.cloud an AWS, GCP, or Azure reseller?
+              - paragraph [ref=f10e1536]: No. North doesn’t resell cloud infrastructure. We integrate with your existing AWS, GCP, and Azure accounts to give you better visibility, control, and automation;without altering how you buy cloud.
+            - generic [ref=f10e1543] [cursor=pointer]:
+              - paragraph [ref=f10e1545]: Will North force me to replace my existing savings plans or reserved instances?
+              - paragraph [ref=f10e1549]: No. North works alongside whatever commitment strategy you already have—EDPs, CUDs, Reserved Instances (RIs), Savings Plans (SPs). Flexbot uses North-owned commitments for teams that want flexibility and zero lock-in. Autobot automates customer-owned purchasing month-to-month. Most teams run both, or layer North's optimization on top of existing commitments. The choice is yours, with no switching required.
+            - generic [ref=f10e1556] [cursor=pointer]:
+              - paragraph [ref=f10e1558]: Why do I need an "operating system" for cloud costs?
+              - paragraph [ref=f10e1562]: Cloud spend is no longer just infrastructure—it's your cloud, AI, and data platforms running together, often invisibly. Most teams stitch together five separate tools for allocation, reporting, optimization, forecasting, and commitment management. North brings the entire FinOps lifecycle into a single system so finance and engineering see one set of numbers they both trust, and optimization runs on autopilot instead of requiring projects.
+            - generic [ref=f10e1569] [cursor=pointer]:
+              - paragraph [ref=f10e1571]: How fast can we actually get to savings?
+              - paragraph [ref=f10e1575]: "North connects in 5 minutes and analyzes your account for free—so you see specific savings opportunities before you commit. Most teams see meaningful savings within 30 days, with larger impact compounding over time as rightsizing, commitment optimization, and allocation-driven accountability kick in. Average customer savings: 35–50% across the cloud stack."
+            - generic [ref=f10e1582] [cursor=pointer]:
+              - paragraph [ref=f10e1584]: Do I have to commit for years to get these savings?
+              - paragraph [ref=f10e1588]: "No. North offers month-to-month flexibility on our plans, with the exception of Premier Plus, which has a one-year contract. On commitments themselves, you have two options: Flexbot (North holds the contracts, zero lock-in for you, can retrieve in 7 days average) or Autobot (you own commitments, North automates month-to-month purchasing). Either way, you get the discounts without the risk. Run both if you want maximum flexibility."
+            - generic [ref=f10e1595] [cursor=pointer]:
+              - paragraph [ref=f10e1597]: Does this work if we're multi-cloud?
+              - paragraph [ref=f10e1601]: Yes. AWS, GCP, and Azure all optimized side by side in one view—no switching tools or stitching exports. One set of numbers everyone trusts. If you use multiple clouds, they finally stop being separate billing headaches and become one unified optimization problem.
+            - generic [ref=f10e1608] [cursor=pointer]:
+              - paragraph [ref=f10e1610]: Is my data secure with North?
+              - paragraph [ref=f10e1614]: Yes. SOC 2 Type II certified, least-privilege IAM roles, and compliance-first security at every layer. Your data stays protected without introducing third-party risk. North is built for the security demands of modern enterprise teams.
+        - generic [ref=f10e1616]:
+          - generic [ref=f10e1623]:
+            - generic [ref=f10e1625]:
+              - generic [ref=f10e1626]: Enter your email for updates
+              - textbox "Enter your email for updates" [ref=f10e1627]
+            - button "Subscribe" [ref=f10e1630] [cursor=pointer]
+          - generic [ref=f10e1635]:
+            - generic [ref=f10e1639]:
+              - heading "Features" [level=3] [ref=f10e1640]
+              - list [ref=f10e1642]:
+                - listitem [ref=f10e1643]:
+                  - button "Manage" [ref=f10e1644] [cursor=pointer]
+                  - list [ref=f10e1648]:
+                    - listitem [ref=f10e1649]:
+                      - link "Overview" [ref=f10e1652] [cursor=pointer]:
+                        - /url: /features/manage
+                    - listitem [ref=f10e1653]:
+                      - link "AI Agent" [ref=f10e1656] [cursor=pointer]:
+                        - /url: /features/ai-agent
+                    - listitem [ref=f10e1657]:
+                      - link "Coststreams" [ref=f10e1660] [cursor=pointer]:
+                        - /url: /features/coststreams
+                    - listitem [ref=f10e1661]:
+                      - link "Analyze" [ref=f10e1664] [cursor=pointer]:
+                        - /url: /features/analyze
+                    - listitem [ref=f10e1665]:
+                      - link "Anomalies" [ref=f10e1668] [cursor=pointer]:
+                        - /url: /features/anomalies
+                    - listitem [ref=f10e1669]:
+                      - link "Greenops" [ref=f10e1672] [cursor=pointer]:
+                        - /url: /features/greenops
+                - listitem [ref=f10e1673]:
+                  - button "Optimize" [ref=f10e1674] [cursor=pointer]
+                  - list [ref=f10e1678]:
+                    - listitem [ref=f10e1679]:
+                      - link "Overview" [ref=f10e1682] [cursor=pointer]:
+                        - /url: /features/optimize
+                    - listitem [ref=f10e1683]:
+                      - link "Coverage" [ref=f10e1686] [cursor=pointer]:
+                        - /url: /features/coverage
+                    - listitem [ref=f10e1687]:
+                      - link "Rightsize" [ref=f10e1690] [cursor=pointer]:
+                        - /url: /features/rightsize
+                    - listitem [ref=f10e1691]:
+                      - link "Tokenflow" [ref=f10e1694] [cursor=pointer]:
+                        - /url: /features/tokenflow
+            - generic [ref=f10e1706]:
+              - heading "Integrations" [level=3] [ref=f10e1707]
+              - list [ref=f10e1709]:
+                - listitem [ref=f10e1710]:
+                  - link "AWS" [ref=f10e1711] [cursor=pointer]:
+                    - /url: /integrations/aws
+                - listitem [ref=f10e1712]:
+                  - link "GCP" [ref=f10e1713] [cursor=pointer]:
+                    - /url: /integrations/gcp
+                - listitem [ref=f10e1714]:
+                  - link "Azure" [ref=f10e1715] [cursor=pointer]:
+                    - /url: /integrations/azure
+            - generic [ref=f10e1723]:
+              - heading "Solutions" [level=3] [ref=f10e1724]
+              - list [ref=f10e1726]:
+                - listitem [ref=f10e1727]:
+                  - button "Use Cases" [ref=f10e1728] [cursor=pointer]
+                  - list [ref=f10e1732]:
+                    - listitem [ref=f10e1733]:
+                      - link "Generative dashboards" [ref=f10e1736] [cursor=pointer]:
+                        - /url: /generative-dashboards
+                    - listitem [ref=f10e1737]:
+                      - link "Automated rate optimization" [ref=f10e1740] [cursor=pointer]:
+                        - /url: /automated-rate-optimization
+                    - listitem [ref=f10e1741]:
+                      - link "Multi-cloud management" [ref=f10e1744] [cursor=pointer]:
+                        - /url: /multi-cloud-management
+                    - listitem [ref=f10e1745]:
+                      - link "Dynamic cloud optimization" [ref=f10e1748] [cursor=pointer]:
+                        - /url: /dynamic-cloud-optimization
+                    - listitem [ref=f10e1749]:
+                      - link "Cost allocation" [ref=f10e1752] [cursor=pointer]:
+                        - /url: /cost-allocation-and-chargeback
+                    - listitem [ref=f10e1753]:
+                      - link "Usage optimization" [ref=f10e1756] [cursor=pointer]:
+                        - /url: /usage-optimization
+                    - listitem [ref=f10e1757]:
+                      - link "Agentic FinOps" [ref=f10e1760] [cursor=pointer]:
+                        - /url: /agentic-finops
+                - listitem [ref=f10e1761]:
+                  - button "Audiences" [ref=f10e1762] [cursor=pointer]
+                  - list [ref=f10e1766]:
+                    - listitem [ref=f10e1767]:
+                      - link "Engineering" [ref=f10e1770] [cursor=pointer]:
+                        - /url: /engineering-leaders
+                    - listitem [ref=f10e1771]:
+                      - link "Finance" [ref=f10e1774] [cursor=pointer]:
+                        - /url: /finance-leaders
+                    - listitem [ref=f10e1775]:
+                      - link "Resellers & MSPs" [ref=f10e1778] [cursor=pointer]:
+                        - /url: /resellers-msps
+            - generic [ref=f10e1786]:
+              - heading "Company" [level=3] [ref=f10e1787]
+              - list [ref=f10e1789]:
+                - listitem [ref=f10e1790]:
+                  - button "Resources" [ref=f10e1791] [cursor=pointer]
+                  - list [ref=f10e1795]:
+                    - listitem [ref=f10e1796]:
+                      - link "Why North" [ref=f10e1799] [cursor=pointer]:
+                        - /url: /why-north
+                    - listitem [ref=f10e1800]:
+                      - link "Blog" [ref=f10e1803] [cursor=pointer]:
+                        - /url: /blog
+                    - listitem [ref=f10e1804]:
+                      - link "Careers" [ref=f10e1807] [cursor=pointer]:
+                        - /url: /careers
+                    - listitem [ref=f10e1808]:
+                      - link "Documentation" [ref=f10e1811] [cursor=pointer]:
+                        - /url: https://docs.north.cloud/docs?_gl=1*12z58kz*_gcl_au*Mzc3Mjk1OTE3LjE3ODc5MjEyOTcuLS4tLjE3OTA4NjEwOTAuNDk1MTA1NDk0LjE3OTIwMTc3MzQuMTc5MjA3MDA5OA..
+                - listitem [ref=f10e1812]:
+                  - link "Pricing" [ref=f10e1813] [cursor=pointer]:
+                    - /url: /pricing
+                - listitem [ref=f10e1814]:
+                  - link "Book a demo" [ref=f10e1815] [cursor=pointer]:
+                    - /url: /book-a-demo
+                - listitem [ref=f10e1816]:
+                  - link "Media inquiries" [ref=f10e1817] [cursor=pointer]:
+                    - /url: mailto:media@north.cloud
+          - generic [ref=f10e1822]:
+            - link [ref=f10e1825] [cursor=pointer]:
+              - /url: /
+            - generic [ref=f10e1832]:
+              - heading "Legal" [level=3] [ref=f10e1833]
+              - list [ref=f10e1834]:
+                - listitem [ref=f10e1835]:
+                  - link "Privacy policy" [ref=f10e1836] [cursor=pointer]:
+                    - /url: /privacy-policy
+                - listitem [ref=f10e1837]:
+                  - link "Terms and conditions for North services" [ref=f10e1838] [cursor=pointer]:
+                    - /url: /terms-of-service
+                - listitem [ref=f10e1839]:
+                  - link "AI Policy" [ref=f10e1840] [cursor=pointer]:
+                    - /url: /ai-policy
+                - listitem [ref=f10e1841]:
+                  - link "Trust Center" [ref=f10e1842] [cursor=pointer]:
+                    - /url: https://trust.north.cloud/
+                - listitem [ref=f10e1843]:
+                  - link "Security" [ref=f10e1844] [cursor=pointer]:
+                    - /url: https://docs.north.cloud/docs/getting-started/security
+            - generic [ref=f10e1850]:
+              - heading "North" [level=3] [ref=f10e1851]
+              - paragraph [ref=f10e1852]: 55 Washington Street Suite 902 Brooklyn, NY 11201
+          - generic [ref=f10e1890]:
+            - paragraph [ref=f10e1891]: © 2026 North Cloud Holdings Inc.
+            - paragraph [ref=f10e1892]:
+              - text: Website by
+              - link "Non-Linear Studio" [ref=f10e1893] [cursor=pointer]:
+                - /url: https://non-linear.studio/
+  - iframe
+  - dialog "Cookie Consent" [ref=f10e1898]:
+    - generic [ref=f10e1899]:
+      - generic [ref=f10e1900]:
+        - heading "Cookie Consent" [level=2] [ref=f10e1901]
+        - paragraph [ref=f10e1902]: This website uses essential cookies to make the site work. With your consent, we may also use optional cookies for analytics, functionality, and marketing. You can accept all, reject all non-essential cookies, or manage your preferences.
+      - generic [ref=f10e1903]:
+        - generic [ref=f10e1904]:
+          - button "Accept all" [ref=f10e1905] [cursor=pointer]
+          - button "Reject all" [ref=f10e1906] [cursor=pointer]
+        - button "Manage preferences" [ref=f10e1908] [cursor=pointer]

@@ -116,6 +116,13 @@ export const about = [
   "Away from the keyboard you'll find me on a basketball court, over a chessboard, reading manga, or watching the markets move. Those habits shape how I design and build.",
 ];
 
+/** Small labelled facts shown under the about copy. */
+export const facts = [
+  { label: "Now", value: "SwiftUI at the Apple Developer Academy, Bali" },
+  { label: "Off the clock", value: "Hoops, chess, manga, markets" },
+  { label: "Method", value: "Sketch, build, ship" },
+];
+
 /** Each step also gets a chess phase, shown next to its number. */
 export const steps = [
   { n: "01", aside: "Opening", title: "Sketch", text: "Start with the problem. Rough ideas, quick prototypes, lots of questions." },

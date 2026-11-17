@@ -1,13 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
 import { tour } from "../data/content";
 import type { DeskId } from "../lib/buildDesk";
 import { ChessPuzzle } from "./ChessPuzzle";
+import { useScrollProgress } from "../hooks/useScrollProgress";
 import { DeskScene } from "./DeskScene";
 import { HoopGame } from "./HoopGame";
 import { MangaPanels } from "./MangaPanels";
 import { MarketChart } from "./MarketChart";
 import { Reveal } from "./Reveal";
+import { SplitText } from "./SplitText";
 
 interface Interest {
   id: DeskId;
@@ -44,6 +46,8 @@ const INTERESTS: Interest[] = [
 ];
 
 export function Interests() {
+  const sectionRef = useRef<HTMLElement | null>(null);
+  useScrollProgress(sectionRef);
   const [selected, setSelected] = useState<DeskId | null>(null);
   const active = INTERESTS.find((i) => i.id === selected);
 
@@ -55,13 +59,19 @@ export function Interests() {
   }, [selected]);
 
   return (
-    <section className="desk" id="interests" data-tour={tour.interests}>
-      <Reveal as="h2" className="desk__heading">
-        Off the clock
+    <section ref={sectionRef} className="desk" id="interests" data-tone="ink" data-tour={tour.interests}>
+      <Reveal as="h2" className="desk__heading reveal--split">
+        <SplitText text="Off the clock" />
       </Reveal>
 
       <Reveal className="desk3d">
         <DeskScene selected={selected} onPick={setSelected} />
+        <span className="desk3d__frame" aria-hidden="true">
+          <b>+</b>
+          <b>+</b>
+          <b>+</b>
+          <b>+</b>
+        </span>
         {active ? (
           <aside className="desk3d__panel" role="dialog" aria-label={active.title}>
             <button type="button" className="pill desk3d__close" onClick={() => setSelected(null)}>

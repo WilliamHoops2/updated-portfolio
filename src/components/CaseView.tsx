@@ -58,6 +58,7 @@ export function CaseView({ project, onClose, onGo }: CaseViewProps) {
       ref={rootRef}
       className="case"
       role="dialog"
+      data-lenis-prevent
       aria-modal="true"
       aria-label={`${project.title}, project details`}
       style={projectVars(project)}

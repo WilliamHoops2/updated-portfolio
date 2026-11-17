@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { CSSProperties } from "react";
-import { about, heroWords, profile, statement, ticker, tour } from "../data/content";
+import { about, facts, heroWords, profile, statement, ticker, tour } from "../data/content";
+import { useScrollProgress } from "../hooks/useScrollProgress";
+import { useTickerVelocity } from "../hooks/useTickerVelocity";
 import { useHeroParallax } from "../hooks/useHeroParallax";
 import { useHeroPointer } from "../hooks/useHeroPointer";
 import { HeroBackdrop } from "./HeroBackdrop";
@@ -78,14 +80,30 @@ export function Hero({ ready, onHover }: HeroProps) {
   const titleRef = useRef<HTMLHeadingElement | null>(null);
   useHeroPointer(sectionRef, titleRef);
   useHeroParallax(sectionRef);
+  const tickerRef = useRef<HTMLDivElement | null>(null);
+  useTickerVelocity(tickerRef);
 
   return (
-    <section ref={sectionRef} className={`hero ${ready ? "is-go" : ""}`.trim()} id="top">
+    <section ref={sectionRef} className={`hero ${ready ? "is-go" : ""}`.trim()} id="top" data-tone="paper">
       <HeroBackdrop containerRef={sectionRef} />
-      <div className="hero__top mono">
-        <span>{profile.role}</span>
-        <span>{profile.location}</span>
-      </div>
+      <dl className="hero__top mono">
+        <div>
+          <dt>Role</dt>
+          <dd>{profile.role}</dd>
+        </div>
+        <div>
+          <dt>Based in</dt>
+          <dd>{profile.location}</dd>
+        </div>
+        <div>
+          <dt>Now</dt>
+          <dd>{facts[0].value}</dd>
+        </div>
+        <div>
+          <dt>Index</dt>
+          <dd>({profile.year})</dd>
+        </div>
+      </dl>
 
       <h1 ref={titleRef} className="hero__title" aria-label={profile.display}>
         <span className="hero__mask" aria-hidden="true">
@@ -111,7 +129,7 @@ export function Hero({ ready, onHover }: HeroProps) {
         </a>
       </div>
 
-      <div className="ticker" aria-hidden="true">
+      <div ref={tickerRef} className="ticker" aria-hidden="true">
         <div className="ticker__track">
           {[...ticker, ...ticker].map((item, i) => (
             <span className="ticker__item" key={`${item}-${i}`}>
@@ -125,18 +143,59 @@ export function Hero({ ready, onHover }: HeroProps) {
   );
 }
 
+/** The statement lights up word by word as it scrolls into view. */
+function ScrollWords() {
+  const ref = useRef<HTMLParagraphElement | null>(null);
+  useScrollProgress(ref);
+
+  const words = [
+    ...statement.before.split(" ").map((w) => ({ w, em: false })),
+    ...statement.highlight.split(" ").map((w) => ({ w, em: true })),
+    ...statement.after.split(" ").map((w) => ({ w, em: false })),
+  ];
+
+  const lastEm = statement.before.split(" ").length + statement.highlight.split(" ").length - 1;
+
+  return (
+    <p ref={ref} className="statement__text scrollwords" style={{ "--n": words.length } as CSSProperties}>
+      {words.map(({ w, em }, i) => {
+        const word = (
+          <span className={i === lastEm ? "sl sl--last" : "sl"} style={{ "--i": i } as CSSProperties}>
+            {w}
+          </span>
+        );
+        return (
+          <span key={i}>
+            {em ? <em>{word}</em> : word}
+            {i < words.length - 1 && " "}
+          </span>
+        );
+      })}
+    </p>
+  );
+}
+
 export function Statement() {
   return (
-    <section className="statement" data-tour={tour.statement}>
-      <Reveal as="p" className="statement__text">
-        {statement.before} <em>{statement.highlight}</em> {statement.after}
-      </Reveal>
+    <section className="statement" data-tone="orchid" data-tour={tour.statement}>
+      <div className="statement__lead">
+        <span className="statement__eyebrow">01 / About</span>
+        <ScrollWords />
+      </div>
       <div className="statement__about">
         {about.map((paragraph, i) => (
-          <Reveal as="p" key={paragraph} delay={i * 120}>
+          <Reveal as="p" key={paragraph} className={i === 0 ? "statement__intro" : ""} delay={i * 120}>
             {paragraph}
           </Reveal>
         ))}
+        <dl className="statement__facts">
+          {facts.map(({ label, value }, i) => (
+            <Reveal as="div" key={label} delay={240 + i * 100}>
+              <dt>{label}</dt>
+              <dd>{value}</dd>
+            </Reveal>
+          ))}
+        </dl>
       </div>
     </section>
   );

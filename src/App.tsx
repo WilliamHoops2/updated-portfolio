@@ -7,13 +7,17 @@ import { Hero, Statement } from "./components/Hero";
 import { Interests } from "./components/Interests";
 import { Loader, shouldSkipLoader } from "./components/Loader";
 import { ordered } from "./components/mediaShape";
-import { WorkList } from "./components/WorkList";
+import { WorkIndex } from "./components/WorkIndex";
+import { useSmoothScroll } from "./hooks/useSmoothScroll";
+import { useMagnetic } from "./hooks/useMagnetic";
 import { useCase } from "./hooks/useCase";
 import { useSound } from "./hooks/useSound";
 
 type Phase = "loading" | "leaving" | "done";
 
 export default function App() {
+  useMagnetic();
+  useSmoothScroll();
   const { enabled: soundOn, toggle: toggleSound, tick } = useSound();
   const { id: caseId, open: openCase, go: goCase, close: closeCase } = useCase();
   const [phase, setPhase] = useState<Phase>(() => (shouldSkipLoader() ? "done" : "loading"));
@@ -36,7 +40,7 @@ export default function App() {
       />
       <main>
         <Hero ready={phase !== "loading"} onHover={onHover} />
-        <WorkList onOpen={openCase} onHover={onHover} />
+        <WorkIndex onOpen={openCase} onHover={onHover} />
         <Statement />
         <Interests />
         <Contact />

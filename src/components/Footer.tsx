@@ -3,7 +3,7 @@ import { Roll } from "./Roll";
 
 export function Footer() {
   return (
-    <footer className="footer">
+    <footer className="footer" data-tone="paper">
       <div className="footer__cols">
         <div>
           <h3 className="mono">Navigate</h3>
