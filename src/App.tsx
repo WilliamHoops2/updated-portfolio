@@ -3,10 +3,12 @@ import { CaseView } from "./components/CaseView";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
-import { Hero, Statement } from "./components/Hero";
+import { About } from "./components/About";
+import { Hero } from "./components/Hero";
 import { Interests } from "./components/Interests";
 import { Loader, shouldSkipLoader } from "./components/Loader";
 import { ordered } from "./components/mediaShape";
+import { Services } from "./components/Services";
 import { WorkIndex } from "./components/WorkIndex";
 import { useSmoothScroll } from "./hooks/useSmoothScroll";
 import { useMagnetic } from "./hooks/useMagnetic";
@@ -37,15 +39,17 @@ export default function App() {
         soundOn={soundOn}
         onToggleSound={toggleSound}
         onHover={onHover}
+        inert={!!activeProject}
       />
-      <main>
+      <main inert={!!activeProject}>
         <Hero ready={phase !== "loading"} onHover={onHover} />
+        <About />
         <WorkIndex onOpen={openCase} onHover={onHover} />
-        <Statement />
+        <Services />
         <Interests />
         <Contact />
       </main>
-      <Footer />
+      <Footer inert={!!activeProject} />
       {activeProject && <CaseView project={activeProject} onClose={closeCase} onGo={goCase} />}
     </>
   );

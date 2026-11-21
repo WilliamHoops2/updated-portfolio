@@ -29,7 +29,7 @@ h2,
   background: var(--p-cream);
   color: var(--p-ink);
   cursor: pointer;
-  transition: transform 0.95s var(--ease);
+  transition: transform 0.7s var(--ease);
 }
 
 .loader.is-leaving {
@@ -56,7 +56,7 @@ h2,
 }
 
 .loader__count {
-  color: var(--accent);
+  color: var(--accent-text);
   font-size: clamp(48px, 9vw, 150px);
   font-weight: 700;
   line-height: 0.85;
@@ -73,7 +73,7 @@ h2,
 /* Labelled facts pinned to the top edge, in the spirit of zujistudio's side rail. */
 .hero__top {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 20px;
   margin-bottom: auto;
   text-transform: uppercase;
@@ -94,6 +94,15 @@ h2,
 
   .hero__top div:nth-child(n + 3) {
     display: none;
+  }
+
+  /* A full-height hero left a screen of empty dots between the facts and the name on phones. */
+  .hero {
+    min-height: auto;
+  }
+
+  .hero__top {
+    margin-bottom: clamp(40px, 14vw, 72px);
   }
 }
 
@@ -152,16 +161,16 @@ h2,
 .swap {
   position: relative;
   display: inline-block;
-  height: 1.15em;
+  height: 1.3em;
   overflow: hidden;
   vertical-align: bottom;
-  color: var(--accent);
+  color: var(--accent-text);
 }
 
 .swap__sizer {
   display: block;
-  height: 1.15em;
-  line-height: 1.15;
+  height: 1.3em;
+  line-height: 1.3;
   white-space: nowrap;
   visibility: hidden;
 }
@@ -180,8 +189,8 @@ h2,
 
 .swap__word {
   display: block;
-  height: 1.15em;
-  line-height: 1.15;
+  height: 1.7em;
+  line-height: 1.3;
   white-space: nowrap;
 }
 
@@ -274,6 +283,7 @@ h2,
   --surface: color-mix(in srgb, var(--p-cream) 7%, var(--p-ink));
   --muted: color-mix(in srgb, var(--p-cream) 62%, var(--p-ink));
   --line: rgba(var(--p-cream-rgb), 0.18);
+  --accent-text: #7fa88a; /* pine lifted to read on ink */
   color-scheme: dark;
 }
 

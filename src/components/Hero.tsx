@@ -1,15 +1,14 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { CSSProperties } from "react";
-import { about, facts, heroWords, profile, statement, ticker, tour } from "../data/content";
+import { facts, heroWords, profile, statement, ticker } from "../data/content";
 import { useScrollProgress } from "../hooks/useScrollProgress";
 import { useTickerVelocity } from "../hooks/useTickerVelocity";
 import { useHeroParallax } from "../hooks/useHeroParallax";
 import { useHeroPointer } from "../hooks/useHeroPointer";
 import { HeroBackdrop } from "./HeroBackdrop";
-import { Reveal } from "./Reveal";
 import { Roll } from "./Roll";
 
-const ROW_EM = 1.15;
+const ROW_EM = 1.7; // rows are spaced wider than the visible window so a previous word's descenders can't show
 const SWAP_MS = 2200;
 
 const prefersReducedMotion = () =>
@@ -84,7 +83,7 @@ export function Hero({ ready, onHover }: HeroProps) {
   useTickerVelocity(tickerRef);
 
   return (
-    <section ref={sectionRef} className={`hero ${ready ? "is-go" : ""}`.trim()} id="top" data-tone="paper">
+    <section ref={sectionRef} className={`hero ${ready ? "is-go" : ""}`.trim()} id="top">
       <HeroBackdrop containerRef={sectionRef} />
       <dl className="hero__top mono">
         <div>
@@ -99,10 +98,6 @@ export function Hero({ ready, onHover }: HeroProps) {
           <dt>Now</dt>
           <dd>{facts[0].value}</dd>
         </div>
-        <div>
-          <dt>Index</dt>
-          <dd>({profile.year})</dd>
-        </div>
       </dl>
 
       <h1 ref={titleRef} className="hero__title" aria-label={profile.display}>
@@ -115,7 +110,8 @@ export function Hero({ ready, onHover }: HeroProps) {
         </span>
       </h1>
 
-      <p className="hero__line2" aria-label={`I make ${heroWords.join(", ")}`}>
+      <p className="hero__line2">
+        <span className="sr-only">I make {heroWords.join(", ")}</span>
         <span aria-hidden="true">I make </span>
         <Swap words={heroWords} />
       </p>
@@ -132,8 +128,8 @@ export function Hero({ ready, onHover }: HeroProps) {
       <div ref={tickerRef} className="ticker" aria-hidden="true">
         <div className="ticker__track">
           {[...ticker, ...ticker].map((item, i) => (
-            <span className="ticker__item" key={`${item}-${i}`}>
-              {item}
+            <span className={`ticker__item ${item.interest ? "is-interest" : ""}`.trim()} key={`${item.label}-${i}`}>
+              {item.label}
               <i />
             </span>
           ))}
@@ -144,7 +140,7 @@ export function Hero({ ready, onHover }: HeroProps) {
 }
 
 /** The statement lights up word by word as it scrolls into view. */
-function ScrollWords() {
+export function ScrollWords() {
   const ref = useRef<HTMLParagraphElement | null>(null);
   useScrollProgress(ref);
 
@@ -172,31 +168,5 @@ function ScrollWords() {
         );
       })}
     </p>
-  );
-}
-
-export function Statement() {
-  return (
-    <section className="statement" data-tone="orchid" data-tour={tour.statement}>
-      <div className="statement__lead">
-        <span className="statement__eyebrow">01 / About</span>
-        <ScrollWords />
-      </div>
-      <div className="statement__about">
-        {about.map((paragraph, i) => (
-          <Reveal as="p" key={paragraph} className={i === 0 ? "statement__intro" : ""} delay={i * 120}>
-            {paragraph}
-          </Reveal>
-        ))}
-        <dl className="statement__facts">
-          {facts.map(({ label, value }, i) => (
-            <Reveal as="div" key={label} delay={240 + i * 100}>
-              <dt>{label}</dt>
-              <dd>{value}</dd>
-            </Reveal>
-          ))}
-        </dl>
-      </div>
-    </section>
   );
 }

@@ -166,8 +166,8 @@ export function HoopGame() {
       <svg className="hoop__court" viewBox="0 0 300 220" role="img" aria-label="Basketball hoop">
         <defs>
           <radialGradient id="hoopBall" cx="35%" cy="30%" r="80%">
-            <stop offset="0" stopColor="#ffa66b" />
-            <stop offset="1" stopColor="#e8551c" />
+            <stop offset="0" style={{ stopColor: "color-mix(in srgb, var(--p-orchid) 60%, white)" }} />
+            <stop offset="1" style={{ stopColor: "var(--p-orchid)" }} />
           </radialGradient>
         </defs>
 

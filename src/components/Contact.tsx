@@ -23,9 +23,9 @@ export function Contact() {
   };
 
   return (
-    <section className="contact" id="contact" data-tone="paper" data-tour={tour.contact}>
+    <section className="contact" id="contact" data-tour={tour.contact}>
       <Reveal>
-        <p className="eyebrow mono">(Contact)</p>
+        <p className="eyebrow mono">05 / Contact</p>
       </Reveal>
 
       <Reveal as="h2" className="contact__title reveal--split">

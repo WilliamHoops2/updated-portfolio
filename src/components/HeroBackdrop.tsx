@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
 import type { RefObject } from "react";
-import { CREAM, INK, ORCHID } from "../lib/palette";
 
 interface Mark {
   x: number;
@@ -44,7 +43,8 @@ export function HeroBackdrop({ containerRef }: { containerRef: RefObject<HTMLEle
     let raf = 0;
     let lastFrame = 0;
     let inView = true;
-    let fg = INK;
+    let fg = "#14121a";
+    let ORCHID = "#ff3ea5";
     const pointer = { x: -9999, y: -9999, active: false };
     const eased = { x: 0, y: 0, k: 0 };
     const trail: Mark[] = [];
@@ -52,7 +52,10 @@ export function HeroBackdrop({ containerRef }: { containerRef: RefObject<HTMLEle
     let last = { x: 0, y: 0 };
 
     const readTheme = () => {
-      fg = document.documentElement.dataset.theme === "dark" ? CREAM : INK;
+      // Read the live tokens so every ?palette= is respected.
+      const cs = getComputedStyle(document.documentElement);
+      fg = cs.getPropertyValue(document.documentElement.dataset.theme === "dark" ? "--p-cream" : "--p-ink").trim() || fg;
+      ORCHID = cs.getPropertyValue("--p-orchid").trim() || ORCHID;
     };
 
     const resize = () => {

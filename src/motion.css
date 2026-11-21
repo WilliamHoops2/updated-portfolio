@@ -98,54 +98,14 @@
   translate: calc((1 - var(--p, 1)) * 9vw) 0;
 }
 
-/* A bracketed frame that closes in on the table as it scrolls into view, after north.cloud. */
-.desk3d__frame {
-  position: absolute;
-  inset: calc(14px + (1 - var(--p, 1)) * 14%);
-  z-index: 1;
-  border: 1px dotted rgba(244, 238, 225, 0.45);
-  pointer-events: none;
-  opacity: var(--p, 1);
-}
-
-.desk3d__frame b {
-  position: absolute;
-  font: 500 14px/1 var(--font-mono);
-  color: rgba(244, 238, 225, 0.9);
-}
-
-.desk3d__frame b:nth-child(1) { top: -7px; left: -4px; }
-.desk3d__frame b:nth-child(2) { top: -7px; right: -4px; }
-.desk3d__frame b:nth-child(3) { bottom: -7px; left: -4px; }
-.desk3d__frame b:nth-child(4) { bottom: -7px; right: -4px; }
-
 /* ── Colour flood between sections ───────────────────────── */
-/* useSmoothScroll sets <html data-tone> from the section at mid-screen. The tokens are registered
-   so they animate; every section reads them, so the whole page changes colour together. */
-@property --bg { syntax: "<color>"; inherits: true; initial-value: #f4eee1; }
-@property --fg { syntax: "<color>"; inherits: true; initial-value: #14121a; }
+/* The tokens are registered so they animate when the theme is switched. */
+@property --bg { syntax: "<color>"; inherits: true; initial-value: #dcc9a9; }
+@property --fg { syntax: "<color>"; inherits: true; initial-value: #1b2520; }
 @property --surface { syntax: "<color>"; inherits: true; initial-value: #e8e3d6; }
 @property --muted { syntax: "<color>"; inherits: true; initial-value: #6b6760; }
 @property --line { syntax: "<color>"; inherits: true; initial-value: #14121a; }
 
 :root {
   transition: --bg 0.8s var(--ease), --fg 0.8s var(--ease), --surface 0.8s var(--ease), --muted 0.8s var(--ease), --line 0.8s var(--ease);
-}
-
-:root[data-tone="orchid"] {
-  --bg: var(--p-orchid);
-  --fg: var(--p-ink);
-  --surface: color-mix(in srgb, var(--p-ink) 8%, var(--p-orchid));
-  --muted: color-mix(in srgb, var(--p-ink) 70%, var(--p-orchid));
-  --line: rgba(var(--p-ink-rgb), 0.25);
-  --accent: var(--p-ink);
-  --accent-fg: var(--p-orchid);
-}
-
-:root[data-tone="ink"] {
-  --bg: var(--p-ink);
-  --fg: var(--p-cream);
-  --surface: color-mix(in srgb, var(--p-cream) 7%, var(--p-ink));
-  --muted: color-mix(in srgb, var(--p-cream) 62%, var(--p-ink));
-  --line: rgba(var(--p-cream-rgb), 0.18);
 }

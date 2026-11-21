@@ -7,9 +7,11 @@ interface HeaderProps {
   soundOn: boolean;
   onToggleSound: () => void;
   onHover: () => void;
+  /** True while a project view covers the page, so focus can't wander behind it. */
+  inert?: boolean;
 }
 
-export function Header({ soundOn, onToggleSound, onHover }: HeaderProps) {
+export function Header({ soundOn, onToggleSound, onHover, inert }: HeaderProps) {
   const theme = useDocumentTheme();
   const toggleTheme = () => {
     const next = theme === "dark" ? "light" : "dark";
@@ -22,13 +24,16 @@ export function Header({ soundOn, onToggleSound, onHover }: HeaderProps) {
   };
 
   return (
-    <header className="header">
+    <header className="header" inert={inert}>
       <a href="#top" className="header__logo" onMouseEnter={onHover}>
         {profile.handle}
         <sup>©{profile.year}</sup>
       </a>
 
       <nav className="header__nav mono" aria-label="Primary">
+        <a href="#about" onMouseEnter={onHover}>
+          <Roll>About</Roll>
+        </a>
         <a href="#work" onMouseEnter={onHover}>
           <Roll>Work</Roll>
         </a>
@@ -47,7 +52,7 @@ export function Header({ soundOn, onToggleSound, onHover }: HeaderProps) {
           type="button"
           onClick={onToggleSound}
           aria-pressed={soundOn}
-          aria-label="Toggle hover sounds"
+          aria-label="Sound"
         >
           SOUND[{soundOn ? "|" : " "}]
         </button>

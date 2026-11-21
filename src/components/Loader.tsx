@@ -2,8 +2,8 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { profile } from "../data/content";
 
 const KEY = "portfolio-loaded";
-const COUNT_MS = 1800;
-const LEAVE_MS = 950;
+const COUNT_MS = 600;
+const LEAVE_MS = 700;
 
 /** The loader plays once per session, and never for people who prefer reduced motion. */
 export function shouldSkipLoader(): boolean {
@@ -61,7 +61,7 @@ export function Loader({ onLeave, onDone }: LoaderProps) {
       if (t < 1) {
         frame = requestAnimationFrame(tick);
       } else {
-        hold = window.setTimeout(finish, 250);
+        hold = window.setTimeout(finish, 120);
       }
     };
 

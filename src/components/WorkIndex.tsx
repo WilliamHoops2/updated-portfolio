@@ -48,7 +48,8 @@ export function WorkIndex({ onOpen, onHover }: WorkIndexProps) {
   const counts = (kind: Filter) => (kind === "all" ? ordered.length : ordered.filter((p) => kindOf(p) === kind).length);
 
   return (
-    <section ref={sectionRef} className="work wx" id="work" data-tone="paper">
+    <section ref={sectionRef} className="work wx" id="work">
+      <p className="eyebrow mono">02 / Work</p>
       <Reveal as="h2" className="work__heading reveal--split">
         <SplitText text="Things I've built" />
       </Reveal>

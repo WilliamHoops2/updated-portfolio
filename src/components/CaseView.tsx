@@ -64,9 +64,6 @@ export function CaseView({ project, onClose, onGo }: CaseViewProps) {
       style={projectVars(project)}
     >
       <div className="case__bar mono">
-        <button type="button" onClick={onClose}>
-          <Roll>← All work</Roll>
-        </button>
         <div className="case__nav">
           <button type="button" onClick={() => onGo(prev.id)}>
             <Roll>← Prev</Roll>
@@ -93,7 +90,7 @@ export function CaseView({ project, onClose, onGo }: CaseViewProps) {
           <div>
             <p className="case__overview">{project.overview}</p>
             <p className="case__meta">
-              {project.role} · {project.platform} · {project.tags.join(", ")}
+              {[...new Set([project.role, project.platform, ...project.tags])].join(" · ")}
             </p>
             {project.href && (
               <a className="btn case__link" href={project.href} target="_blank" rel="noreferrer">
@@ -112,11 +109,12 @@ export function CaseView({ project, onClose, onGo }: CaseViewProps) {
           ))}
         </div>
 
-        <ol className="case__highlights">
+        <p className="case__label mono">Highlights</p>
+        <ul className="case__highlights">
           {project.highlights.map((text) => (
             <li key={text}>{text}</li>
           ))}
-        </ol>
+        </ul>
 
         <button type="button" className="case__next" onClick={() => onGo(next.id)}>
           <span className="mono">Next project</span>

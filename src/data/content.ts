@@ -85,24 +85,24 @@ export const profile = {
   ] satisfies Social[],
 };
 
-/** The scrolling strip under the hero: a mix of tools and interests. */
+/** The scrolling strip under the hero: tools in the grotesk, interests set apart in italic serif. */
 export const ticker = [
-  "SwiftUI",
-  "Chess",
-  "TypeScript",
-  "Basketball",
-  "iOS",
-  "Slam Dunk",
-  "React",
-  "Vagabond",
-  "Stocks",
-  "Crypto",
-  "Core ML",
-  "WidgetKit",
+  { label: "SwiftUI" },
+  { label: "Chess", interest: true },
+  { label: "TypeScript" },
+  { label: "Basketball", interest: true },
+  { label: "iOS" },
+  { label: "Slam Dunk", interest: true },
+  { label: "React" },
+  { label: "Vagabond", interest: true },
+  { label: "Core ML" },
+  { label: "Stocks", interest: true },
+  { label: "WidgetKit" },
+  { label: "Crypto", interest: true },
 ];
 
 /** The word that rolls after "I make" in the hero. */
-export const heroWords = ["apps", "games", "widgets", "alphas"];
+export const heroWords = ["apps", "games", "widgets", "trading signals"];
 
 export const statement = {
   before: "Small apps.",
@@ -112,8 +112,31 @@ export const statement = {
 
 /** Short paragraphs under the statement. Rewrite these in your own voice. */
 export const about = [
-  "I started on the web with TypeScript and React, and lately I've been diving deep into SwiftUI as part of the Apple Developer Academy in Bali. I'm hooked on iOS and the whole Apple ecosystem.",
+  "I'm William, a developer and designer based in Bali. I started on the web with TypeScript and React, and now I'm all in on SwiftUI at the Apple Developer Academy, building apps that feel good to use.",
   "Away from the keyboard you'll find me on a basketball court, over a chessboard, reading manga, or watching the markets move. Those habits shape how I design and build.",
+];
+
+/** The about section's timeline. Drafted from your projects: fix the wording and dates to match your real path. */
+export const path = [
+  { when: "Before", title: "Web", text: "Started with TypeScript and React, building interfaces for the browser." },
+  { when: "2025", title: "First iOS apps", text: "PomodoroClock, FriendTracker and MyBaliApp: small apps, built to learn the platform." },
+  { when: "2026", title: "Apple Developer Academy", text: "Bali. SwiftUI, RealityKit, Core ML and WidgetKit, shipping Artie, ChessUp and fisch." },
+  { when: "Now", title: "Quant on the side", text: "Researching equity alphas on WorldQuant Brain, and still making games in Godot." },
+];
+
+/** Tools grouped by what they are for. Taken from the tags on your projects. */
+export const toolkit = [
+  { label: "Apple", items: ["SwiftUI", "SwiftData", "WidgetKit", "ActivityKit", "RealityKit", "Core ML", "Vision"] },
+  { label: "Web", items: ["TypeScript", "React", "Vite"] },
+  { label: "Games", items: ["Godot 4", "GDScript"] },
+  { label: "Other", items: ["Lottie", "Quant research"] },
+];
+
+/** What you can be hired for. Rewrite in your own words. */
+export const services = [
+  { title: "iOS apps", text: "SwiftUI apps from first sketch to something people can install, with widgets, Live Activities and motion done properly.", tags: ["SwiftUI", "WidgetKit", "Core ML"] },
+  { title: "Interface & motion", text: "Screens and interactions with a point of view: layout, type, animation and the small details that make an app feel good.", tags: ["Design", "Prototyping", "Lottie"] },
+  { title: "Games & experiments", text: "Playable prototypes and odd little ideas, in Godot or on the web, when a project needs something with a pulse.", tags: ["Godot 4", "Three.js", "React"] },
 ];
 
 /** Small labelled facts shown under the about copy. */

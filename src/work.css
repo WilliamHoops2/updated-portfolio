@@ -221,13 +221,28 @@
   display: grid;
   gap: 14px;
   max-width: 60ch;
-  margin-top: clamp(48px, 8vw, 120px);
+  margin-top: 16px;
   padding-left: 1.1em;
   list-style: disc;
-  font-size: clamp(18px, 1.8vw, 26px);
-  font-weight: 600;
-  line-height: 1.25;
-  letter-spacing: -0.02em;
+  font-size: clamp(16px, 1.4vw, 20px);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.case__label {
+  margin-top: clamp(48px, 8vw, 120px);
+  opacity: 0.7;
+}
+
+/* The caption already sits under each frame, so the one drawn inside a placeholder is a repeat. */
+.case .media__caption {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .case__media--app {
+    justify-content: center;
+  }
 }
 
 .case__next {
@@ -326,116 +341,247 @@
   letter-spacing: -0.03em;
 }
 
-/* ── Off the clock: a 3D table. Click an object and the camera moves in, the toy opens beside it ── */
+/* ── Interests: a 2x2 deck of trading cards ── */
 .desk {
   padding-block: clamp(72px, 10vw, 140px);
 }
 
-.desk__heading {
+.desk__head {
   margin-bottom: clamp(28px, 4vw, 56px);
+}
+
+.desk__heading {
   font-size: clamp(56px, 13vw, 220px);
   font-weight: 800;
   line-height: 0.85;
   letter-spacing: -0.055em;
 }
 
-.desk3d {
+.desk__intro {
+  max-width: 48ch;
+  margin-top: 24px;
+  color: var(--muted);
+  font-size: clamp(16px, 1.3vw, 19px);
+  line-height: 1.5;
+}
+
+/* One row that slides: native scroll-snap (so swipe works), driven on a timer from Interests.tsx. */
+.deck {
   position: relative;
-  height: clamp(560px, 78vh, 760px);
-  overflow: hidden;
-  border-radius: 6px;
-  background: #2a2118;
+  display: flex;
+  gap: clamp(12px, 1.6vw, 24px);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  /* Room for the hover lift and shadow, which overflow would otherwise clip. */
+  padding: 16px calc(100% - clamp(280px, 46vw, 620px)) 40px 0; /* end padding lets the last card reach the left edge */
+  margin: -16px 0 -40px;
+}
+
+.deck::-webkit-scrollbar {
+  display: none;
+}
+
+.deck > .tcard {
+  flex: 0 0 clamp(280px, 46vw, 620px);
+  scroll-snap-align: start;
+}
+
+.deckwrap {
+  display: grid;
+  gap: 24px;
+}
+
+.deck__nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.deck__btn {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
   box-shadow: 0 0 0 1px var(--line);
-  /* The table and its toys keep their own palette, not the site's three colours. */
+  transition: background 0.25s, color 0.25s;
+}
+
+.deck__btn:hover {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+.deck__dots {
+  display: flex;
+  gap: 8px;
+}
+
+/* The active dot stretches and fills over one slide, so you can see the next one coming. */
+.deck__dot {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  overflow: hidden;
+  border-radius: 5px;
+  background: var(--line);
+  transition: width 0.4s var(--ease);
+}
+
+.deck__dot.is-on {
+  width: 48px;
+}
+
+.deck__dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--accent-text);
+  transform-origin: left;
+  transform: scaleX(0);
+}
+
+.deck__dot.is-on::after {
+  transform: scaleX(1);
+}
+
+.deck__dot.is-on.is-playing::after {
+  animation: dotfill var(--ms) linear forwards;
+}
+
+@keyframes dotfill {
+  from { transform: scaleX(0); }
+}
+
+.tcard {
+  position: relative;
+  --c-bg: var(--surface);
+  --c-fg: var(--fg);
+  min-width: 0;
+  border-radius: var(--radius);
+  background: var(--c-bg);
+  color: var(--c-fg);
+  box-shadow: 0 0 0 1px var(--line);
+  transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition: transform 0.25s var(--ease), translate 0.8s var(--ease), rotate 0.8s var(--ease), opacity 0.6s;
+  /* Dealt in: starts below and skewed, then each card lands in turn. */
+  translate: 0 70px;
+  rotate: calc((var(--i) - 1.5) * 4deg);
+  opacity: 0;
+  transition-delay: 0s, calc(var(--i) * 110ms), calc(var(--i) * 110ms), calc(var(--i) * 110ms);
+}
+
+.deck.is-dealt .tcard {
+  translate: 0 0;
+  rotate: 0deg;
+  opacity: 1;
+}
+
+/* Light that follows the pointer across the face. */
+.tcard::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+  background: radial-gradient(circle at calc(var(--mx, 0.5) * 100%) calc(var(--my, 0.5) * 100%), rgba(255, 255, 255, 0.22), transparent 55%);
+}
+
+.tcard:not(.is-open):hover::after {
+  opacity: 1;
+}
+
+/* 60-30-10: one card each in cream-ish, ink and pine; the fourth echoes the first. */
+.tcard--1 { --c-bg: var(--p-ink); --c-fg: var(--p-cream); }
+.tcard--2 { --c-bg: var(--p-orchid); --c-fg: #f1e6cf; }
+.tcard--3 { --c-bg: color-mix(in srgb, var(--p-ink) 9%, var(--p-cream)); }
+
+.tcard.is-open {
+  transform: none;
+}
+
+.tcard:not(.is-open):hover {
+  z-index: 1;
+  box-shadow: 0 0 0 1px var(--line), 0 28px 50px -24px rgba(var(--p-ink-rgb), 0.6);
+}
+
+.tcard__face {
+  position: relative;
+  display: grid;
+  gap: 10px;
+  align-content: start;
+  width: 100%;
+  min-height: clamp(260px, 28vw, 380px);
+  padding: clamp(18px, 2vw, 28px);
+  overflow: hidden;
+  text-align: left;
+}
+
+.tcard__top {
+  display: flex;
+  justify-content: space-between;
+  opacity: 0.7;
+}
+
+.tcard__glyph {
+  position: absolute;
+  right: 4%;
+  bottom: -8%;
+  font-family: var(--font-serif);
+  font-size: clamp(140px, 18vw, 280px);
+  line-height: 1;
+  opacity: 0.12;
+  pointer-events: none;
+  /* The mark drifts against the tilt, so the card has depth. */
+  translate: calc((0.5 - var(--mx, 0.5)) * 36px) calc((0.5 - var(--my, 0.5)) * 36px);
+  transition: translate 0.2s var(--ease), opacity 0.3s;
+}
+
+.tcard:hover .tcard__glyph {
+  opacity: 0.22;
+}
+
+.tcard__title {
+  margin-top: auto;
+  font-family: var(--font-serif);
+  font-size: clamp(36px, 4.4vw, 72px);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.tcard__line {
+  max-width: 40ch;
+  line-height: 1.45;
+  opacity: 0.8;
+}
+
+.tcard__toy {
+  min-width: 0;
+  margin-top: 24px;
+  padding: clamp(16px, 2vw, 24px);
+  border-radius: 16px;
+  background: var(--bg);
+  color: var(--fg);
+  /* The toys were drawn for a dark card; keep their palette whatever tone the page is in. */
   --bg: #0a0e11;
   --surface: #131a20;
   --fg: #f2f1ec;
   --muted: #8b9298;
   --line: rgba(242, 241, 236, 0.16);
-  --accent: #ff7a45;
+  --accent: var(--p-orchid);
   --accent-fg: #0a0e11;
 }
 
-.desk3d__canvas,
-.desk3d__canvas canvas {
-  position: absolute;
-  inset: 0;
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-.desk3d__hint {
-  position: absolute;
-  left: 20px;
-  bottom: 16px;
-  color: rgba(255, 244, 224, 0.75);
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  pointer-events: none;
-}
-
-.desk3d__panel {
-  position: absolute;
-  inset: 12px 12px 12px auto;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  width: min(46%, 560px);
-  overflow-y: auto;
-  padding: clamp(16px, 2vw, 28px);
-  border: 2px solid var(--fg);
-  border-radius: 4px;
-  background: var(--bg);
-  box-shadow: 5px 6px 0 rgba(0, 0, 0, 0.6);
-}
-
-.desk3d__close {
-  align-self: flex-start;
-}
-
-.desk3d__title {
-  font-size: clamp(32px, 3.6vw, 52px);
-  font-weight: 800;
-  line-height: 1;
-  letter-spacing: -0.05em;
-}
-
-.desk3d__line {
-  max-width: 44ch;
-  color: var(--muted);
-  font-size: 16px;
-  line-height: 1.5;
-}
-
-.desk3d__toy {
-  min-width: 0;
-}
-
-.desk__legend {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 18px;
-  list-style: none;
-}
-
-.desk__legend .pill[aria-pressed="true"] {
-  border-color: var(--fg);
-  background: var(--fg);
-  color: var(--bg);
-}
-
-@media (max-width: 800px) {
-  .desk3d {
-    height: 760px;
-  }
-
-  .desk3d__panel {
-    inset: auto 8px 8px;
-    width: auto;
-    height: 64%;
+@media (prefers-reduced-motion: reduce) {
+  .tcard {
+    translate: 0 0;
+    rotate: 0deg;
+    opacity: 1;
+    transition: none;
   }
 }
 
@@ -487,7 +633,7 @@
   font-family: var(--font-serif);
   font-weight: 500;
   font-optical-sizing: auto;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.02em;
 }
 
 /* Accent words go italic, which is where a serif earns its keep. */
@@ -515,7 +661,7 @@
   }
 
   .hero {
-    padding-top: 130px;
+    padding-top: 64px;
   }
 }
 
@@ -535,16 +681,7 @@
   }
 }
 
-/* ── Statement: sticky headline beside the about copy ────── */
-.statement {
-  display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
-  gap: clamp(32px, 6vw, 96px);
-  align-items: start;
-  padding-block: clamp(24px, 3vw, 40px);
-}
-
-/* Section edges next to the statement, plus the desk/contact seam, kept tight so nothing floats in empty space. */
+/* Section edges, kept tight so nothing floats in empty space. */
 .work {
   padding-top: clamp(64px, 8vw, 112px);
   padding-bottom: clamp(40px, 5vw, 72px);
@@ -557,21 +694,6 @@
 
 .contact {
   padding-block: clamp(56px, 7vw, 96px);
-}
-
-.statement__lead {
-  position: sticky;
-  top: 120px;
-}
-
-.statement__eyebrow {
-  display: block;
-  margin-bottom: 24px;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--muted);
 }
 
 .statement__text {
@@ -598,52 +720,261 @@
   transform-origin: left;
 }
 
-.statement__about {
-  width: auto;
-  margin: 0;
+
+/* ── About: photo beside the copy, then path and toolkit ──── */
+.about {
+  padding-block: clamp(64px, 8vw, 112px);
 }
 
-.statement__intro {
+.about__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(32px, 6vw, 96px);
+  align-items: start;
+}
+
+.about__photo {
+  position: sticky;
+  top: 100px;
+  margin: 0;
+  transform: rotate(-1.5deg);
+}
+
+.about__photo img {
+  display: block;
+  width: 100%;
+  height: auto; /* the height attribute would otherwise win over aspect-ratio */
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius);
+  object-fit: cover;
+  object-position: 80% 30%;
+  box-shadow: 0 30px 60px -30px rgba(var(--p-ink-rgb), 0.5);
+}
+
+.about__tag {
+  position: absolute;
+  right: -10px;
+  bottom: 24px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: var(--p-orchid);
+  color: var(--p-ink);
+  transform: rotate(3deg);
+}
+
+.about .statement__text {
+  font-size: clamp(36px, 4.6vw, 76px);
+  line-height: 1;
+}
+
+.about__lead {
+  margin-top: clamp(24px, 3vw, 40px);
   color: var(--fg);
   font-size: clamp(19px, 1.8vw, 24px);
   line-height: 1.4;
 }
 
-.statement__facts {
-  margin: 12px 0 0;
+.about__more {
+  margin-top: 16px;
+  max-width: 56ch;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.55;
 }
 
-.statement__facts > div {
+.about__go {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.about__lower {
   display: grid;
-  grid-template-columns: 120px 1fr;
-  gap: 16px;
-  padding-block: 14px;
-  border-top: 1px solid var(--line);
-  font-size: 15px;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: clamp(32px, 6vw, 96px);
+  margin-top: clamp(56px, 8vw, 112px);
 }
 
-.statement__facts dt {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+.about__label {
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.path li {
+  display: grid;
+  grid-template-columns: 90px minmax(0, 1fr);
+  grid-template-areas: "when title" ". text";
+  gap: 4px 16px;
+  padding-block: 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.path__when {
+  grid-area: when;
+  padding-top: 8px;
   color: var(--muted);
 }
 
-.statement__facts dd {
-  margin: 0;
+.path__title {
+  grid-area: title;
+  font-family: var(--font-serif);
+  font-size: clamp(24px, 2.4vw, 34px);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
 }
 
-@media (max-width: 800px) {
-  .statement {
+.path__text {
+  grid-area: text;
+  max-width: 52ch;
+  color: var(--muted);
+}
+
+.toolkit > div {
+  padding-block: 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.toolkit dt {
+  margin-bottom: 10px;
+  color: var(--muted);
+}
+
+.toolkit dd {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* ── Services: three things you can hire me for, then how I work ── */
+.services {
+  padding-block: clamp(64px, 8vw, 112px);
+}
+
+.services__heading {
+  margin-bottom: clamp(28px, 4vw, 56px);
+  font-family: var(--font-serif);
+  font-size: clamp(48px, 10vw, 170px);
+  font-weight: 500;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+}
+
+.service {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1.1fr) minmax(0, 1.4fr) minmax(0, 0.8fr);
+  align-items: baseline;
+  gap: 16px 24px;
+  padding-block: clamp(18px, 2.2vw, 30px);
+  border-top: 1px solid var(--line);
+}
+
+.service:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.service__title {
+  font-family: var(--font-serif);
+  font-size: clamp(30px, 3.6vw, 56px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+.service__text {
+  max-width: 46ch;
+}
+
+.service__tags {
+  text-align: right;
+}
+
+.services__sub {
+  margin-top: clamp(48px, 7vw, 96px);
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+  font-weight: 400;
+}
+
+.how {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.how__step {
+  display: grid;
+  gap: 10px;
+  padding: 24px 24px 24px 0;
+}
+
+.how__step + .how__step {
+  padding-left: 24px;
+  border-left: 1px solid var(--line);
+}
+
+.how__step strong {
+  font-family: var(--font-serif);
+  font-size: clamp(32px, 4vw, 60px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.how__step p {
+  max-width: 34ch;
+}
+
+.services__cta {
+  margin-top: clamp(24px, 4vw, 48px);
+}
+
+@media (max-width: 900px) {
+  .about__grid,
+  .about__lower {
     grid-template-columns: 1fr;
   }
 
-  .statement__lead {
-    position: static;
+  .about__photo {
+    position: relative;
+    top: 0;
+    max-width: 420px;
   }
 
-  .statement__about {
-    padding-top: 0;
+  .service {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
   }
+
+  .service__num {
+    display: none;
+  }
+
+  .service__tags {
+    text-align: left;
+  }
+
+  .how {
+    grid-template-columns: 1fr;
+  }
+
+  .how__step,
+  .how__step + .how__step {
+    padding: 20px 0;
+    border-left: 0;
+    border-top: 1px solid var(--line);
+  }
+}
+
+.about__copy {
+  align-self: center;
 }
