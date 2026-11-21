@@ -1,77 +1,44 @@
-import { about, path, profile, toolkit, tour } from "../data/content";
-import { ScrollWords } from "./Hero";
-import { Reveal } from "./Reveal";
-import { Roll } from "./Roll";
+import { about, statement } from "../data/content";
+import { useBadge } from "../lib/badge";
+import { Eyebrow } from "./Eyebrow";
+import { OrbitalType } from "./fx/OrbitalType";
+import { TileReveal } from "./fx/TileReveal";
+import HoloCard from "./rb/HoloCard";
 
 export function About() {
+  const badge = useBadge();
   return (
-    <section className="about" id="about" data-tour={tour.statement}>
-      <p className="eyebrow mono">01 / About</p>
-
-      <div className="about__grid">
-        <Reveal as="figure" className="about__photo">
-          <img
-            src="/about/william.jpg"
-            alt="William standing in front of the Apple Developer Academy sign"
-            width={1200}
-            height={1600}
-            loading="lazy"
-          />
-          <figcaption className="about__tag mono">
-            {profile.location} · {profile.timezoneLabel}
-          </figcaption>
-        </Reveal>
-
-        <div className="about__copy">
-          <ScrollWords />
-          {about.map((paragraph, i) => (
-            <Reveal as="p" key={paragraph} className={i === 0 ? "about__lead" : "about__more"} delay={i * 120}>
-              {paragraph}
-            </Reveal>
-          ))}
-          <Reveal className="about__go" delay={240}>
-            <a className="btn btn--solid" href="#work">
-              <Roll>See the work</Roll>
-            </a>
-            <a className="btn" href="#contact">
-              <Roll>Get in touch</Roll>
-            </a>
-          </Reveal>
-        </div>
-      </div>
-
-      <div className="about__lower">
-        <Reveal>
-          <h2 className="about__label mono">Path</h2>
-          <ol className="path">
-            {path.map((step) => (
-              <li key={step.when + step.title}>
-                <span className="path__when mono">{step.when}</span>
-                <span className="path__title">{step.title}</span>
-                <span className="path__text">{step.text}</span>
-              </li>
-            ))}
-          </ol>
-        </Reveal>
-
-        <Reveal delay={120}>
-          <h2 className="about__label mono">Toolkit</h2>
-          <dl className="toolkit">
-            {toolkit.map((group) => (
-              <div key={group.label}>
-                <dt className="mono">{group.label}</dt>
-                <dd>
-                  {group.items.map((item) => (
-                    <span className="chip" key={item}>
-                      {item}
-                    </span>
-                  ))}
-                </dd>
+    <div id="about">
+      <TileReveal
+        cover={
+          <p className="font-display text-[clamp(3rem,10vw,9rem)] leading-none font-extrabold tracking-tight text-cream">
+            Hello<span className="text-signal">.</span>
+          </p>
+        }
+      >
+        <div className="flex h-full items-center bg-ink px-6 md:px-12">
+          <div className="mx-auto grid w-full max-w-7xl items-center gap-8 lg:grid-cols-12">
+            <div className="lg:col-span-7">
+              <Eyebrow>01 / About</Eyebrow>
+              <h2 className="font-display text-[clamp(2.2rem,5.6vw,5.4rem)] leading-[0.95] font-extrabold tracking-tight text-cream">
+                {statement.before} <span className="text-signal">{statement.highlight}</span> {statement.after}
+              </h2>
+              <div className="mt-6 max-w-xl space-y-4 text-sm leading-relaxed text-cream/70 md:text-base">
+                {about.map((p) => (
+                  <p key={p}>{p}</p>
+                ))}
               </div>
-            ))}
-          </dl>
-        </Reveal>
-      </div>
-    </section>
+            </div>
+            <div className="hidden justify-center lg:col-span-5 lg:flex">
+              <OrbitalType text="Tap the card to flip it ✦ Tilt it to catch the light ✦ " className="w-[min(30vw,24rem)]">
+                {badge && (
+                  <HoloCard image={badge.front} backImage={badge.back} alt="William's badge. Tap to flip." preset="shards" intensity={0.3} edgeSparkle={0.25} glare={0.3} width={250} />
+                )}
+              </OrbitalType>
+            </div>
+          </div>
+        </div>
+      </TileReveal>
+    </div>
   );
 }

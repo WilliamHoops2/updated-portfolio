@@ -5,27 +5,14 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="William, an iOS developer and designer in Bali. SwiftUI apps, games and experiments." />
-    <meta name="theme-color" content="#dcc9a9" />
+    <meta name="theme-color" content="#1b2520" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
-    <script>
-      // Saved choice wins; otherwise follow the system and keep following it.
-      var m = matchMedia("(prefers-color-scheme: dark)");
-      var saved = null;
-      try { saved = localStorage.getItem("theme"); } catch (e) {}
-      var apply = function () {
-        document.documentElement.dataset.theme = (saved || (m.matches ? "dark" : "light")) === "dark" ? "dark" : "light";
-      };
-      apply();
-      m.addEventListener("change", function () {
-        try { saved = localStorage.getItem("theme"); } catch (e) {}
-        apply();
-      });
-    </script>
+    <script>document.documentElement.dataset.theme = "dark";</script>
     <title>William · iOS developer & designer</title>
   </head>
   <body>

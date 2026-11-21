@@ -1,44 +1,41 @@
 import { services, steps } from "../data/content";
-import { Reveal } from "./Reveal";
-import { Roll } from "./Roll";
-import { SplitText } from "./SplitText";
+import { Eyebrow } from "./Eyebrow";
+import { CardSpread } from "./fx/CardSpread";
+import Grainient from "./rb/Grainient";
 
 export function Services() {
   return (
-    <section className="services" id="services">
-      <p className="eyebrow mono">03 / Services</p>
-      <Reveal as="h2" className="services__heading reveal--split">
-        <SplitText text="How I can help" />
-      </Reveal>
+    <section id="services" className="relative overflow-hidden px-6 py-24 md:px-12 md:py-32">
+      <Grainient className="pointer-events-none absolute inset-0 -z-0 opacity-30 [mask-image:linear-gradient(to_bottom,transparent,#000_25%,#000_75%,transparent)]" colors={["#0f1612", "#22352a", "#4e6851"]} speed={0.12} grainAmount={0.1} aria-hidden="true" />
+      <div className="relative mx-auto max-w-7xl">
+        <Eyebrow>05 / Services</Eyebrow>
+        <h2 className="mb-14 font-display text-[clamp(2.4rem,6vw,5.5rem)] leading-[0.95] font-extrabold tracking-tight text-cream">
+          How I can <span className="text-signal">help</span>
+        </h2>
 
-      <ul className="services__list">
-        {services.map((service, i) => (
-          <Reveal as="li" key={service.title} delay={i * 100} className="service">
-            <span className="service__num mono">{String(i + 1).padStart(2, "0")}</span>
-            <h3 className="service__title">{service.title}</h3>
-            <p className="service__text">{service.text}</p>
-            <span className="service__tags mono">{service.tags.join(" · ")}</span>
-          </Reveal>
-        ))}
-      </ul>
+        <CardSpread
+          cards={services.map((s, i) => (
+            <div className="flex h-full flex-col">
+              <p className="font-mono text-xs tracking-widest text-signal uppercase">{String(i + 1).padStart(2, "0")}</p>
+              <h3 className="mt-3 font-display text-3xl font-bold text-cream">{s.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-cream/70">{s.text}</p>
+              <p className="mt-auto pt-6 font-mono text-[11px] tracking-wider text-cream/50 uppercase">{s.tags.join(" · ")}</p>
+            </div>
+          ))}
+        />
 
-      <h3 className="services__sub mono">How I work</h3>
-      <ol className="how">
-        {steps.map((step, i) => (
-          <Reveal as="li" key={step.n} delay={i * 100} className="how__step">
-            <span className="mono">
-              {step.n} · {step.aside}
-            </span>
-            <strong>{step.title}</strong>
-            <p>{step.text}</p>
-          </Reveal>
-        ))}
-      </ol>
-
-      <a className="btn btn--solid services__cta" href="#contact">
-        <Roll>Start a project</Roll>
-        <span aria-hidden="true">→</span>
-      </a>
+        <ol className="mt-20 grid gap-px overflow-hidden rounded-2xl border border-cream/15 bg-cream/15 md:grid-cols-3">
+          {steps.map((s) => (
+            <li key={s.n} className="bg-ink p-6">
+              <p className="font-mono text-xs tracking-widest text-signal uppercase">
+                {s.n} · {s.aside}
+              </p>
+              <h3 className="mt-2 font-display text-2xl font-bold text-cream">{s.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-cream/65">{s.text}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
     </section>
   );
 }

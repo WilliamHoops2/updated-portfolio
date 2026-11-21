@@ -1,3 +1,4 @@
+import { Eyebrow } from "./Eyebrow";
 import { useEffect, useRef, useState } from "react";
 import type { CSSProperties, PointerEvent, ReactNode } from "react";
 import { useInView } from "../hooks/useInView";
@@ -6,8 +7,6 @@ import { ChessPuzzle } from "./ChessPuzzle";
 import { HoopGame } from "./HoopGame";
 import { MangaPanels } from "./MangaPanels";
 import { MarketChart } from "./MarketChart";
-import { Reveal } from "./Reveal";
-import { SplitText } from "./SplitText";
 
 type DeskId = "chess" | "hoops" | "markets" | "manga";
 
@@ -123,10 +122,10 @@ export function Interests() {
   return (
     <section className="desk" id="interests" data-tour={tour.interests}>
       <div className="desk__head">
-        <p className="eyebrow mono">04 / Interests</p>
-        <Reveal as="h2" className="desk__heading reveal--split">
-          <SplitText text="Four things I keep coming back to" />
-        </Reveal>
+        <Eyebrow>06 / Interests</Eyebrow>
+        <h2 className="font-display text-[clamp(2.4rem,6vw,5.5rem)] leading-[0.95] font-extrabold tracking-tight text-cream">
+          Four things I keep <span className="text-signal">coming back to</span>
+        </h2>
         <p className="desk__intro">Pick a card and it opens something to play with.</p>
       </div>
 
