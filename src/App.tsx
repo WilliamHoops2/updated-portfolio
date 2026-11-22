@@ -6,6 +6,7 @@ import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
 import { Interests } from "./components/Interests";
 import { ordered } from "./components/mediaShape";
+import { Path } from "./components/Path";
 import { Reel } from "./components/Reel";
 import { Services } from "./components/Services";
 import { Toolkit } from "./components/Toolkit";
@@ -28,6 +29,7 @@ export default function App() {
         <div className="contents">
           <Hero />
           <About />
+          <Path />
           <Toolkit />
           <Work onOpen={openCase} />
           <Reel onOpen={openCase} />
