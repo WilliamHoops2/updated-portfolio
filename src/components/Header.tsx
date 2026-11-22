@@ -75,9 +75,10 @@ export function Header({ inert }: { inert?: boolean }) {
       <a
         href="#top"
         aria-label={profile.display}
-        className="pointer-events-auto absolute top-4 left-4 grid size-12 place-items-center rounded-full bg-cream font-display text-lg font-bold text-ink shadow-[0_8px_20px_-8px_rgba(0,0,0,0.6)] transition duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-rotate-12 hover:scale-110"
+        className="pointer-events-auto absolute top-4 left-4 group relative isolate block size-12 overflow-hidden rounded-full [-webkit-mask-image:-webkit-radial-gradient(white,black)] bg-cream shadow-[0_8px_20px_-8px_rgba(0,0,0,0.6)] transition duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-rotate-12 hover:scale-110"
       >
-        {profile.display[0]}
+        <img src={`${import.meta.env.BASE_URL}about/logo.jpg`} alt="" className="size-full rounded-full object-cover" />
+        <img src={`${import.meta.env.BASE_URL}about/logo-hover.jpg`} alt="" className="absolute inset-0 size-full rounded-full object-cover opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100" />
       </a>
       <nav
         aria-label="Primary"

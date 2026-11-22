@@ -62,8 +62,8 @@ export interface Update {
 
 export const profile = {
   name: "William",
-  handle: "itsjustw",
-  display: "ItsJustW",
+  handle: "williamsilvanoangga",
+  display: "William Silvano Angga",
   role: "Developer & designer",
   greeting: "Scroll down and I'll show you around.",
   greetingReturn: "Oh hi, you're back. Want the tour again?",

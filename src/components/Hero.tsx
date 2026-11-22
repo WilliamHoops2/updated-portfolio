@@ -26,8 +26,8 @@ export function Hero() {
             <span>{profile.location}</span>
             <span className="text-signal">{time}</span>
           </p>
-          <h1 className="font-display text-[clamp(4rem,13vw,10.5rem)] leading-[0.85] font-extrabold tracking-tight text-cream" aria-label={profile.display}>
-            ItsJust<span className="text-signal">W</span>
+          <h1 className="font-display text-[clamp(3rem,9vw,7.5rem)] leading-[0.9] font-extrabold tracking-tight text-cream" aria-label={profile.display}>
+            William Silvano Angga
           </h1>
           <p className="mt-6 font-display text-[clamp(1.5rem,3.4vw,2.8rem)] leading-tight font-semibold text-cream">
             I make <SignalType words={heroWords} className="text-signal" />

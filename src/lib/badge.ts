@@ -23,7 +23,7 @@ function front(photo: HTMLImageElement): string {
 
   ctx.fillStyle = "#b9f27c";
   ctx.font = '500 22px "JetBrains Mono", monospace';
-  ctx.fillText("● ITSJUSTW", 40, 66);
+  ctx.fillText("● WILLIAM SILVANO ANGGA", 40, 66);
   ctx.fillStyle = "rgba(233,220,192,0.8)";
   ctx.textAlign = "right";
   ctx.fillText("ID 001 / DEV", W - 40, 66);
