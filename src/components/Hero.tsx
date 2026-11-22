@@ -1,172 +1,64 @@
-import { useEffect, useMemo, useRef, useState } from "react";
-import type { CSSProperties } from "react";
-import { facts, heroWords, profile, statement, ticker } from "../data/content";
-import { useScrollProgress } from "../hooks/useScrollProgress";
-import { useTickerVelocity } from "../hooks/useTickerVelocity";
-import { useHeroParallax } from "../hooks/useHeroParallax";
-import { useHeroPointer } from "../hooks/useHeroPointer";
-import { HeroBackdrop } from "./HeroBackdrop";
-import { Roll } from "./Roll";
+import { facts, heroWords, profile } from "../data/content";
+import { lazy, Suspense } from "react";
+import { useClock } from "../hooks/useClock";
+import { useMedia } from "../hooks/useMedia";
+import { useBadge } from "../lib/badge";
+import { AsciiWave } from "./fx/AsciiWave";
+import { SignalType } from "./fx/SignalType";
+import StarBorder from "./rb/StarBorder";
 
-const ROW_EM = 1.7; // rows are spaced wider than the visible window so a previous word's descenders can't show
-const SWAP_MS = 2200;
+const Lanyard = lazy(() => import("./rb/Lanyard"));
 
-const prefersReducedMotion = () =>
-  typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-/** A line of words that roll upward one at a time, looping without a visible jump. */
-function Swap({ words }: { words: string[] }) {
-  const [index, setIndex] = useState(0);
-  const [snap, setSnap] = useState(false);
-
-  // The first word is repeated at the end so the last roll lands on it, then we snap back to the start.
-  const loop = useMemo(() => [...words, words[0]], [words]);
-  const widest = useMemo(() => words.reduce((a, b) => (b.length > a.length ? b : a), ""), [words]);
-
-  useEffect(() => {
-    if (prefersReducedMotion()) return;
-    const id = window.setInterval(() => setIndex((i) => (i >= words.length ? i : i + 1)), SWAP_MS);
-    return () => window.clearInterval(id);
-  }, [words.length]);
-
-  useEffect(() => {
-    if (index === words.length) {
-      const id = window.setTimeout(() => {
-        setSnap(true);
-        setIndex(0);
-      }, 750);
-      return () => window.clearTimeout(id);
-    }
-
-    if (snap) {
-      let inner = 0;
-      const outer = requestAnimationFrame(() => {
-        inner = requestAnimationFrame(() => setSnap(false));
-      });
-      return () => {
-        cancelAnimationFrame(outer);
-        cancelAnimationFrame(inner);
-      };
-    }
-    return;
-  }, [index, snap, words.length]);
-
+export function Hero() {
+  const time = useClock(profile.timezone);
+  const badge = useBadge();
+  const wide = useMedia("(min-width: 768px)"); // badge beside the text instead of below it
+  const large = useMedia("(min-width: 1024px)");
   return (
-    <span className="swap" aria-hidden="true">
-      <span className="swap__sizer">{widest}</span>
-      <span
-        className={`swap__track ${snap ? "is-snap" : ""}`.trim()}
-        style={{ transform: `translateY(${index * -ROW_EM}em)` }}
-      >
-        {loop.map((word, i) => (
-          <span className="swap__word" key={`${word}-${i}`}>
-            {word}
-          </span>
-        ))}
-      </span>
-    </span>
-  );
-}
+    <section id="top" className="relative flex min-h-svh flex-col justify-center overflow-hidden px-6 pt-28 pb-16 md:pr-12 md:pl-12 dock:pl-28 lg:flex-row lg:items-center">
+      <AsciiWave className="[mask-image:linear-gradient(to_bottom,#000_55%,transparent)] opacity-60" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(15,22,18,0.75),transparent_65%)]" />
 
-interface HeroProps {
-  /** False while the loader is covering the page, so the entrance waits for it. */
-  ready: boolean;
-  onHover: () => void;
-}
-
-export function Hero({ ready, onHover }: HeroProps) {
-  const sectionRef = useRef<HTMLElement | null>(null);
-  const titleRef = useRef<HTMLHeadingElement | null>(null);
-  useHeroPointer(sectionRef, titleRef);
-  useHeroParallax(sectionRef);
-  const tickerRef = useRef<HTMLDivElement | null>(null);
-  useTickerVelocity(tickerRef);
-
-  return (
-    <section ref={sectionRef} className={`hero ${ready ? "is-go" : ""}`.trim()} id="top">
-      <HeroBackdrop containerRef={sectionRef} />
-      <dl className="hero__top mono">
-        <div>
-          <dt>Role</dt>
-          <dd>{profile.role}</dd>
+      <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-10 pointer-events-none lg:grid-cols-12 [&_a]:pointer-events-auto">
+        <div className="[text-shadow:0_2px_14px_rgba(15,22,18,0.95)] lg:col-span-7">
+          <p className="mb-6 flex flex-wrap items-center gap-x-5 gap-y-1 font-mono text-xs tracking-widest text-cream/60 uppercase">
+            <span>{profile.role}</span>
+            <span>{profile.location}</span>
+            <span className="text-signal">{time}</span>
+          </p>
+          <h1 className="font-display text-[clamp(4rem,13vw,10.5rem)] leading-[0.85] font-extrabold tracking-tight text-cream" aria-label={profile.display}>
+            ItsJust<span className="text-signal">W</span>
+          </h1>
+          <p className="mt-6 font-display text-[clamp(1.5rem,3.4vw,2.8rem)] leading-tight font-semibold text-cream">
+            I make <SignalType words={heroWords} className="text-signal" />
+          </p>
+          <p className="mt-5 max-w-[min(16rem,62vw)] text-base min-[480px]:max-w-md lg:max-w-xl leading-relaxed text-cream/65 md:text-lg">{profile.intro}</p>
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <StarBorder as="a" href="#work" theme="dark" color="#b9f27c" radius={999} className="font-mono text-sm tracking-wider uppercase">
+              See the work
+            </StarBorder>
+            <a href="#contact" className="rounded-full border border-cream/25 px-6 py-3.5 font-mono text-sm tracking-wider text-cream uppercase transition hover:border-signal hover:text-signal">
+              Get in touch
+            </a>
+          </div>
+          <dl className="mt-10 hidden gap-8 font-mono text-xs tracking-wider text-cream/50 uppercase md:flex">
+            {facts.map((f) => (
+              <div key={f.label}>
+                <dt className="text-signal/80">{f.label}</dt>
+                <dd className="mt-1 max-w-[16ch] normal-case">{f.value}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
-        <div>
-          <dt>Based in</dt>
-          <dd>{profile.location}</dd>
-        </div>
-        <div>
-          <dt>Now</dt>
-          <dd>{facts[0].value}</dd>
-        </div>
-      </dl>
 
-      <h1 ref={titleRef} className="hero__title" aria-label={profile.display}>
-        <span className="hero__mask" aria-hidden="true">
-          {Array.from(profile.display).map((ch, i) => (
-            <span className="hero__char" key={i} style={{ "--i": i } as CSSProperties}>
-              {ch}
-            </span>
-          ))}
-        </span>
-      </h1>
-
-      <p className="hero__line2">
-        <span className="sr-only">I make {heroWords.join(", ")}</span>
-        <span aria-hidden="true">I make </span>
-        <Swap words={heroWords} />
-      </p>
-
-      <div className="hero__go">
-        <a className="btn btn--solid" href="#work" onMouseEnter={onHover}>
-          <Roll>See the work</Roll>
-        </a>
-        <a className="btn" href="#contact" onMouseEnter={onHover}>
-          <Roll>Get in touch</Roll>
-        </a>
       </div>
-
-      <div ref={tickerRef} className="ticker" aria-hidden="true">
-        <div className="ticker__track">
-          {[...ticker, ...ticker].map((item, i) => (
-            <span className={`ticker__item ${item.interest ? "is-interest" : ""}`.trim()} key={`${item.label}-${i}`}>
-              {item.label}
-              <i />
-            </span>
-          ))}
-        </div>
+      <div className="absolute top-0 right-0 h-[min(26rem,100vw)] w-[70%] md:inset-y-0 md:h-auto md:w-[58%] lg:w-[60%]">
+        {badge && (
+          <Suspense fallback={null}>
+            <Lanyard frontImage={badge.front} backImage={badge.back} finish="holographic" anchor="right" size={large ? 0.5 : wide ? 0.4 : 0.65} strapColor="#4e6851" metal="silver" />
+          </Suspense>
+        )}
       </div>
     </section>
-  );
-}
-
-/** The statement lights up word by word as it scrolls into view. */
-export function ScrollWords() {
-  const ref = useRef<HTMLParagraphElement | null>(null);
-  useScrollProgress(ref);
-
-  const words = [
-    ...statement.before.split(" ").map((w) => ({ w, em: false })),
-    ...statement.highlight.split(" ").map((w) => ({ w, em: true })),
-    ...statement.after.split(" ").map((w) => ({ w, em: false })),
-  ];
-
-  const lastEm = statement.before.split(" ").length + statement.highlight.split(" ").length - 1;
-
-  return (
-    <p ref={ref} className="statement__text scrollwords" style={{ "--n": words.length } as CSSProperties}>
-      {words.map(({ w, em }, i) => {
-        const word = (
-          <span className={i === lastEm ? "sl sl--last" : "sl"} style={{ "--i": i } as CSSProperties}>
-            {w}
-          </span>
-        );
-        return (
-          <span key={i}>
-            {em ? <em>{word}</em> : word}
-            {i < words.length - 1 && " "}
-          </span>
-        );
-      })}
-    </p>
   );
 }

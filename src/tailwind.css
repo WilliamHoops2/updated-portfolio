@@ -1,0 +1,43 @@
+@layer theme, base, legacy, components, utilities;
+@import "tailwindcss";
+@import "./index.css" layer(legacy);
+@import "./experience.css" layer(legacy);
+@import "./interests.css" layer(legacy);
+@import "./stage.css" layer(legacy);
+@import "./work.css" layer(legacy);
+@import "./workindex.css" layer(legacy);
+@import "./motion.css" layer(legacy);
+
+/* The older stylesheets (Interests games, project case view) sit in a `legacy` layer below the utilities. */
+@custom-variant dock (@media (min-width: 768px) and (min-height: 520px));
+
+@theme {
+  --color-ink: #0f1612;
+  --color-ink-2: #16211b;
+  --color-pine: #4e6851;
+  --color-pine-lift: #7fa88a;
+  --color-cream: #e9dcc0;
+  --color-signal: #b9f27c;
+  --font-display: "Bricolage Grotesque", "Inter", system-ui, sans-serif;
+  --font-serif: "Fraunces", Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --animate-orbit: orbit 40s linear infinite;
+  --animate-orbit-rev: orbit 55s linear infinite reverse;
+  --animate-pop: pop 0.5s cubic-bezier(0.2, 0.7, 0.1, 1) both;
+  --animate-marquee: marquee 60s linear infinite;
+  --animate-marquee-rev: marquee 75s linear infinite reverse;
+  @keyframes orbit { to { transform: rotate(360deg); } }
+  @keyframes pop { from { opacity: 0; transform: translateY(14px) scale(0.98); } }
+  @keyframes marquee { to { transform: translateX(-50%); } }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-orbit, .animate-orbit-rev, .animate-marquee, .animate-marquee-rev { animation: none !important; }
+}
+
+/* Unlayered on purpose: these must beat the legacy layer's tokens. */
+:root[data-theme="dark"] {
+  --bg: #0f1612;
+  --surface: #16211b;
+}
+body { background: var(--color-ink); }

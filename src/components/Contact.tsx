@@ -1,13 +1,15 @@
 import { useEffect, useRef, useState } from "react";
-import { profile, tour } from "../data/content";
-import { Reveal } from "./Reveal";
-import { Roll } from "./Roll";
-import { SplitText } from "./SplitText";
+import { profile } from "../data/content";
+import { Eyebrow } from "./Eyebrow";
+import { GlassKeys } from "./fx/GlassKeys";
+import { SignalType } from "./fx/SignalType";
+import StarBorder from "./rb/StarBorder";
+
+const SAY_HI = ["Say hi.", "Let's talk.", "Build it."];
 
 export function Contact() {
   const [copied, setCopied] = useState(false);
   const timer = useRef<number | undefined>(undefined);
-
   useEffect(() => () => window.clearTimeout(timer.current), []);
 
   const copyEmail = async () => {
@@ -23,37 +25,33 @@ export function Contact() {
   };
 
   return (
-    <section className="contact" id="contact" data-tour={tour.contact}>
-      <Reveal>
-        <p className="eyebrow mono">05 / Contact</p>
-      </Reveal>
-
-      <Reveal as="h2" className="contact__title reveal--split">
-        <SplitText text="Got a" />
-        <br />
-        <SplitText text="project?" start={2} />
-        <br />
-        <em>
-          <SplitText text="Say hi." start={3} />
-        </em>
-      </Reveal>
-
-      <Reveal delay={150} className="contact__actions">
-        <p className="contact__lead">I'm taking on new work.</p>
-        <button type="button" className="btn btn--solid contact__email" onClick={copyEmail}>
-          <Roll>{copied ? "Copied! Talk soon." : profile.email}</Roll>
-        </button>
-        <p className="mono contact__hint">Write me anytime. Click and it's copied.</p>
-        <p className="contact__topics">Always happy to talk iOS, chess, basketball or a good manga recommendation.</p>
-      </Reveal>
-
-      <Reveal delay={250} className="contact__socials">
-        {profile.socials.map((s) => (
-          <a key={s.label} href={s.href} target="_blank" rel="noreferrer" className="mono">
-            <Roll>{s.label}</Roll> ↗
-          </a>
-        ))}
-      </Reveal>
+    <section id="contact" className="relative flex min-h-screen items-center overflow-hidden px-6 py-28 md:pr-12 md:pl-12 dock:pl-28">
+      <GlassKeys className="[mask-image:radial-gradient(ellipse_at_center,transparent_18%,#000_75%)]" />
+      <div className="relative mx-auto w-full max-w-5xl text-center">
+        <div className="flex justify-center">
+          <Eyebrow>07 / Contact</Eyebrow>
+        </div>
+        <h2 className="font-display text-[clamp(3rem,11vw,9.5rem)] leading-[0.9] font-extrabold tracking-tight text-cream">
+          Got a project?
+          <br />
+          <SignalType words={SAY_HI} className="text-signal" />
+        </h2>
+        <p className="mx-auto mt-6 max-w-md text-cream/70">I'm taking on new work. Write me anytime, click and it's copied.</p>
+        <div className="mt-8 flex justify-center">
+          <StarBorder as="button" type="button" onClick={copyEmail} theme="dark" color="#b9f27c" radius={999} className="font-mono text-sm tracking-wider">
+            {copied ? "Copied! Talk soon." : profile.email}
+          </StarBorder>
+        </div>
+        <ul className="mt-10 flex justify-center gap-6 font-mono text-xs tracking-widest uppercase">
+          {profile.socials.map((s) => (
+            <li key={s.label}>
+              <a href={s.href} target="_blank" rel="noreferrer" className="text-cream/60 transition hover:text-signal">
+                {s.label} ↗
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
     </section>
   );
 }

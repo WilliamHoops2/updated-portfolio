@@ -118,10 +118,38 @@ export const about = [
 
 /** The about section's timeline. Drafted from your projects: fix the wording and dates to match your real path. */
 export const path = [
-  { when: "Before", title: "Web", text: "Started with TypeScript and React, building interfaces for the browser." },
-  { when: "2025", title: "First iOS apps", text: "PomodoroClock, FriendTracker and MyBaliApp: small apps, built to learn the platform." },
-  { when: "2026", title: "Apple Developer Academy", text: "Bali. SwiftUI, RealityKit, Core ML and WidgetKit, shipping Artie, ChessUp and fisch." },
-  { when: "Now", title: "Quant on the side", text: "Researching equity alphas on WorldQuant Brain, and still making games in Godot." },
+  {
+    when: "2021 – 2022",
+    title: "Coding tutor",
+    image: "/path/tutor.jpg",
+    alt: "William teaching a coding class",
+    text: "My first job in tech was an internship teaching others to code. Explaining the same idea five different ways taught me to really understand it.",
+    points: ["Taught beginners the basics of programming", "Broke big problems into small steps", "Learned patience and clear communication"],
+  },
+  {
+    when: "Late 2023",
+    title: "Graduated",
+    image: "/path/graduation.jpg",
+    alt: "William at graduation",
+    text: "I finished university and left with a degree and a habit of building things on the side. That is where my taste for simple, clean interfaces started.",
+    points: ["Finished my degree in late 2023", "Built web projects outside of class", "Decided to try building something of my own"],
+  },
+  {
+    when: "2024 – 2025",
+    title: "My own business",
+    image: "/path/business.jpg",
+    alt: "Wood pellets at a renewable energy supplier",
+    text: "I ran my own company in renewable energy, mostly wood pellets. It was a crash course in how real businesses work, far from a code editor.",
+    points: ["Sourced from suppliers and found buyers", "Negotiated deals and planned cash flow", "Made decisions with incomplete information"],
+  },
+  {
+    when: "2026",
+    title: "Apple Developer Academy",
+    image: "/path/academy.jpg",
+    alt: "William at the Apple Developer Academy in Bali",
+    text: "Now I am back to building full time in Bali, learning SwiftUI alongside a team of designers and developers. I bring the business side with me.",
+    points: ["SwiftUI, RealityKit, Core ML and WidgetKit", "Shipped Artie, ChessUp and fisch", "Working in a team on real product briefs"],
+  },
 ];
 
 /** Tools grouped by what they are for. Taken from the tags on your projects. */

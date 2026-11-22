@@ -978,3 +978,51 @@
 .about__copy {
   align-self: center;
 }
+
+/* ── ReactBits additions ─────────────────────────────────── */
+.about {
+  position: relative;
+  isolation: isolate;
+}
+
+.about__dots {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.6;
+  mask-image: linear-gradient(to bottom, transparent, #000 15%, #000 85%, transparent);
+}
+
+.service {
+  display: block;
+  padding-block: 0;
+}
+
+.service__card.spotlight-card {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1.1fr) minmax(0, 1.4fr) minmax(0, 0.8fr);
+  align-items: baseline;
+  gap: 16px 24px;
+  padding: clamp(18px, 2.2vw, 30px) 12px;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+@media (max-width: 760px) {
+  .service__card.spotlight-card {
+    grid-template-columns: 1fr;
+  }
+}
+
+.contact {
+  position: relative;
+  isolation: isolate;
+}
+
+.contact__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.55;
+}

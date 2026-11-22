@@ -1,6 +1,8 @@
 import { defineConfig } from "vite";
 import type { ProxyOptions } from "vite";
 import react from "@vitejs/plugin-react";
+import tailwindcss from "@tailwindcss/vite";
+import { fileURLToPath } from "node:url";
 
 /**
  * Yahoo Finance doesn't allow requests straight from a browser (CORS), so the app asks its own
@@ -25,7 +27,8 @@ const yahooProxy: Record<string, ProxyOptions> = {
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), tailwindcss()],
+  resolve: { alias: { "@": fileURLToPath(new URL("./src", import.meta.url)) } },
   server: { proxy: yahooProxy },
   preview: { proxy: yahooProxy },
 });
