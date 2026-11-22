@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 
 /**
  * A stacked hand of cards that fans out when it scrolls into view. Hover a card to lift it.
- * Below the md breakpoint the cards just stack in a column.
+ * Below the lg breakpoint the cards just stack in a column.
  */
 export function CardSpread({ cards }: { cards: ReactNode[] }) {
   const ref = useRef<HTMLDivElement | null>(null);
@@ -22,7 +22,7 @@ export function CardSpread({ cards }: { cards: ReactNode[] }) {
 
   const mid = (cards.length - 1) / 2;
   return (
-    <div ref={ref} className="flex flex-col gap-4 md:relative md:block md:h-[27rem]" onPointerLeave={() => setHover(null)}>
+    <div ref={ref} className="flex flex-col gap-4 lg:relative lg:block lg:h-[27rem]" onPointerLeave={() => setHover(null)}>
       {cards.map((card, i) => {
         const o = i - mid;
         const lifted = hover === i;
@@ -33,15 +33,15 @@ export function CardSpread({ cards }: { cards: ReactNode[] }) {
           <div
             key={i}
             onPointerEnter={() => setHover(i)}
-            className="transition-transform duration-700 ease-[cubic-bezier(0.2,0.8,0.2,1)] md:absolute md:top-0 md:left-1/2 md:w-[min(26rem,34vw)] md:-translate-x-1/2"
+            className="transition-transform duration-700 ease-[cubic-bezier(0.2,0.8,0.2,1)] lg:absolute lg:top-0 lg:left-1/2 lg:w-[min(26rem,31%)] lg:-translate-x-1/2"
             style={{ zIndex: lifted ? 20 : 10 - Math.abs(Math.round(o)) }}
           >
-            <div className="hidden transition-transform duration-700 ease-[cubic-bezier(0.2,0.8,0.2,1)] md:block" style={{ transform }}>
+            <div className="hidden transition-transform duration-700 ease-[cubic-bezier(0.2,0.8,0.2,1)] lg:block" style={{ transform }}>
               <SpotlightCard theme="dark" spotlightColor="rgba(185,242,124,0.28)" className={cn("h-[23rem] p-7!")}>
                 {card}
               </SpotlightCard>
             </div>
-            <SpotlightCard theme="dark" spotlightColor="rgba(185,242,124,0.28)" className="md:hidden">
+            <SpotlightCard theme="dark" spotlightColor="rgba(185,242,124,0.28)" className="lg:hidden">
               {card}
             </SpotlightCard>
           </div>

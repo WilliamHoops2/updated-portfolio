@@ -8,8 +8,8 @@ const frames = projects.flatMap((p) => p.gallery.slice(0, 2).map((g, i) => ({ p,
 /** Every screen from every project on one curved, draggable strip. */
 export function Reel({ onOpen }: { onOpen: (id: string) => void }) {
   return (
-    <section id="reel" className="overflow-hidden py-24 md:py-32">
-      <div className="mx-auto mb-10 max-w-7xl px-6 md:px-12">
+    <section id="reel" className="overflow-hidden py-14 md:py-16">
+      <div className="mx-auto mb-10 max-w-7xl px-6 md:pr-12 md:pl-12 dock:pl-28">
         <Eyebrow>04 / Reel</Eyebrow>
         <h2 className="font-display text-[clamp(2.4rem,6vw,5.5rem)] leading-[0.95] font-extrabold tracking-tight text-cream">
           A few frames. <span className="text-signal">Drag to spin.</span>

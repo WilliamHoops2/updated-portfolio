@@ -32,16 +32,16 @@ export function Work({ onOpen }: { onOpen: (id: string) => void }) {
 
   return (
     <section ref={section} id="work" style={{ height: `${orderedProjects.length * VH_PER_ITEM + 100}vh` }} className="relative">
-      <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden px-6 pt-20 md:px-12">
+      <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden px-6 pt-20 md:pr-12 md:pl-12 dock:pl-28">
         <div className="mx-auto w-full max-w-7xl">
           <Eyebrow>03 / Work</Eyebrow>
           <div className="grid items-center gap-6 lg:grid-cols-2 lg:gap-16">
-            <div className="h-[42vh] overflow-hidden lg:h-[62vh]">
+            <div className="h-[42vh] overflow-hidden lg:h-[72vh]">
               <ArcList items={items} pos={pos} onPick={pick} />
             </div>
 
             <article key={project.id} className="animate-pop" style={projectVars(project)}>
-              <div className="hidden h-[min(34vh,22rem)] items-center justify-center gap-4 overflow-hidden rounded-[20px] border border-cream/10 bg-[radial-gradient(ellipse_at_50%_100%,rgba(78,104,81,0.45),transparent_70%)] lg:flex">
+              <div className="hidden h-[min(46vh,32rem)] items-center justify-center gap-4 overflow-hidden rounded-[20px] border border-cream/10 bg-[radial-gradient(ellipse_at_50%_100%,rgba(78,104,81,0.45),transparent_70%)] lg:flex">
                 {kind === "app" ? (
                   project.gallery.slice(0, 3).map((g, i) => (
                     <div
@@ -60,8 +60,8 @@ export function Work({ onOpen }: { onOpen: (id: string) => void }) {
                 {project.category} · {project.year} · {project.platform}
               </p>
               <h3 className="mt-2 font-display text-3xl font-bold text-cream md:text-4xl">{project.title}</h3>
-              <p className="mt-2 max-w-lg text-sm leading-relaxed text-cream/70 md:text-base">{project.blurb}</p>
-              <div className="mt-4 flex flex-wrap items-center gap-2">
+              <p className="mt-3 max-w-lg text-sm leading-relaxed text-cream/70 md:text-base">{project.blurb}</p>
+              <div className="mt-6 flex flex-wrap items-center gap-2">
                 {project.tags.slice(0, 4).map((t) => (
                   <span key={t} className="rounded-full border border-cream/20 px-3 py-1 font-mono text-[11px] tracking-wider text-cream/70 uppercase">
                     {t}

@@ -18,18 +18,13 @@ function Ring({ text, r = 170, className }: { text: string; r?: number; classNam
   );
 }
 
-/** Text running round a ring, with a second ring tilted into 3D, both slowly turning. */
+/** A faint line of text running round a ring that slowly turns. */
 export function OrbitalType({ text, children, className }: { text: string; children?: ReactNode; className?: string }) {
   return (
     <div className={cn("relative aspect-square", className)}>
       <div className="absolute inset-0 flex items-center justify-center">{children}</div>
-      <div className="pointer-events-none absolute -inset-[6%] animate-orbit text-cream/45">
+      <div className="pointer-events-none absolute -inset-[6%] animate-orbit text-cream/30">
         <Ring text={text} />
-      </div>
-      <div className="pointer-events-none absolute -inset-[16%] [transform:perspective(900px)_rotateX(72deg)_rotateY(-8deg)]">
-        <div className="h-full w-full animate-orbit-rev text-signal/80">
-          <Ring text={text} />
-        </div>
       </div>
     </div>
   );

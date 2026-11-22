@@ -24,7 +24,7 @@ export function Path() {
   }, []);
 
   return (
-    <section id="path" className="relative px-6 py-24 md:pr-12 md:pl-28 md:py-32">
+    <section id="path" className="relative px-6 py-14 md:pr-12 dock:pl-28 md:pl-12 md:py-16">
       <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-12">
         <div className="lg:sticky lg:top-28 lg:col-span-5 lg:self-start">
           <Eyebrow>02 / Path</Eyebrow>

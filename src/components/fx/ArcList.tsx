@@ -24,7 +24,7 @@ export function ArcList({ items, pos, onPick }: ArcListProps) {
         return (
           <li
             key={item.id}
-            className="absolute top-1/2 right-0 left-10 will-change-transform lg:left-32"
+            className="absolute top-[22%] right-0 left-10 will-change-transform lg:left-32"
             style={{
               transform: `translate3d(${x}px, calc(${y}px - 50%), 0) rotate(${a * 0.35}rad)`,
               opacity: Math.max(0, 1 - Math.abs(o) * 0.24),

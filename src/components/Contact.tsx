@@ -25,7 +25,7 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="relative flex min-h-screen items-center overflow-hidden px-6 py-28 md:px-12">
+    <section id="contact" className="relative flex min-h-screen items-center overflow-hidden px-6 py-28 md:pr-12 md:pl-12 dock:pl-28">
       <GlassKeys className="[mask-image:radial-gradient(ellipse_at_center,transparent_18%,#000_75%)]" />
       <div className="relative mx-auto w-full max-w-5xl text-center">
         <div className="flex justify-center">

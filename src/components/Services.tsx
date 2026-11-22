@@ -5,7 +5,7 @@ import Grainient from "./rb/Grainient";
 
 export function Services() {
   return (
-    <section id="services" className="relative overflow-hidden px-6 py-24 md:px-12 md:py-32">
+    <section id="services" className="relative overflow-hidden px-6 py-14 md:pr-12 md:pl-12 dock:pl-28 md:py-16">
       <Grainient className="pointer-events-none absolute inset-0 -z-0 opacity-30 [mask-image:linear-gradient(to_bottom,transparent,#000_25%,#000_75%,transparent)]" colors={["#0f1612", "#22352a", "#4e6851"]} speed={0.12} grainAmount={0.1} aria-hidden="true" />
       <div className="relative mx-auto max-w-7xl">
         <Eyebrow>05 / Services</Eyebrow>

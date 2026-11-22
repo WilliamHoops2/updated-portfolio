@@ -21,10 +21,10 @@ export function Header({ inert }: { inert?: boolean }) {
   const [copied, setCopied] = useState(false);
   const [active, setActive] = useState("");
   const [tip, setTip] = useState({ label: "", x: 0, y: 0, show: false });
-  const [wide, setWide] = useState(() => window.matchMedia("(min-width: 768px)").matches);
+  const [wide, setWide] = useState(() => window.matchMedia("(min-width: 768px) and (min-height: 520px)").matches);
 
   useEffect(() => {
-    const mq = window.matchMedia("(min-width: 768px)");
+    const mq = window.matchMedia("(min-width: 768px) and (min-height: 520px)");
     const on = () => setWide(mq.matches);
     mq.addEventListener("change", on);
     return () => mq.removeEventListener("change", on);
@@ -85,11 +85,11 @@ export function Header({ inert }: { inert?: boolean }) {
         onPointerOut={leave}
         onFocus={point}
         onBlur={leave}
-        className="pointer-events-auto absolute bottom-4 left-1/2 -translate-x-1/2 md:top-1/2 md:bottom-auto md:left-4 md:translate-x-0 md:-translate-y-1/2"
+        className="pointer-events-auto absolute bottom-4 left-1/2 w-max max-w-[calc(100vw-1rem)] -translate-x-1/2 dock:top-1/2 dock:bottom-auto dock:left-4 dock:translate-x-0 dock:-translate-y-1/2"
       >
         <GlassIcons
           items={items}
-          size={wide ? 56 : 44}
+          size={wide ? 56 : 40}
           gap={wide ? 16 : 10}
           columns={wide ? 1 : items.length}
           roundness={0.6}

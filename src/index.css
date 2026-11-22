@@ -950,3 +950,14 @@ a.update:hover .update__arrow {
     transform: none;
   }
 }
+
+/* The vertical dock (see the `dock` variant in tailwind.css) owns the left 72px; keep section content clear of it. */
+@media (min-width: 768px) and (min-height: 520px) {
+  main > section {
+    padding-left: max(var(--pad), 96px);
+  }
+
+  .ticker {
+    margin-left: calc(max(var(--pad), 96px) * -1);
+  }
+}

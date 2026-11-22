@@ -9,6 +9,8 @@
 @import "./motion.css" layer(legacy);
 
 /* The older stylesheets (Interests games, project case view) sit in a `legacy` layer below the utilities. */
+@custom-variant dock (@media (min-width: 768px) and (min-height: 520px));
+
 @theme {
   --color-ink: #0f1612;
   --color-ink-2: #16211b;
