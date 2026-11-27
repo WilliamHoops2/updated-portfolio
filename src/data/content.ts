@@ -1,4 +1,7 @@
 import { INK, INK_LIFT, ORCHID } from "../lib/palette";
+
+/** Site root: "/" in dev, "/updated-portfolio/" on GitHub Pages (see vite.config.ts). */
+const BASE = import.meta.env.BASE_URL;
 // ─────────────────────────────────────────────────────────────
 //  EDIT ME — everything shown on the site lives in this file.
 // ─────────────────────────────────────────────────────────────
@@ -121,7 +124,7 @@ export const path = [
   {
     when: "2021 – 2022",
     title: "Coding tutor",
-    image: "/path/tutor.jpg",
+    image: `${BASE}path/tutor.jpg`,
     alt: "William teaching a coding class",
     text: "My first job in tech was an internship teaching others to code. Explaining the same idea five different ways taught me to really understand it.",
     points: ["Taught beginners the basics of programming", "Broke big problems into small steps", "Learned patience and clear communication"],
@@ -129,7 +132,7 @@ export const path = [
   {
     when: "Late 2023",
     title: "Graduated",
-    image: "/path/graduation.jpg",
+    image: `${BASE}path/graduation.jpg`,
     alt: "William at graduation",
     text: "I finished university and left with a degree and a habit of building things on the side. That is where my taste for simple, clean interfaces started.",
     points: ["Finished my degree in late 2023", "Built web projects outside of class", "Decided to try building something of my own"],
@@ -137,7 +140,7 @@ export const path = [
   {
     when: "2024 – 2025",
     title: "My own business",
-    image: "/path/business.jpg",
+    image: `${BASE}path/business.jpg`,
     alt: "Wood pellets at a renewable energy supplier",
     text: "I ran my own company in renewable energy, mostly wood pellets. It was a crash course in how real businesses work, far from a code editor.",
     points: ["Sourced from suppliers and found buyers", "Negotiated deals and planned cash flow", "Made decisions with incomplete information"],
@@ -145,7 +148,7 @@ export const path = [
   {
     when: "2026",
     title: "Apple Developer Academy",
-    image: "/path/academy.jpg",
+    image: `${BASE}path/academy.jpg`,
     alt: "William at the Apple Developer Academy in Bali",
     text: "Now I am back to building full time in Bali, learning SwiftUI alongside a team of designers and developers. I bring the business side with me.",
     points: ["SwiftUI, RealityKit, Core ML and WidgetKit", "Shipped Artie, ChessUp and fisch", "Working in a team on real product briefs"],
@@ -233,9 +236,9 @@ export const projects: Project[] = [
       "Nearby trading between two devices, no accounts needed.",
     ],
     gallery: [
-      { variant: "splash", caption: "Home" },
-      { variant: "cards", caption: "Charm collection" },
-      { variant: "list", caption: "Trading" },
+      { variant: "splash", caption: "Home", src: `${BASE}projects/artie/home.jpg` },
+      { variant: "cards", caption: "Scraps", src: `${BASE}projects/artie/scraps.jpg` },
+      { variant: "list", caption: "Trading", src: `${BASE}projects/artie/trade.jpg` },
     ],
     tags: ["SwiftUI", "RealityKit", "Lottie"],
     colors: [INK, ORCHID],
@@ -257,9 +260,9 @@ export const projects: Project[] = [
       "Designed around a simple overhead camera angle.",
     ],
     gallery: [
-      { variant: "scan", caption: "Board detection" },
-      { variant: "chart", caption: "Engine evaluation" },
-      { variant: "list", caption: "Move history" },
+      { variant: "scan", caption: "Welcome", src: `${BASE}projects/chessup/welcome.jpg` },
+      { variant: "chart", caption: "Choose a side", src: `${BASE}projects/chessup/side.jpg` },
+      { variant: "list", caption: "Difficulty", src: `${BASE}projects/chessup/difficulty.jpg` },
     ],
     tags: ["Core ML", "Vision", "AVFoundation"],
     colors: [INK_LIFT, ORCHID],
@@ -281,9 +284,9 @@ export const projects: Project[] = [
       "Hand-made pixel-art animations.",
     ],
     gallery: [
-      { variant: "timer", caption: "Focus session" },
-      { variant: "splash", caption: "Your pet" },
-      { variant: "chart", caption: "Weekly progress" },
+      { variant: "timer", caption: "Focus session", src: `${BASE}projects/fisch/focus.jpg` },
+      { variant: "splash", caption: "Your pet", src: `${BASE}projects/fisch/home.jpg` },
+      { variant: "chart", caption: "Pet collection", src: `${BASE}projects/fisch/pets.jpg` },
     ],
     tags: ["SwiftUI", "WidgetKit", "Live Activities"],
     colors: [INK, ORCHID],
@@ -305,56 +308,11 @@ export const projects: Project[] = [
       "Data stays on the device with SwiftData.",
     ],
     gallery: [
-      { variant: "list", caption: "Steps" },
-      { variant: "splash", caption: "Calm mode" },
-      { variant: "cards", caption: "Strategies" },
+      { variant: "splash", caption: "Meet Noya", src: `${BASE}projects/tantrum-noya/intro.jpg` },
+      { variant: "list", caption: "Head-nod control", src: `${BASE}projects/tantrum-noya/nod.jpg` },
+      { variant: "cards", caption: "Home", src: `${BASE}projects/tantrum-noya/home.jpg` },
     ],
     tags: ["SwiftData", "App Intents", "AirPods"],
-    colors: [INK_LIFT, ORCHID],
-  },
-  {
-    id: "live-music-pets",
-    title: "LiveMusicPets",
-    category: "iOS App · Live Activities",
-    year: "2026",
-    blurb: "Lock-screen pets that react to the music playing around you.",
-    overview:
-      "Little pets live on your lock screen and dance to whatever's playing nearby. A small, playful way to make music feel more alive.",
-    role: "Design & development",
-    platform: "iOS",
-    highlights: [
-      "Music recognition powered by ShazamKit.",
-      "Live Activities that animate along with the song.",
-      "Widgets to show off your pet collection.",
-    ],
-    gallery: [
-      { variant: "waves", caption: "Listening" },
-      { variant: "splash", caption: "Now playing" },
-      { variant: "cards", caption: "Pet collection" },
-    ],
-    tags: ["ActivityKit", "ShazamKit", "WidgetKit"],
-    colors: [INK, ORCHID],
-  },
-  {
-    id: "pomodoro-clock",
-    title: "PomodoroClock",
-    category: "iOS App",
-    year: "2025",
-    blurb: "A focus timer with its own music library and a customisable rhythm.",
-    overview:
-      "A clean Pomodoro timer with a built-in music library, so you can start a session and stay in the zone without juggling apps.",
-    role: "Design & development",
-    platform: "iOS",
-    highlights: [
-      "Adjustable focus and break lengths.",
-      "Background audio with a custom playback engine.",
-      "A distraction-free timer screen.",
-    ],
-    gallery: [
-      { variant: "timer", caption: "Timer" },
-      { variant: "list", caption: "Music library" },
-    ],
-    tags: ["SwiftUI", "AVAudioEngine"],
     colors: [INK_LIFT, ORCHID],
   },
   {
@@ -373,32 +331,11 @@ export const projects: Project[] = [
       "Private by default, stored on your device.",
     ],
     gallery: [
-      { variant: "list", caption: "Friends" },
-      { variant: "cards", caption: "Profile" },
+      { variant: "list", caption: "Friends", src: `${BASE}projects/friend-tracker/friends.jpg` },
+      { variant: "cards", caption: "New friend", src: `${BASE}projects/friend-tracker/new.jpg` },
     ],
     tags: ["SwiftUI", "Core Data"],
     colors: [INK, ORCHID],
-  },
-  {
-    id: "my-bali-app",
-    title: "MyBaliApp",
-    category: "iOS App",
-    year: "2025",
-    blurb: "A pocket guide to island life.",
-    overview:
-      "A pocket guide to everyday life on the island, built around the places and routines that make Bali feel like home.",
-    role: "Design & development",
-    platform: "iOS",
-    highlights: [
-      "Places and tips for daily life on the island.",
-      "A fast, native SwiftUI interface.",
-    ],
-    gallery: [
-      { variant: "cards", caption: "Places" },
-      { variant: "splash", caption: "Home" },
-    ],
-    tags: ["SwiftUI"],
-    colors: [INK_LIFT, ORCHID],
   },
   {
     id: "gnome-runner",

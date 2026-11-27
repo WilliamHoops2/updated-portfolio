@@ -26,7 +26,9 @@ const yahooProxy: Record<string, ProxyOptions> = {
 };
 
 // https://vite.dev/config/
+// GitHub Pages serves a project site from /<repo>/. Override with VITE_BASE=/ for a custom domain.
 export default defineConfig({
+  base: process.env.VITE_BASE ?? "/updated-portfolio/",
   plugins: [react(), tailwindcss()],
   resolve: { alias: { "@": fileURLToPath(new URL("./src", import.meta.url)) } },
   server: { proxy: yahooProxy },

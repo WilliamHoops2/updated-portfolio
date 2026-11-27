@@ -82,9 +82,9 @@ export function useBadge() {
   useEffect(() => {
     let live = true;
     const photo = new Image();
-    photo.src = "/about/william.jpg";
+    photo.src = `${import.meta.env.BASE_URL}about/william.jpg`;
     const photo2 = new Image();
-    photo2.src = "/about/william-2.jpg";
+    photo2.src = `${import.meta.env.BASE_URL}about/william-2.jpg`;
     Promise.all([
       photo.decode(),
       photo2.decode(),

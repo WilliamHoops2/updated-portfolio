@@ -3,15 +3,6 @@
    Work index, hover preview, image placeholders, project view, interests.
    ─────────────────────────────────────────────────────────── */
 
-@keyframes case-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
 /* ── Work ────────────────────────────────────────────────── */
 .work__groups {
   display: grid;
@@ -102,167 +93,6 @@
 
 .work__thumb .media__caption {
   display: none;
-}
-
-/* ── Project view ────────────────────────────────────────── */
-.case {
-  position: fixed;
-  inset: 0;
-  z-index: 60;
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  background: var(--c1);
-  color: var(--ink);
-  animation: case-in 0.4s var(--ease) both;
-}
-
-.case__bar {
-  position: sticky;
-  top: 0;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 18px var(--pad);
-  background: var(--c1);
-}
-
-.case__nav {
-  display: flex;
-  gap: 28px;
-}
-
-.case__body {
-  padding: clamp(20px, 4vw, 56px) var(--pad) clamp(48px, 8vw, 120px);
-}
-
-.case__kicker {
-  opacity: 0.7;
-}
-
-.case__title {
-  margin: 0.12em 0 0.28em;
-  font-family: var(--font-display);
-  font-size: clamp(56px, calc(150vw / var(--len, 8)), 360px);
-  font-weight: 800;
-  line-height: 0.85;
-  letter-spacing: -0.06em;
-  overflow-wrap: anywhere;
-}
-
-.case__intro {
-  display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  gap: clamp(24px, 5vw, 80px);
-  align-items: start;
-}
-
-.case__blurb {
-  font-family: var(--font-display);
-  font-size: clamp(24px, 3vw, 44px);
-  font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: -0.035em;
-}
-
-.case__overview {
-  max-width: 52ch;
-  font-size: clamp(16px, 1.3vw, 19px);
-  opacity: 0.88;
-}
-
-.case__meta {
-  margin-top: 20px;
-  opacity: 0.7;
-}
-
-.case .btn {
-  border-color: currentColor;
-  background: transparent;
-  color: inherit;
-}
-
-.case .btn:hover {
-  background: var(--ink);
-  color: var(--c1);
-}
-
-.case__link {
-  margin-top: 28px;
-}
-
-.case__media {
-  display: grid;
-  gap: clamp(14px, 2.4vw, 32px);
-  margin-top: clamp(40px, 7vw, 104px);
-}
-
-.case__media--app {
-  grid-template-columns: repeat(auto-fit, minmax(150px, 280px));
-  justify-content: start;
-  align-items: start;
-}
-
-.case__media--game,
-.case__media--research {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.case__shot {
-  margin: 0;
-}
-
-.case__shot figcaption {
-  margin-top: 12px;
-  opacity: 0.75;
-}
-
-.case__highlights {
-  display: grid;
-  gap: 14px;
-  max-width: 60ch;
-  margin-top: 16px;
-  padding-left: 1.1em;
-  list-style: disc;
-  font-size: clamp(16px, 1.4vw, 20px);
-  font-weight: 500;
-  line-height: 1.4;
-}
-
-.case__label {
-  margin-top: clamp(48px, 8vw, 120px);
-  opacity: 0.7;
-}
-
-/* The caption already sits under each frame, so the one drawn inside a placeholder is a repeat. */
-.case .media__caption {
-  display: none;
-}
-
-@media (max-width: 600px) {
-  .case__media--app {
-    justify-content: center;
-  }
-}
-
-.case__next {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 10px;
-  width: 100%;
-  margin-top: clamp(56px, 9vw, 140px);
-  padding-top: 24px;
-  border-top: 1px solid currentColor;
-  text-align: left;
-}
-
-.case__next-title {
-  font-family: var(--font-display);
-  font-size: clamp(44px, 9vw, 160px);
-  font-weight: 800;
-  line-height: 0.9;
-  letter-spacing: -0.055em;
 }
 
 /* ── Featured work: big cards with the phone peeking out of the bottom ── */
@@ -596,21 +426,6 @@
   .work__year {
     display: none;
   }
-
-  .case__intro {
-    grid-template-columns: 1fr;
-  }
-
-  .case__media--game,
-  .case__media--research {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .case {
-    animation: none;
-  }
 }
 
 /* ── Serif display type ──────────────────────────────────── */
@@ -626,10 +441,7 @@
 .hero__line2,
 .pick__title,
 .work__title,
-.work__group-head,
-.case__title,
-.case__blurb,
-.case__next-title {
+.work__group-head {
   font-family: var(--font-serif);
   font-weight: 500;
   font-optical-sizing: auto;

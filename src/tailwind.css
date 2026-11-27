@@ -24,6 +24,8 @@
   --animate-orbit: orbit 40s linear infinite;
   --animate-orbit-rev: orbit 55s linear infinite reverse;
   --animate-pop: pop 0.5s cubic-bezier(0.2, 0.7, 0.1, 1) both;
+  --animate-fade: fade 0.35s ease-out both;
+  @keyframes fade { from { opacity: 0; } }
   --animate-marquee: marquee 60s linear infinite;
   --animate-marquee-rev: marquee 75s linear infinite reverse;
   @keyframes orbit { to { transform: rotate(360deg); } }

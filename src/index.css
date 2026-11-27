@@ -135,29 +135,6 @@ main > section {
 
 /* ── Shared components ───────────────────────────────────── */
 
-/* Hover-roll text (inkgames.com). Hover the parent link/button to roll. */
-.roll {
-  display: inline-flex;
-  flex-direction: column;
-  height: 1.25em;
-  line-height: 1.25;
-  overflow: hidden;
-  vertical-align: bottom;
-}
-
-.roll > span {
-  display: block;
-  white-space: nowrap;
-  transition: transform 0.55s var(--ease);
-}
-
-a:hover .roll > span,
-button:hover .roll > span,
-a:focus-visible .roll > span,
-button:focus-visible .roll > span {
-  transform: translateY(-100%);
-}
-
 /* Small label with a dot, as used above sections on inkgames.com. */
 /* Every section opens with the same numbered label. */
 .eyebrow {

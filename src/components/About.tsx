@@ -31,7 +31,7 @@ export function About() {
             </div>
             <div className="hidden justify-center lg:col-span-5 lg:flex">
               <OrbitalType text="Tilt it to catch the light ✦ Tilt it to catch the light ✦ " className="w-[min(40vw,32rem)]">
-                <HoloCard image="/about/about.jpg" alt="William standing in front of a volcanic lake at sunrise." preset="shards" intensity={0.3} edgeSparkle={0.25} glare={0.3} width={xl ? 330 : 270} />
+                <HoloCard image={`${import.meta.env.BASE_URL}about/about.jpg`} alt="William standing in front of a volcanic lake at sunrise." preset="shards" intensity={0.3} edgeSparkle={0.25} glare={0.3} width={xl ? 330 : 270} />
               </OrbitalType>
             </div>
           </div>

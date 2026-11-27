@@ -5,12 +5,12 @@ import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
 import { Interests } from "./components/Interests";
-import { ordered } from "./components/mediaShape";
 import { Path } from "./components/Path";
 import { Reel } from "./components/Reel";
 import { Services } from "./components/Services";
 import { Toolkit } from "./components/Toolkit";
 import { Work } from "./components/Work";
+import { orderedProjects } from "./data/order";
 import { useCase } from "./hooks/useCase";
 import { useSmoothScroll } from "./hooks/useSmoothScroll";
 
@@ -19,7 +19,7 @@ export default function App() {
   const { id: caseId, open: openCase, go: goCase, close: closeCase } = useCase();
 
   // The open project comes from the URL (#work/<id>), so it can be linked to.
-  const activeProject = caseId ? ordered.find((project) => project.id === caseId) : undefined;
+  const activeProject = caseId ? orderedProjects.find((project) => project.id === caseId) : undefined;
 
   return (
     <>
